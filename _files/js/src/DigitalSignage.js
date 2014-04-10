@@ -22,7 +22,8 @@
 		         .then(DigitalSignage.initDrawing)
 		         .then(DigitalSignage.initResizing)
 		         .then(DigitalSignage.initVideo)
-		         .then(DigitalSignage.initMousing);
+		         .then(DigitalSignage.initMousing)
+		         .then(DigitalSignage.initDirectories);
 	}
 
 	// initializes all template functionality
@@ -315,6 +316,41 @@
 		period = time.getHours() > 11 ? 'p.m.' : 'a.m.';
 
 		self.ractive.set('datetime', month + ' ' + date + ', ' + hour + ':' + minute + ' ' + period);
+	};
+
+	DigitalSignage.initDirectories = function (self) {
+		return new Promise(function (resolve) {
+			self.data.collection.forEach(function (slide, index) {
+				if (/directory/i.test(slide.template)) {
+					DigitalSignage.updateDirectory(self, index, slide);
+				}
+			});
+
+			resolve(self);
+		});
+	};
+
+	DigitalSignage.updateDirectory = function (self, index, slide) {
+		var
+		duration = slide.duration,
+		inset    = self.ractive.find('.ui-slide:nth-child(' + (index + 1) + ') .ui-slide-collection-inset'),
+		outset   = inset.parentNode,
+		outsetHeight = inset.offsetHeight,
+		column   = 125 * 5,
+		columns  = Math.floor(inset.offsetHeight / column),
+		offset   = 0;
+
+		function oninterval() {
+			inset.style.webkitTransform = 'translateY(-' + offset + 'px)';
+
+			offset += (column / 5 * 2);
+
+			if (offset > outsetHeight) offset = 0;
+		}
+
+		oninterval();
+
+		setInterval(oninterval, 5 * 1000);
 	};
 
 	window.DigitalSignage = DigitalSignage;

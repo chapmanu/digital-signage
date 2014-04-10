@@ -472,6 +472,10 @@ subhead {
 	overflow: hidden;
 }
 
+.ui-slide--directory .ui-slide-collection-inset {
+	transition: -webkit-transform 1.5s ease-in-out;
+}
+
 .ui-member {
 	display: inline-block;
 	font: 20px/1.25 "Futura LT";

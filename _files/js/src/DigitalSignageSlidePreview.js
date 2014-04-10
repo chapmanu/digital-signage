@@ -64,6 +64,8 @@
 				}
 			});
 
+			DigitalSignageSlidePreview.updateDirectory(self);
+
 			resolve(self);
 		});
 	};
@@ -95,6 +97,29 @@
 
 			});
 		});
+	};
+
+	DigitalSignageSlidePreview.updateDirectory = function (self) {
+		var
+		duration = self.ractive.data.duration,
+		inset    = self.ractive.find('.ui-slide-collection-inset'),
+		outset   = inset.parentNode,
+		outsetHeight = inset.offsetHeight,
+		column   = 125 * 5,
+		columns  = Math.floor(inset.offsetHeight / column),
+		offset   = 0;
+
+		function oninterval() {
+			inset.style.webkitTransform = 'translateY(-' + offset + 'px)';
+
+			offset += (column / 5 * 2);
+
+			if (offset > outsetHeight) offset = 0;
+		}
+
+		oninterval();
+
+		setInterval(oninterval, 5 * 1000);
 	};
 
 	window.DigitalSignageSlidePreview = DigitalSignageSlidePreview;

@@ -3,14 +3,16 @@
 	<subhead class="ui-slide-subheading">{{subheading}}</subhead>
 
 	<div class="ui-slide-collection">
-		{{#collection}}
-		<article class="ui-member">
-			<img class="ui-member-image" src="{{image}}">
-			<h1 class="ui-member-name">{{name}}</h1>
-			<p class="ui-member-location">{{location}}</p>
-			<p class="ui-member-email">{{email}}</p>
-		</article>
-		{{/collection}}
+		<div class="ui-slide-collection-inset">
+			{{#collection}}
+			<article class="ui-member">
+				<img class="ui-member-image" src="{{image}}">
+				<h1 class="ui-member-name">{{name}}</h1>
+				<p class="ui-member-location">{{location}}</p>
+				<p class="ui-member-email">{{email}}</p>
+			</article>
+			{{/collection}}
+		</div>
 	</div>
 
 	<footer class="ui-slide-organizer"><img class="ui-slide-organizer-icon" src="/digital-signage/_files/img/icon-{{organizerId}}.svg"/> {{organizer}}</footer>

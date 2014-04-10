@@ -1,0 +1,84 @@
+<div class="ui-feed{{#isResizing}} ui-resizing{{/isResizing}}">
+	<header class="ui-head" role="banner">
+		<h1 class="ui-logo"></h1>
+
+		<subhead class="ui-location">
+			<p class="ui-location-name">{{location}}</p>
+			<p class="ui-location-time">{{datetime}}</p>
+		</subhead>
+
+		<nav class="ui-menu" role="navigation">
+			<div class="ui-menu-caret"></div>
+
+			<ul class="ui-menu-list">
+				{{#collection:i}}
+				<li class="ui-menu-item ui-menu-item--{{ index === i ? 'active' : 'inactive' }}">{{menuName}}</li>
+				{{/collection}}
+			</ul>
+		</nav>
+	</header>
+
+	<main class="ui-body" role="main">
+		{{#collection:i}}
+			{{#template.indexOf('directoryDark') !== -1}}
+				{{>directoryDark}}
+			{{/}}
+
+			{{#template.indexOf('directoryLight') !== -1}}
+				{{>directoryLight}}
+			{{/}}
+
+			{{#template.indexOf('scheduleDark') !== -1}}
+				{{>scheduleDark}}
+			{{/}}
+
+			{{#template.indexOf('scheduleLight') !== -1}}
+				{{>scheduleLight}}
+			{{/}}
+
+			{{#template.indexOf('standardDarkLeft') !== -1}}
+				{{>standardDarkLeft}}
+			{{/}}
+
+			{{#template.indexOf('standardDarkRight') !== -1}}
+				{{>standardDarkRight}}
+			{{/}}
+
+			{{#template.indexOf('standardLightLeft') !== -1}}
+				{{>standardLightLeft}}
+			{{/}}
+
+			{{#template.indexOf('standardLightRight') !== -1}}
+				{{>standardLightRight}}
+			{{/}}
+		{{/collection}}
+
+		{{#notification}}
+			<article class="ui-slide ui-slide--notification">
+				<h1 class="ui-slide-heading">{{notification}}</h1>
+
+				<p class="ui-slide-content">{{notificationDetail}}</p>
+			</article>
+		{{/notification}}
+
+		{{#emergency}}
+			<article class="ui-slide ui-slide--emergency">
+				<h1 class="ui-slide-heading">{{emergency}}</h1>
+
+				<p class="ui-slide-content">{{emergencyDetail}}</p>
+			</article>
+		{{/emergency}}
+	</main>
+
+	<link href="/digital-signage/_files/css/slideshow.css" rel="stylesheet">
+	<style>
+	.ui-menu-caret {
+		-webkit-transform: translate3d({{style.caretOffset}}px, 0, 0);
+		width: {{style.caretWidth}}px;
+	}
+
+	.ui-menu-list {
+		-webkit-transform: translate3d({{style.menuOffset}}px, 0, 0);
+	}
+	</style>
+</div>

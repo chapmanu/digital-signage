@@ -1,0 +1,25 @@
+<article class="ui-slide ui-slide--schedule ui-slide--dark ui-slide--{{ index === i ? 'active' : 'inactive' }}">
+	<h1 class="ui-slide-heading">{{heading}}</h1>
+	<subhead class="ui-slide-subheading">{{subheading}}</subhead>
+
+	<div class="ui-slide-collection">
+		{{#collection}}
+		<article class="ui-event">
+			<div class="ui-event-body">
+				<img class="ui-event-image" src="{{image}}">
+
+				<h1 class="ui-event-name">{{name}}</h1>
+
+				<div class="ui-event-content">{{{content}}}</div>
+			</div>
+
+			<p class="ui-event-time">{{time}}</p>
+			<p class="ui-event-date">{{date}}</p>
+			<p class="ui-event-admission">{{admission}}</p>
+			<p class="ui-event-audience">{{public}}</p>
+		</article>
+		{{/collection}}
+	</div>
+
+	<footer class="ui-slide-organizer"><img class="ui-slide-organizer-icon" src="/digital-signage/_files/img/icon-{{organizerId}}.svg"/> {{organizer}}</footer>
+</article>

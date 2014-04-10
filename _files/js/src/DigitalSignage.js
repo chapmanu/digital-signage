@@ -243,8 +243,8 @@
 			video.addEventListener('canplay', function () {
 
 				var 
-				container_width  	= window.innerWidth,
-				container_height 	= window.innerHeight,
+				container_width  	= 1920,
+				container_height 	= 1080,
 				scale_h 			= container_height / video.videoHeight, 	// Calculate height scale
 				scale_v 			= container_width / video.videoWidth,		// Calculate width scale
 				scale 				= (scale_h > scale_v) ? scale_h : scale_v, 	// Pick larger scale
@@ -278,10 +278,8 @@
 
 		// set style properties
 		ractive.set('style.menuOffset', menuOffset);
-
 		ractive.set('style.caretOffset', caretOffset);
 		ractive.set('style.caretWidth', caretWidth);
-
 		ractive.set('style.lastMenuOffset', menuOffset);
 	};
 

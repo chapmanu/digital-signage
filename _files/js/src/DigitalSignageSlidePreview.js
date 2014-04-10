@@ -43,7 +43,7 @@
 			key = path.replace(/^.+\/(.+?)\.[^\.]+$/, '$1');
 
 			self.ractive = new Ractive({
-				el: document.body,
+				el: document.querySelector('.ui-feed'),
 				template: self.templates[key],
 				data: self.data
 			});

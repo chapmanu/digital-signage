@@ -21,7 +21,8 @@
 		         .then(DigitalSignage.initPolling)
 		         .then(DigitalSignage.initDrawing)
 		         .then(DigitalSignage.initResizing)
-		         .then(DigitalSignage.initVideo);
+		         .then(DigitalSignage.initVideo)
+		         .then(DigitalSignage.initMousing);
 	}
 
 	// initializes all template functionality
@@ -36,7 +37,7 @@
 			templates = templates.filter(function (path) {
 				var key = path.replace(/^.+\/(.+?)\.[^\.]+$/, '$1');
 
-				return !self.templates[key];				
+				return !self.templates[key];
 			});
 
 			if (!templates.length) resolve(self);
@@ -234,32 +235,53 @@
 		});
 	};
 
-	// Scales videos to fill the screen
-	DigitalSignage.initVideo = function (self, item, index) {
+	DigitalSignage.initMousing = function (self) {
+		return new Promise(function (resolve) {
+			var ractive = self.ractive, delay = 200, timeout;
 
-		var videos = [].slice.call(document.querySelectorAll('video'));
+			window.addEventListener('mousemove', function () {
+				clearTimeout(timeout);
 
-		videos.forEach(function (video) {
-			video.addEventListener('canplay', function () {
+				ractive.set('isMousing', true);
 
-				var 
-				container_width  	= window.innerWidth,
-				container_height 	= window.innerHeight,
-				scale_h 			= container_height / video.videoHeight, 	// Calculate height scale
-				scale_v 			= container_width / video.videoWidth,		// Calculate width scale
-				scale 				= (scale_h > scale_v) ? scale_h : scale_v, 	// Pick larger scale
-				new_video_width 	= Math.round(scale * video.videoWidth), 	// Calculate new size
-				new_video_height 	= Math.round(scale * video.videoHeight);	// Calculate new size
-
-				// Scale video
-				video.style.width  = new_video_width + 'px';
-				video.style.height = new_video_height + 'px';
-
-				// Center video
-				video.style.marginLeft = Math.round((new_video_width - container_width) / 2 * -1) + 'px';
-				video.style.marginTop  = Math.round((new_video_height - container_height) / 2 * -1) + 'px';
-
+				timeout = setTimeout(function () {
+					ractive.set('isMousing', false);
+				}, delay);
 			});
+
+			resolve(self);
+		});
+	};
+
+	// Scales videos to fill the screen
+	DigitalSignage.initVideo = function (self) {
+		return new Promise(function (resolve) {
+			var videos = [].slice.call(document.querySelectorAll('video'));
+
+			videos.forEach(function (video) {
+				video.addEventListener('canplay', function () {
+
+					var
+					container_width  = window.innerWidth,
+					container_height = window.innerHeight,
+					scale_h          = container_height / video.videoHeight,    // Calculate height scale
+					scale_v          = container_width / video.videoWidth,      // Calculate width scale
+					scale            = (scale_h > scale_v) ? scale_h : scale_v, // Pick larger scale
+					new_video_width  = Math.round(scale * video.videoWidth),    // Calculate new size
+					new_video_height = Math.round(scale * video.videoHeight);   // Calculate new size
+
+					// Scale video
+					video.style.width  = new_video_width + 'px';
+					video.style.height = new_video_height + 'px';
+
+					// Center video
+					video.style.marginLeft = Math.round((new_video_width - container_width) / 2 * -1) + 'px';
+					video.style.marginTop  = Math.round((new_video_height - container_height) / 2 * -1) + 'px';
+
+				});
+			});
+
+			resolve(self);
 		});
 	};
 

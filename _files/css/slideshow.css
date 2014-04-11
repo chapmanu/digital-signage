@@ -253,6 +253,8 @@ subhead {
 	width: 1.5em;
 }
 
+
+
 .ui-slide-background {
 	background: transparent none no-repeat 50% 50%;
 	bottom: 0;
@@ -264,6 +266,9 @@ subhead {
 	width: 100%;
 	z-index: -1;
 }
+
+
+
 
 .ui-slide-foreground {
 	background: transparent none no-repeat 50% 50%;
@@ -345,7 +350,8 @@ subhead {
 .ui-slide--light {
 	background-color: rgba(236,235,229,1);
 	color: rgba(2,2,2,1);
-	text-shadow: 0 1px 0 rgba(255,255,255,1), 0 1px 1px rgba(255,255,255,1), 0 0 1px rgba(255,255,255,1), 0 0 2px rgba(255,255,255,1), 0 0 2px rgba(255,255,255,1), 0 0 6px rgba(255,255,255,0.75);
+	text-shadow: 0 1px 0 rgba(255,255,255,1), 0 1px 1px rgba(255,255,255,1), 0 0 1px rgba(255,255,255,1), 0 0 2px rgba(255,255,255,1), 0 0 2px rgba(255,255,255,1), 0 0 6px rgba(255,255,255,0.75); 
+	/*text-shadow: 1px 1px 1px rgba(0,0,0, 0.3);*/
 }
 
 .ui-slide--light .ui-slide-subheading {
@@ -356,6 +362,12 @@ subhead {
 	background-color: rgba(255,255,255,1);
 }
 
+.ui-slide--light video.ui-slide-background {
+	-webkit-filter: opacity(70%) bightness(110%);
+	filter: opacity(70%) bightness(110%);
+	
+}
+
 /* slide: dark
    =============================================================================
 */
@@ -363,6 +375,7 @@ subhead {
 .ui-slide--dark {
 	background-color: rgba(20,20,20,1);
 	color: rgba(253,253,253,1);
+	/*text-shadow: 1px 1px 1px rgba(0,0,0,0.3);*/
 	text-shadow: 0 1px 0 rgba(0,0,0,1),
 	             0 1px 1px rgba(0,0,0,1),
 	             0 0 1px rgba(0,0,0,1),
@@ -371,7 +384,7 @@ subhead {
 	             0 0 4px rgba(0,0,0,0.75),
 	             0 0 3px rgba(0,0,0,0.75),
 	             0 0 2px rgba(0,0,0,0.75),
-	             0 0 1px rgba(0,0,0,0.75);
+	             0 0 1px rgba(0,0,0,0.75); 
 }
 
 .ui-slide--dark .ui-slide-subheading {
@@ -380,6 +393,11 @@ subhead {
 
 .ui-slide--dark .ui-event {
 	background-color: rgba(25,25,25,1);
+}
+
+.ui-slide--dark video.ui-slide-background {
+	-webkit-filter: brightness(60%);
+	filter: brightness(60%);
 }
 
 /* slide: schedule
@@ -478,7 +496,7 @@ subhead {
 
 .ui-member {
 	display: inline-block;
-	font: 20px/1.25 "Futura LT";
+	font: 20px/1.25 "Futura Bold";
 	height: 125px;
 	padding: 0 20px 30px 80px;
 	position: relative;
@@ -495,7 +513,7 @@ subhead {
 }
 
 .ui-member-name {
-	font-family: "Futura LT", sans-serif;
+	font-family: "Futura Bold", sans-serif;
 	letter-spacing: -0.05em;
 }
 

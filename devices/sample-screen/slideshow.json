@@ -5,7 +5,25 @@
 	"collection": [
 	{
 		"id": "s1",
-		"template": "/digital-signage/_files/tpl/directoryDark.mustache",
+		"template": "/digital-signage/_files/tpl/standardLightLeft.mustache",
+		"menuName": "Standard Light Left",
+		"organizer": "Schmid College of Science and Technology",
+		"organizerId": "business",
+		"duration": 10,
+		"heading": "Test Video Slide",
+		"subheading": "Real Talk for Real Teachers",
+		"datetime": "Saturday, March 1",
+		"location": "Anaheim Marriott Hotel Platinum Ballroom",
+		"content": "<p>Mr. Esquith will be ready to start signing books at 7:30 a.m. and will stop around 8:10 - 8:15 a.m. He will again sign books from 9:30 - 9:45 a.m. Books available at Libreria Martinez de Chapman University.</p>",
+		"background": "http://www.chapman.edu/_files/img/hero-panels/html5-videos/homepage_holocaustV2.mp4",
+		"backgroundSizing": "cover",
+		"backgroundType": "video",
+		"foreground": "",
+		"foregroundSizing": "",
+		"foregroundType": ""
+	}, {
+		"id": "s1",
+		"template": "/digital-signage/_files/tpl/directoryLight.mustache",
 		"menuName": "Directory Dark",
 		"duration": 10,
 		"heading": "Reeves Hall",

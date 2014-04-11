@@ -342,8 +342,8 @@
 	DigitalSignage.initDirectories = function (self) {
 		return new Promise(function (resolve) {
 			self.data.collection.forEach(function (slide, index) {
-				if (/directory/i.test(slide.template)) {
-					DigitalSignage.updateDirectory(self, index, slide);
+				if (/directory|schedule/i.test(slide.template)) {
+					DigitalSignage.updateSliding(self, index, slide);
 				}
 			});
 
@@ -351,27 +351,35 @@
 		});
 	};
 
-	DigitalSignage.updateDirectory = function (self, index, slide) {
+	// Scrolls the directory listing
+	DigitalSignage.updateSliding = function(self, index, slide) {
 		var
 		duration = slide.duration,
-		inset    = self.ractive.find('.ui-slide:nth-child(' + (index + 1) + ') .ui-slide-collection-inset'),
-		outset   = inset.parentNode,
+		inset = self.ractive.find('.ui-slide:nth-child(' + (index + 1) + ') .ui-slide-collection-inset');
+
+		if (!inset) return;
+
+		var
+		outset = inset.parentNode,
 		outsetHeight = inset.offsetHeight,
-		column   = 125 * 5,
-		columns  = Math.floor(inset.offsetHeight / column),
-		offset   = 0;
+		columnHeight = /schedule/.test(slide.template) ? 155 : 125,
+		columnMax = 4,
+		columnInterval = 2,
+		columnDelay = 5,
+		columns = Math.floor(inset.offsetHeight / (columnHeight * columnMax)),
+		offset = 0;
 
 		function oninterval() {
 			inset.style.webkitTransform = 'translateY(-' + offset + 'px)';
 
-			offset += (column / 5 * 2);
+			offset += columnHeight * columnInterval;
 
-			if (offset > outsetHeight) offset = 0;
+			if (offset > (outsetHeight - (columnHeight * columnInterval))) offset = 0;
 		}
 
 		oninterval();
 
-		setInterval(oninterval, 5 * 1000);
+		setInterval(oninterval, columnDelay * 1000);
 	};
 
 	window.DigitalSignage = DigitalSignage;

@@ -23,7 +23,7 @@
 		"foregroundType": ""
 	}, {
 		"id": "s1",
-		"template": "/digital-signage/_files/tpl/directoryDark.mustache",
+		"template": "/digital-signage/_files/tpl/directoryLight.mustache",
 		"menuName": "Directory Dark",
 		"duration": 10,
 		"heading": "Reeves Hall",

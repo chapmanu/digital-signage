@@ -1,0 +1,76 @@
+<!doctype html>
+
+<title>Digital Signage</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<script src="/digital-signage/_files/js/lib/dom-promise.js"></script>
+<script src="/digital-signage/_files/js/src/helpers.js"></script>
+<script src="/digital-signage/_files/js/src/Ractive.js"></script>
+<script src="/digital-signage/_files/js/src/DigitalSignageSlidePreview.js"></script>
+
+<link href="/digital-signage/_files/css/app.css" rel="stylesheet">
+
+<body>
+	<div id="ui-feed" class="ui-feed preview">
+	<script>window.s = new DigitalSignageSlidePreview({
+		"template": "/digital-signage/_files/tpl/scheduleDark.mustache",
+		"menuName": "Schedule 1",
+		"organizer": "Dodge College of Film and Media Arts",
+		"organizerId": "dodge",
+		"duration": 10,
+		"heading": "Folino Theatre",
+		"subheading": "Performance Schedule",
+		"collection": [{
+			"name": "How to Lose a Guy in 10 Days",
+			"image": "/digital-signage/slides/dodge-college/_files/sample-poster.jpg",
+			"content": "<strong>Screening:</strong> How to Lose a Guy in 10 Days is a 2003 romantic comedy film, directed by Donald Petrie, starring Kate Hudson and Matthew McConaughey. It is based on a short cartoon book of the same name by Michele Alexander and Jeannie Long.",
+			"date": "Tuesday, March 1",
+			"time": "1pm",
+			"admission": "Free",
+			"audience": "Campus and Community"
+		}, {
+			"name": "The Associate",
+			"image": "",
+			"content": "<p><strong>Screening &amp; Special Guest:</strong>&#160;The Associate is a 1996 film starring Whoopi Goldberg, Dianne Wiest, Eli Wallach, Timothy Daly, Bebe Neuwirth, Austin Pendleton and Lainie Kazan. The film is a remake of the 1979 French film L&#8217;Associ&#233;, which, in turn, was based on Jenaro Prieto&#8217;s 1928 novel El Socio.</p>",
+			"date": "Tuesday February 25",
+			"time": "7:00 p.m.",
+			"admission": "Free",
+			"audience": "Students"
+		}, {
+			"name": "Master Class for Film Students",
+			"image": "",
+			"content": "<strong>Screening &amp; Master Class:</strong>&#160;Chinatown is a 1974 American neo-noir film, directed by Roman Polanski from a screenplay by Robert Towne, and starring Jack Nicholson, Faye Dunaway, and John Huston.",
+			"date": "Tuesday March 4",
+			"time": "1:00 p.m.",
+			"admission": "Tickets Required",
+			"audience": "Members"
+		}, {
+			"name": "Screening of Chinatown",
+			"image": "",
+			"content": "<strong>Screening &amp; Master Class:</strong>&#160;Chinatown is a 1974 American neo-noir film, directed by Roman Polanski from a screenplay by Robert Towne, and starring Jack Nicholson, Faye Dunaway, and John Huston.",
+			"date": "Tuesday March 4",
+			"time": "1:00 p.m.",
+			"admission": "Tickets Required",
+			"audience": "Members"
+		}, {
+			"name": "Chinatown",
+			"image": "",
+			"content": "<strong>This is 6th event does it appear on secondary instance of slide in the slideshow?? Screening &amp; Master Class:</strong>&#160;Chinatown is a 1974 American neo-noir film, directed by Roman Polanski from a screenplay by Robert Towne, and starring Jack Nicholson, Faye Dunaway, and John Huston.",
+			"date": "Tuesday March 4",
+			"time": "1:00 p.m.",
+			"admission": "Tickets Required",
+			"audience": "Members"
+		}, {
+			"name": "Shaft",
+			"image": "",
+			"content": "<strong>Screening &amp; Master Class:</strong>&#160;Chinatown is a 1974 American neo-noir film, directed by Roman Polanski from a screenplay by Robert Towne, and starring Jack Nicholson, Faye Dunaway, and John Huston.",
+			"date": "Tuesday, March 4",
+			"time": "7:00 pm",
+			"admission": "",
+			"audience": "Members"
+		}]
+	});</script>
+	</div>
+</body>

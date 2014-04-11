@@ -455,6 +455,7 @@ subhead {
 .ui-event {
 	display: flex;
 	font-family: "Rooney Sans";
+	height: 145px;
 	margin: 0 0 10px;
 	padding: 20px;
 }
@@ -515,18 +516,21 @@ subhead {
    =============================================================================
 */
 
+.ui-slide-collection {
+	max-height: 620px;
+	overflow: hidden;
+}
+
+.ui-slide-collection-inset {
+	transition: -webkit-transform 1.5s ease-in-out;
+}
+
 .ui-slide--directory {
 	padding: 60px 140px 20px 140px;
 }
 
 .ui-slide--directory .ui-slide-collection {
 	font-size: 0;
-	max-height: 620px;
-	overflow: hidden;
-}
-
-.ui-slide--directory .ui-slide-collection-inset {
-	transition: -webkit-transform 1.5s ease-in-out;
 }
 
 .ui-member {

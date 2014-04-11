@@ -117,6 +117,9 @@
 					var serverData = JSON.parse(xhr.responseText);
 
 					// if server data contains time, set offset
+
+					serverData.serverTime = new Date(xhr.getResponseHeader('Date')).getTime();
+
 					if (serverData.serverTime) {
 						serverData.timestampOffset = Date.now() - serverData.serverTime;
 					}

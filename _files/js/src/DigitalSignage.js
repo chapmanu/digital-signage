@@ -250,6 +250,8 @@
 		scale 	= Math.min(scale_x, scale_y), 
 		wrapper = document.getElementById('ui-feed');
 
+		self.scale = scale;
+
 		// Scale wrapper
 		wrapper.style["-webkit-transform"] 	= "scale("+scale+")";
 		wrapper.style["-moz-transform"] 	= "scale("+scale+")";
@@ -319,6 +321,11 @@
 		menuOffset  = Math.max(Math.floor(parentRect.left - nextRect.left + lastOffset), 0),
 		caretOffset = -Math.min(Math.floor(parentRect.left - nextRect.left + lastOffset), 0),
 		caretWidth  = Math.floor(nextRect.width);
+
+		// Temporary scaling fix; getBoundingClientRect() does not account for a scaled parent element
+		var scale = self.scale || 1;
+		caretOffset = caretOffset * (1/scale);
+		caretWidth = caretWidth * (1/scale);
 
 		// set style properties
 		ractive.set('style.menuOffset', menuOffset);

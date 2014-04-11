@@ -222,7 +222,7 @@
 				resizeTimeout = setTimeout(function () {
 					resizeTimeout = clearTimeout(resizeTimeout);
 
-					DigitalSignage.updateFeedSize(self);
+					DigitalSignage.updatePreviewScaling(self);
 
 					ractive.set('isResizing', false);					
 
@@ -240,15 +240,24 @@
 	};
 
 	// Resizes the display
-	DigitalSignage.updateFeedSize = function(self) {
-
-		if (window.innerWidth >= 1900) return false;
+	DigitalSignage.updatePreviewScaling = function(self) {
 
 		var 
+		v = document.createElement('video'),
+		preview_notice = !Boolean(v.canPlayType && v.canPlayType('video/mp4').replace(/no/, '')),
 		scale_x = Math.min(window.innerWidth / 1920, 1),
 		scale_y = Math.min(window.innerHeight / 1080, 1),
 		scale 	= Math.min(scale_x, scale_y), 
 		wrapper = document.getElementById('ui-feed');
+
+		if (window.innerWidth >= 1920) {
+			scale = 1;
+		} else {
+			preview_notice = true;
+		}
+
+		self.data.scale = scale;
+		self.ractive.set('previewNotice', preview_notice);
 
 		// Scale wrapper
 		wrapper.style["-webkit-transform"] 	= "scale("+scale+")";
@@ -319,6 +328,11 @@
 		menuOffset  = Math.max(Math.floor(parentRect.left - nextRect.left + lastOffset), 0),
 		caretOffset = -Math.min(Math.floor(parentRect.left - nextRect.left + lastOffset), 0),
 		caretWidth  = Math.floor(nextRect.width);
+
+		// Temporary scaling fix; getBoundingClientRect() does not account for a scaled parent element
+		var scale = self.data.scale || 1;
+		caretOffset = caretOffset * (1/scale);
+		caretWidth = caretWidth * (1/scale);
 
 		// set style properties
 		ractive.set('style.menuOffset', menuOffset);

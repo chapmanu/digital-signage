@@ -23,7 +23,7 @@
 		"foregroundType": ""
 	}, {
 		"id": "s1",
-		"template": "/digital-signage/_files/tpl/directoryLight.mustache",
+		"template": "/digital-signage/_files/tpl/directoryDark.mustache",
 		"menuName": "Directory Dark",
 		"duration": 10,
 		"heading": "Reeves Hall",
@@ -211,8 +211,7 @@
 			"email": "aiken@chapman.edu",
 			"image": "/digital-signage/slides/sample-group/_files/face-unknown.jpg"
 		}]
-	},
-	{
+	}, {
 		"id": "s1",
 		"template": "/digital-signage/_files/tpl/scheduleDark.mustache",
 		"menuName": "Schedule Dark",
@@ -252,6 +251,76 @@
 			"admission": "Tickets",
 			"audience": "Public"
 		}]
+	}, {
+		"id": "s2",
+		"template": "/digital-signage/_files/tpl/standardDarkRight.mustache",
+		"menuName": "Standard Dark Right",
+		"organizer": "College of Educational Studies",
+		"organizerId": "ces",
+		"duration": 10,
+		"heading": "National Center for Science Education Panel",
+		"subheading": "",
+		"datetime": "Thursday February 7",
+		"location": "Argyros Forum Room 202",
+		"content": "<p>The nation’s top experts in defending science education, and award-winning science educator Bill Nye, will host an open panel discussion on evolution and climate change at Chapman University on Friday, Feb. 7. Leading activists in the controversy of creationism and evolution from the National Center for Science Education (NCSE) will form the panel, led by Brian Alters, Ph.D., who directs Chapman’s Evolution Education Research Center and serves as president of the NCSE.</p>",
+		"background": "/digital-signage/slides/sample-group/_files/video_example.mp4",
+		"backgroundSizing": "fill",
+		"backgroundType": "video",
+		"foreground": "",
+		"foregroundSizing": "",
+		"foregroundType": ""
+	}, {
+		"id": "s3",
+		"template": "/digital-signage/_files/tpl/standardDarkLeft.mustache",
+		"menuName": "Standard Dark Left",
+		"organizer": "Schmid College of Science and Technology",
+		"organizerId": "wilkinson",
+		"duration": 10,
+		"heading": "Rafe Esquith",
+		"subheading": "Intelligent Speaker",
+		"datetime": "Saturday, March 2",
+		"location": "Anaheim Marriott Hotel Platinum Ballroom",
+		"content": "<p>Mr. Esquith will be ready to start signing books at 7:30 a.m. and will stop around 8:10 - 8:15 a.m. He will again sign books from 9:30 - 9:45 a.m. Books available at Libreria Martinez de Chapman University.</p>",
+		"background": "",
+		"backgroundSizing": "",
+		"backgroundType": "",
+		"foreground": "/digital-signage/slides/sample-group/_files/background-2.jpg",
+		"foregroundSizing": "absolute",
+		"foregroundType": "image"
+	}, {
+		"template": "/digital-signage/_files/tpl/standardDarkRight.mustache",
+		"menuName": "Standard Dark Left",
+		"organizer": "Schmid College of Science and Technology",
+		"organizerId": "scst",
+		"duration": 10,
+		"heading": "A Test Video Slide",
+		"subheading": "Real Talk for Real Teachers",
+		"datetime": "Saturday, March 1",
+		"location": "Anaheim Marriott Hotel Platinum Ballroom",
+		"content": "<p>Mr. Esquith will be ready to start signing books at 7:30 a.m. and will stop around 8:10 - 8:15 a.m. He will again sign books from 9:30 - 9:45 a.m. Books available at Libreria Martinez de Chapman University.</p>",
+		"background": "http://www.chapman.edu/_files/img/hero-panels/html5-videos/homepage_holocaustV2.mp4",
+		"backgroundSizing": "",
+		"backgroundType": "video",
+		"foreground": "",
+		"foregroundSizing": "",
+		"foregroundType": ""
+	}, {
+		"template": "/digital-signage/_files/tpl/standardDarkLeft.mustache",
+		"menuName": "Standard Dark Right",
+		"organizer": "Schmid College of Science and Technology",
+		"organizerId": "copa",
+		"duration": 10,
+		"heading": "Another Video Slide",
+		"subheading": "Lorem Ipsum Subheading",
+		"datetime": "Saturday, March 1",
+		"location": "Anaheim Marriott Hotel Platinum Ballroom",
+		"content": "<p>Mr. Esquith will be ready to start signing books at 7:30 a.m. and will stop around 8:10 - 8:15 a.m. He will again sign books from 9:30 - 9:45 a.m. Books available at Libreria Martinez de Chapman University.</p>",
+		"background": "http://www.chapman.edu/_files/img/hero-panels/html5-videos/Homepage_Clark.mp4",
+		"backgroundSizing": "auto",
+		"backgroundType": "video",
+		"foreground": "",
+		"foregroundSizing": "",
+		"foregroundType": ""
 	}
 	],
 	"notification": "",

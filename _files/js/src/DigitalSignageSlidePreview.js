@@ -12,7 +12,7 @@
 		}, data);
 		self.templates = {};
 
-		DigitalSignageSlidePreview.initTemplate(self).then(DigitalSignageSlidePreview.initRactive).then(DigitalSignageSlidePreview.initVideo);
+		DigitalSignageSlidePreview.initTemplate(self).then(DigitalSignageSlidePreview.initRactive).then(DigitalSignageSlidePreview.initVideo).then(DigitalSignageSlidePreview.updateFeedSize(self));
 	}
 
 	DigitalSignageSlidePreview.initTemplate = function (self) {
@@ -99,6 +99,24 @@
 		});
 	};
 
+	// Resizes the display
+	DigitalSignageSlidePreview.updateFeedSize = function(self) {
+
+		if (window.innerWidth >= 1900) return false;
+
+		var 
+		scale_x = Math.min(window.innerWidth / 1920, 1),
+		scale_y = Math.min(window.innerHeight / 1080, 1),
+		scale 	= Math.min(scale_x, scale_y), 
+		wrapper = document.getElementById('ui-feed');
+
+		// Scale wrapper
+		wrapper.style["-webkit-transform"] 	= "scale("+scale+")";
+		wrapper.style["-moz-transform"] 	= "scale("+scale+")";
+		wrapper.style["transform"] 		= "scale("+scale+")";
+	};
+
+	// Scrolls the directory listing
 	DigitalSignageSlidePreview.updateDirectory = function (self) {
 		var
 		duration = self.ractive.data.duration,

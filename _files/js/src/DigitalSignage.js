@@ -221,8 +221,11 @@
 				resizeTimeout = setTimeout(function () {
 					resizeTimeout = clearTimeout(resizeTimeout);
 
-					ractive.set('isResizing', false);
-				}, 20);
+					DigitalSignage.updateFeedSize(self);
+
+					ractive.set('isResizing', false);					
+
+				}, 100);
 
 				ractive.set('isResizing', true);
 			}
@@ -233,6 +236,24 @@
 
 			resolve(self);
 		});
+	};
+
+	// Resizes the display
+	DigitalSignage.updateFeedSize = function(self) {
+
+		if (window.innerWidth >= 1900) return false;
+
+		var 
+		scale_x = Math.min(window.innerWidth / 1920, 1),
+		scale_y = Math.min(window.innerHeight / 1080, 1),
+		scale 	= Math.min(scale_x, scale_y), 
+		wrapper = document.getElementById('ui-feed');
+
+		// Scale wrapper
+		wrapper.style["-webkit-transform"] 	= "scale("+scale+")";
+		wrapper.style["-moz-transform"] 	= "scale("+scale+")";
+		wrapper.style["transform"] 		= "scale("+scale+")";
+
 	};
 
 	DigitalSignage.initMousing = function (self) {

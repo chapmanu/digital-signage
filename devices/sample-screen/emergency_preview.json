@@ -1,0 +1,10 @@
+{
+	"id": "ss1",
+	"template": "/digital-signage/_files/tpl/default.mustache",
+	"location": "Test Screen",
+	"collection": [],
+	"notification": "",
+	"notificationDetail": "Notifications are less abruptive.",
+	"emergency": "This is a test alert.",
+	"emergencyDetail": "This is a test. This is a preview of the Digital Signage Emergency Notification System. Messages can be deployed to all screens using this feature. This is only a test."
+}

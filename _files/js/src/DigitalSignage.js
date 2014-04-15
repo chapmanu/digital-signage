@@ -184,18 +184,22 @@
 			function ondraw() {
 				var
 				thisIndex = data.index || 0,
-				duration  = 0;
-
-				data.collection.forEach(function (slide) {
-					duration += slide.duration;
-				});
-
-				duration *= 1000;
-
-				var
-				now = Date.now() - data.timestampOffset,
+				durations = data.collection.map(function (slide) {
+					return slide.duration * 1000;
+				}),
+				duration = durations.reduce(function(a, b) {
+					return a + b;
+				}),
 				length = data.collection.length,
-				nextIndex = Math.floor((now / duration) % length);
+				nextIndex = 0,
+				now = Date.now() - data.timestampOffset,
+				mod = now % duration;
+
+				while (mod > 0) {
+					mod -= durations[nextIndex];
+
+					nextIndex = (nextIndex + 1) % length;
+				}
 
 				if (thisIndex !== nextIndex) ractive.set('index', nextIndex);
 

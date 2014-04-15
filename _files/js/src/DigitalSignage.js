@@ -231,8 +231,7 @@
 
 					DigitalSignage.updatePreviewScaling(self);
 
-					ractive.set('isResizing', false);					
-
+					ractive.set('isResizing', false);
 				}, 100);
 
 				ractive.set('isResizing', true);
@@ -249,12 +248,12 @@
 	// Resizes the display
 	DigitalSignage.updatePreviewScaling = function(self) {
 
-		var 
+		var
 		v = document.createElement('video'),
 		preview_notice = !Boolean(v.canPlayType && v.canPlayType('video/mp4').replace(/no/, '')),
 		scale_x = Math.min(window.innerWidth / 1920, 1),
 		scale_y = Math.min(window.innerHeight / 1080, 1),
-		scale 	= Math.min(scale_x, scale_y), 
+		scale   = Math.min(scale_x, scale_y),
 		wrapper = document.getElementById('ui-feed');
 
 		if (window.innerWidth >= 1920) {
@@ -267,10 +266,9 @@
 		self.ractive.set('previewNotice', preview_notice);
 
 		// Scale wrapper
-		wrapper.style["-webkit-transform"] 	= "scale("+scale+")";
-		wrapper.style["-moz-transform"] 	= "scale("+scale+")";
-		wrapper.style["transform"] 		= "scale("+scale+")";
-
+		wrapper.style['-webkit-transform'] = 'scale('+scale+')';
+		wrapper.style['-moz-transform']    = 'scale('+scale+')';
+		wrapper.style['transform']         = 'scale('+scale+')';
 	};
 
 	DigitalSignage.initMousing = function (self) {
@@ -375,19 +373,15 @@
 	// Scrolls the directory listing
 	DigitalSignage.updateSliding = function(self, index, slide) {
 		var
-		duration = slide.duration,
 		inset = self.ractive.find('.ui-slide:nth-child(' + (index + 1) + ') .ui-slide-collection-inset');
 
 		if (!inset) return;
 
 		var
-		outset = inset.parentNode,
 		outsetHeight = inset.offsetHeight,
 		columnHeight = /schedule/.test(slide.template) ? 155 : 125,
-		columnMax = 4,
 		columnInterval = 2,
 		columnDelay = 5,
-		columns = Math.floor(inset.offsetHeight / (columnHeight * columnMax)),
 		offset = 0;
 
 		function oninterval() {

@@ -407,8 +407,8 @@ subhead {
 }
 
 .ui-slide--light video.ui-slide-background {
-	-webkit-filter: opacity(70%) brightness(110%);
-	filter: opacity(70%) brightness(110%);
+	-webkit-filter: opacity(70%);
+	filter: opacity(70%);
 	
 }
 

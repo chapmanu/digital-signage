@@ -11,8 +11,7 @@
 *, *:before, *:after { border: 0 solid; box-sizing: border-box; color: inherit; margin: 0; padding: 0; list-style: none; vertical-align: top; text-decoration: inherit; }
 
 html {
-	background:#333333;
-	cursor: default;
+	background-color: #333;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
 	-moz-text-size-adjust: 100%;
@@ -85,8 +84,12 @@ subhead {
 	background-color: rgba(236,235,229,1);
 	background-color: rgba(0,0,0,1);
 	color: rgba(255,255,255,1);
+	cursor: none;
 }
 
+.ui-feed--show-mouse {
+	cursor: default;
+}
 
 /* ui-head
    =============================================================================
@@ -137,13 +140,13 @@ subhead {
 
 .ui-location-name {
 	font-size: 30px;
-	font-family: "Futura Bold";
+	font-family: "Futura Bold", sans-serif;
 	text-transform: uppercase;
 }
 
 .ui-location-time {
 	font-size: 20px;
-	font-family: "Futura Light";
+	font-family: "Futura Light", sans-serif;
 }
 
 .ui-location-name + .ui-location-time {
@@ -403,6 +406,12 @@ subhead {
 	background-color: rgba(255,255,255,1);
 }
 
+.ui-slide--light video.ui-slide-background {
+	-webkit-filter: opacity(70%) brightness(110%);
+	filter: opacity(70%) brightness(110%);
+	
+}
+
 /* slide: dark
    =============================================================================
 */
@@ -429,6 +438,11 @@ subhead {
 	background-color: rgba(25,25,25,1);
 }
 
+.ui-slide--dark video.ui-slide-background {
+	-webkit-filter: brightness(60%);
+	filter: brightness(60%);
+}
+
 /* slide: schedule
    =============================================================================
 */
@@ -443,10 +457,15 @@ subhead {
 
 .ui-event {
 	display: flex;
-	font-family: "Rooney Sans";
+	font-family: "Rooney Sans", sans-serif;
 	height: 145px;
 	margin: 0 0 10px;
 	padding: 20px;
+}
+
+.ui-event-content {
+	font-size: 95%;
+	line-height: 1.25;
 }
 
 .ui-event-time {
@@ -462,7 +481,7 @@ subhead {
 }
 
 .ui-event-body {
-	max-height: 105px;
+	max-height: 120px;
 	order: 3;
 	overflow: hidden;
 	padding-right: 100px;
@@ -470,7 +489,7 @@ subhead {
 }
 
 .ui-event-name {
-	font-family: "Futura Bold";
+	font-family: "Futura Bold", sans-serif;
 	font-size: 24px;
 	margin-top: -0.125em;
 }
@@ -520,11 +539,17 @@ subhead {
 
 .ui-slide--directory .ui-slide-collection {
 	font-size: 0;
+	max-height: 620px;
+	overflow: hidden;
+}
+
+.ui-slide--directory .ui-slide-collection-inset {
+	transition: -webkit-transform 1.5s ease-in-out;
 }
 
 .ui-member {
 	display: inline-block;
-	font: 20px/1.25 "Futura LT";
+	font: 20px/1.25 "Futura Bold";
 	height: 125px;
 	padding: 0 20px 30px 80px;
 	position: relative;
@@ -541,7 +566,7 @@ subhead {
 }
 
 .ui-member-name {
-	font-family: "Futura LT";
+	font-family: "Futura Bold", sans-serif;
 	letter-spacing: -0.05em;
 }
 

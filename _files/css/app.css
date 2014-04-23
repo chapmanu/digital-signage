@@ -438,11 +438,6 @@ subhead {
 	background-color: rgba(25,25,25,1);
 }
 
-.ui-slide--dark video.ui-slide-background {
-	-webkit-filter: brightness(60%);
-	filter: brightness(60%);
-}
-
 /* slide: schedule
    =============================================================================
 */

@@ -8,10 +8,20 @@
    =============================================================================
 */
 
-*, *:before, *:after { border: 0 solid; box-sizing: border-box; color: inherit; margin: 0; padding: 0; list-style: none; vertical-align: top; text-decoration: inherit; }
+*, *:before, *:after {
+	border: 0 solid;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	color: inherit;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	vertical-align: top;
+	text-decoration: inherit;
+}
 
 html {
-	background-color: #333;
+	background-color: #000;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
 	-moz-text-size-adjust: 100%;
@@ -33,39 +43,27 @@ subhead {
 	width:1920px;
 	height: 1080px;
 	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
 	-webkit-transform:scale(1);
-	-moz-transform-origin: 0 0;
-	-moz-transform:scale(1);
+	transform: scale(1);
 }
 
 .ui-feed.preview-notice .ui-slide:before {
 	position: fixed;
-	top:50px;
-	right:130px;
+	top: 50px;
+	right: 130px;
 	z-index: 9999999;
 	display: block;
-	color:red;
-	content:"PREVIEW MODE";
+	color: #F00;
+	content: "PREVIEW MODE";
 	letter-spacing: 10px;
-	font-size:72px;
+	font-size: 72px;
 	opacity: 0.3;
 }
 
-.ui-feed.preview-notice .ui-slide:after {
-	position: fixed;
-	top:130px;
-	right:130px;
-	z-index: 9999999;
-	display: block;
-	color:red;
-	content:"Must run with Chrome at 1920x1080 for TV displays";
-	letter-spacing: 0px;
-	font-size:32px;
-	opacity: 0.3;
+.ui-feed.preview-notice .ui-slide--right:before {
+	right: auto;
 }
-
-.ui-feed.preview-notice .ui-slide--right:before { right:auto; }
-.ui-feed.preview-notice .ui-slide--right:after { right:auto; }
 
 /* ui-feed
    =============================================================================
@@ -170,11 +168,13 @@ subhead {
 	right: 0;
 	top: 50%;
 	transition: -webkit-transform 750ms;
+	transition: transform 750ms;
 	white-space: nowrap;
 }
 
 .ui-resizing .ui-menu-list {
 	transition: -webkit-transform 0ms;
+	transition: transform 0ms;
 }
 
 .ui-menu-item, .ui-menu-caret {
@@ -206,12 +206,14 @@ subhead {
 	border-radius: 0 0 4px 4px;
 	padding: 0;
 	transition: background-color 750ms, width 750ms, -webkit-transform 750ms;
+	transition: background-color 750ms, width 750ms, transform 750ms;
 	top: 4px;
 	width: 0;
 }
 
 .ui-resizing .ui-menu-caret {
 	transition: background-color 0ms, width 0ms, -webkit-transform 0ms;
+	transition: background-color 0ms, width 0ms, transform 0ms;
 }
 
 /* slide
@@ -233,8 +235,24 @@ subhead {
 	100%  { -webkit-transform: translate3d(0%, 0, 0); }
 }
 
+@keyframes fade-out {
+	0%   { opacity: 1; z-index: 1; }
+	100% { opacity: 1; z-index: 1; }
+}
+
+@keyframes fade-in {
+	0%    { opacity: 0; }
+	100%  { opacity: 1; }
+}
+
+@keyframes pop-in {
+	0%    { transform: translate3d(-100%, 0, 0); }
+	100%  { transform: translate3d(0%, 0, 0); }
+}
+
 .ui-slide {
 	-webkit-animation: fade-out 500ms;
+	animation: fade-out 500ms;
 	bottom: 0;
 	font-size: 20px;
 	height: 100%;
@@ -250,6 +268,7 @@ subhead {
 
 .ui-slide--active {
 	-webkit-animation: fade-in 500ms;
+	animation: fade-in 500ms;
 	opacity: 1;
 	z-index: 2;
 }
@@ -293,6 +312,7 @@ subhead {
 
 .ui-slide--active .ui-slide-organizer {
 	-webkit-animation: pop-in 750ms ease-out;
+	animation: pop-in 750ms ease-out;
 }
 
 .ui-slide-organizer-icon {
@@ -520,6 +540,7 @@ subhead {
 
 .ui-slide-collection-inset {
 	transition: -webkit-transform 1.5s ease-in-out;
+	transition: transform 1.5s ease-in-out;
 }
 
 .ui-slide--directory {
@@ -534,6 +555,7 @@ subhead {
 
 .ui-slide--directory .ui-slide-collection-inset {
 	transition: -webkit-transform 1.5s ease-in-out;
+	transition: transform 1.5s ease-in-out;
 }
 
 .ui-member {
@@ -569,6 +591,7 @@ subhead {
 
 .ui-slide--notification, .ui-slide--emergency {
 	-webkit-animation: fade-in 50ms;
+	animation: fade-in 50ms;
 	opacity: 1;
 	padding: 120px 140px 20px 140px;
 	text-align: center;

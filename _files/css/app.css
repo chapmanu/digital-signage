@@ -124,7 +124,8 @@ subhead {
 */
 
 .ui-logo {
-	content: url(../img/logo-chapman.svg);
+	background: url(../img/logo-chapman.svg) 0 0 / 100% 100%;
+	display: inline-block;
 	height: 64px;
 	margin-right: 14px;
 	width: 280px;

@@ -42,9 +42,13 @@ subhead {
 .ui-feed { 
 	width:1920px;
 	height: 1080px;
+	-ms-transform-origin: 0 0;
+	-moz-transform-origin: 0 0;
 	-webkit-transform-origin: 0 0;
 	transform-origin: 0 0;
-	-webkit-transform:scale(1);
+	-ms-transform: scale(1);
+	-moz-transform: scale(1);
+	-webkit-transform: scale(1);
 	transform: scale(1);
 }
 
@@ -167,12 +171,16 @@ subhead {
 	position: absolute;
 	right: 0;
 	top: 50%;
+	transition: -moz-transform 750ms;
+	transition: -ms-transform 750ms;
 	transition: -webkit-transform 750ms;
 	transition: transform 750ms;
 	white-space: nowrap;
 }
 
 .ui-resizing .ui-menu-list {
+	transition: -moz-transform 0ms;
+	transition: -ms-transform 0ms;
 	transition: -webkit-transform 0ms;
 	transition: transform 0ms;
 }
@@ -205,6 +213,8 @@ subhead {
 	background-color: rgba(255,255,255,1);
 	border-radius: 0 0 4px 4px;
 	padding: 0;
+	transition: background-color 750ms, width 750ms, -moz-transform 750ms;
+	transition: background-color 750ms, width 750ms, -ms-transform 750ms;
 	transition: background-color 750ms, width 750ms, -webkit-transform 750ms;
 	transition: background-color 750ms, width 750ms, transform 750ms;
 	top: 4px;
@@ -212,6 +222,8 @@ subhead {
 }
 
 .ui-resizing .ui-menu-caret {
+	transition: background-color 0ms, width 0ms, -moz-transform 0ms;
+	transition: background-color 0ms, width 0ms, -ms-transform 0ms;
 	transition: background-color 0ms, width 0ms, -webkit-transform 0ms;
 	transition: background-color 0ms, width 0ms, transform 0ms;
 }
@@ -231,8 +243,8 @@ subhead {
 }
 
 @-webkit-keyframes pop-in {
-	0%    { -webkit-transform: translate3d(-100%, 0, 0); }
-	100%  { -webkit-transform: translate3d(0%, 0, 0); }
+	0%    { -webkit-transform: translate3d(-100%, 0, 0); transform: translate3d(-100%, 0, 0); }
+	100%  { -webkit-transform: translate3d(0%, 0, 0); transform: translate3d(0%, 0, 0); }
 }
 
 @keyframes fade-out {
@@ -539,6 +551,7 @@ subhead {
 }
 
 .ui-slide-collection-inset {
+	transition: -moz-transform 1.5s ease-in-out;
 	transition: -webkit-transform 1.5s ease-in-out;
 	transition: transform 1.5s ease-in-out;
 }
@@ -554,6 +567,7 @@ subhead {
 }
 
 .ui-slide--directory .ui-slide-collection-inset {
+	transition: -moz-transform 1.5s ease-in-out;
 	transition: -webkit-transform 1.5s ease-in-out;
 	transition: transform 1.5s ease-in-out;
 }

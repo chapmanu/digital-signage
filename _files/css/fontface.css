@@ -1,84 +1,80 @@
+/* Futura
+   ========================================================================== */
+
 @font-face {
-	font-family: 'Futura Light';
-	src: url('../font/Futura-300.eot?') format('embedded-opentype'),
-	     url('../font/Futura-300.woff') format('woff'),
-	     url('../font/Futura-300.ttf')  format('truetype'),
-	     url('../font/Futura-300.svg#webfont') format('svg');
+	font-family: "Futura";
+	src: url(../font/Futura-400.eot?) format("eot"),
+	     url(../font/Futura-400.woff) format("woff"),
+	     url(../font/Futura-400.ttf)  format("truetype");
 }
 
 @font-face {
-	font-family: 'Futura Light';
+	font-family: "Futura";
 	font-style: italic;
-	src: url('../font/Futura-300-italic.eot?') format('embedded-opentype'),
-	     url('../font/Futura-300-italic.woff') format('woff'),
-	     url('../font/Futura-300-italic.ttf')  format('truetype'),
-	     url('../font/Futura-300-italic.svg#webfont') format('svg');
+	src: url(../font/Futura-400-italic.eot?) format("eot"),
+	     url(../font/Futura-400-italic.woff) format("woff"),
+	     url(../font/Futura-400-italic.ttf)  format("truetype");
 }
 
 @font-face {
-	font-family: 'Futura';
-	src: url('../font/Futura-400.eot?') format('embedded-opentype'),
-	     url('../font/Futura-400.woff') format('woff'),
-	     url('../font/Futura-400.ttf')  format('truetype'),
-	     url('../font/Futura-400.svg#webfont') format('svg');
+	font-family: "Futura Bold";
+	src: url(../font/Futura-700.eot?) format("eot"),
+	     url(../font/Futura-700.woff) format("woff"),
+	     url(../font/Futura-700.ttf)  format("truetype");
 }
 
 @font-face {
-	font-family: 'Futura';
+	font-family: "Futura Bold";
 	font-style: italic;
-	src: url('../font/Futura-400-italic.eot?') format('embedded-opentype'),
-	     url('../font/Futura-400-italic.woff') format('woff'),
-	     url('../font/Futura-400-italic.ttf')  format('truetype'),
-	     url('../font/Futura-400-italic.svg#webfont') format('svg');
+	src: url(../font/Futura-700-italic.eot?) format("eot"),
+	     url(../font/Futura-700-italic.woff) format("woff"),
+	     url(../font/Futura-700-italic.ttf)  format("truetype");
 }
 
 @font-face {
-	font-family: 'Futura Bold';
-	src: url('../font/Futura-700.eot?') format('embedded-opentype'),
-	     url('../font/Futura-700.woff') format('woff'),
-	     url('../font/Futura-700.ttf')  format('truetype'),
-	     url('../font/Futura-700.svg#webfont') format('svg');
+	font-family: "Futura Light";
+	src: url(../font/Futura-300.eot?) format("eot"),
+	     url(../font/Futura-300.woff) format("woff"),
+	     url(../font/Futura-300.ttf)  format("truetype");
 }
 
 @font-face {
-	font-family: 'Futura Bold';
+	font-family: "Futura Light";
 	font-style: italic;
-	src: url('../font/Futura-700-italic.eot?') format('embedded-opentype'),
-	     url('../font/Futura-700-italic.woff') format('woff'),
-	     url('../font/Futura-700-italic.ttf')  format('truetype'),
-	     url('../font/Futura-700-italic.svg#webfont') format('svg');
+	src: url(../font/Futura-300-italic.eot?) format("eot"),
+	     url(../font/Futura-300-italic.woff) format("woff"),
+	     url(../font/Futura-300-italic.ttf)  format("truetype");
+}
+
+/* Rooney Sans
+   ========================================================================== */
+
+@font-face {
+	font-family: "Rooney Sans";
+	src: url(../font/Rooney_Sans-400.eot?) format("eot"),
+	     url(../font/Rooney_Sans-400.woff) format("woff"),
+	     url(../font/Rooney_Sans-400.ttf)  format("truetype");
 }
 
 @font-face {
-	font-family: 'Rooney Sans';
-	src: url('../font/Rooney_Sans-400.eot?') format('embedded-opentype'),
-	     url('../font/Rooney_Sans-400.woff') format('woff'),
-	     url('../font/Rooney_Sans-400.ttf')  format('truetype'),
-	     url('../font/Rooney_Sans-400.svg#webfont') format('svg');
-}
-
-@font-face {
-	font-family: 'Rooney Sans';
+	font-family: "Rooney Sans";
 	font-style: italic;
-	src: url('../font/Rooney_Sans-400-italic.eot?') format('embedded-opentype'),
-	     url('../font/Rooney_Sans-400-italic.woff') format('woff'),
-	     url('../font/Rooney_Sans-400-italic.ttf')  format('truetype'),
-	     url('../font/Rooney_Sans-400-italic.svg#webfont') format('svg');
+	src: url(../font/Rooney_Sans-400-italic.eot?) format("eot"),
+	     url(../font/Rooney_Sans-400-italic.woff) format("woff"),
+	     url(../font/Rooney_Sans-400-italic.ttf)  format("truetype");
 }
 
 @font-face {
-	font-family: 'Rooney Sans Bold';
-	src: url('../font/Rooney_Sans-700.eot?') format('embedded-opentype'),
-	     url('../font/Rooney_Sans-700.woff') format('woff'),
-	     url('../font/Rooney_Sans-700.ttf')  format('truetype'),
-	     url('../font/Rooney_Sans-700.svg#webfont') format('svg');
+	font-family: "Rooney Sans Bold";
+	src: url(../font/Rooney_Sans-700.eot?) format("eot"),
+	     url(../font/Rooney_Sans-700.woff) format("woff"),
+	     url(../font/Rooney_Sans-700.ttf)  format("truetype");
 }
 
 @font-face {
-	font-family: 'Rooney Sans Bold';
+	font-family: "Rooney Sans Bold";
 	font-style: italic;
-	src: url('../font/Rooney_Sans-700-italic.eot?') format('embedded-opentype'),
-	     url('../font/Rooney_Sans-700-italic.woff') format('woff'),
-	     url('../font/Rooney_Sans-700-italic.ttf')  format('truetype'),
-	     url('../font/Rooney_Sans-700-italic.svg#webfont') format('svg');
+	src: url(../font/Rooney_Sans-700-italic.eot?) format("eot"),
+	     url(../font/Rooney_Sans-700-italic.woff) format("woff"),
+	     url(../font/Rooney_Sans-700-italic.ttf)  format("truetype");
 }

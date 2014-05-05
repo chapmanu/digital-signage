@@ -73,12 +73,18 @@
 	<link href="/digital-signage/_files/css/app.css" rel="stylesheet">
 	<style>
 	.ui-menu-caret {
+		-moz-transform: translate3d({{style.caretOffset}}px, 0, 0);
+		-ms-transform: translate3d({{style.caretOffset}}px, 0, 0);
 		-webkit-transform: translate3d({{style.caretOffset}}px, 0, 0);
+		transform: translate3d({{style.caretOffset}}px, 0, 0);
 		width: {{style.caretWidth}}px;
 	}
 
 	.ui-menu-list {
+		-moz-transform: translate3d({{style.menuOffset}}px, 0, 0);
+		-ms-transform: translate3d({{style.menuOffset}}px, 0, 0);
 		-webkit-transform: translate3d({{style.menuOffset}}px, 0, 0);
+		transform: translate3d({{style.menuOffset}}px, 0, 0);
 	}
 	</style>
 </div>

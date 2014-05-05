@@ -3,6 +3,12 @@
 
 	/* global Promise, Ractive */
 
+	var
+	// find prefixed transform properties
+	MATCH = getComputedStyle(document.documentElement).cssText.match(/\s-(moz|ms|webkit)-transform:/),
+	// assign conditional transform property
+	TRANSFORM = MATCH ? MATCH[1] + 'Transform' : 'transform';
+
 	function DigitalSignageSlidePreview(data) {
 		var self = this;
 
@@ -112,9 +118,7 @@
 			wrapper = document.getElementById('ui-feed');
 
 		// Scale wrapper
-		wrapper.style["-webkit-transform"] = "scale(" + scale + ")";
-		wrapper.style["-moz-transform"] = "scale(" + scale + ")";
-		wrapper.style["transform"] = "scale(" + scale + ")";
+		wrapper.style[TRANSFORM] = "scale(" + scale + ")";
 	};
 
 	// Scrolls the directory listing
@@ -136,7 +140,7 @@
 		offset = 0;
 
 		function oninterval() {
-			inset.style.webkitTransform = 'translateY(-' + offset + 'px)';
+			inset.style[TRANSFORM] = 'translateY(-' + offset + 'px)';
 
 			offset += columnHeight * columnInterval;
 

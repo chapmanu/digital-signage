@@ -24,6 +24,7 @@
 		DigitalSignage.initData(self)
 		         .then(DigitalSignage.initTemplates)
 		         .then(DigitalSignage.initRactive)
+		         .then(DigitalSignage.initPantherAlert)
 		         .then(DigitalSignage.initPolling)
 		         .then(DigitalSignage.initDrawing)
 		         .then(DigitalSignage.initResizing)
@@ -145,6 +146,51 @@
 		});
 	};
 
+	// initializes panther alerts
+	DigitalSignage.initPantherAlert = function (self) {
+		// return new promise
+		return new Promise(function (resolve, reject) {
+			//
+			var
+			src = '//blogs.chapman.edu/panther-alert?',
+			interval = 1000,
+			data = {};
+
+			function pantherAlert(items) {
+				if (items.length) {
+					var item = items[0];
+
+					data.emergency = item.title;
+					data.emergencyMessage = item.description;
+				} else {
+					delete data.emergency;
+					delete data.emergencyMessage;
+				}
+			}
+
+			function loadScript() {
+				var
+				script = document.head.appendChild(document.createElement('script')),
+				timestamp = +new Date();
+
+				script.onload = function () {
+					document.head.removeChild(script);
+
+					setTimeout(loadScript, interval);
+				};
+
+				script.src = src + timestamp;
+			}
+
+			window.pantherAlert = pantherAlert;
+			window.pantherAlert.data = data;
+
+			loadScript();
+
+			resolve(self);
+		});
+	};
+
 	// initializes all polling functionality
 	DigitalSignage.initPolling = function (self) {
 		var data = self.data;
@@ -168,7 +214,7 @@
 						serverData.timestampOffset = 0;
 					}
 
-					Object.extend(data, serverData);
+					Object.extend(data, serverData, pantherAlert.data);
 
 					DigitalSignage.initTemplates(self).then(function () {
 						self.ractive.update();

@@ -1,4 +1,3 @@
-Digital-Signage-Rotator
-=======================
+# Digital Signage
 
-A simple web page to rotate some slides for display on TV screens. 
+A targeted advertising, information, and emergency notification system for a wide array of displays.

@@ -428,7 +428,7 @@ subhead {
 .ui-slide--light {
 	background-color: rgba(236,235,229,1);
 	color: rgba(2,2,2,1);
-	text-shadow: 0 1px 0 rgba(255,255,255,1), 0 1px 1px rgba(255,255,255,1), 0 0 1px rgba(255,255,255,1), 0 0 2px rgba(255,255,255,1), 0 0 2px rgba(255,255,255,1), 0 0 6px rgba(255,255,255,0.75);
+	text-shadow: 0 1px 0 rgba(255,255,255,.5);
 }
 
 .ui-slide--light .ui-slide-subheading {
@@ -446,15 +446,7 @@ subhead {
 .ui-slide--dark {
 	background-color: rgba(20,20,20,1);
 	color: rgba(253,253,253,1);
-	text-shadow: 0 1px 0 rgba(0,0,0,1),
-	             0 1px 1px rgba(0,0,0,1),
-	             0 0 1px rgba(0,0,0,1),
-	             0 0 2px rgba(0,0,0,1),
-	             0 0 2px rgba(0,0,0,1),
-	             0 0 4px rgba(0,0,0,0.75),
-	             0 0 3px rgba(0,0,0,0.75),
-	             0 0 2px rgba(0,0,0,0.75),
-	             0 0 1px rgba(0,0,0,0.75);
+	text-shadow: 0 -1px 0 rgba(0,0,0,.5);
 }
 
 .ui-slide--dark .ui-slide-subheading {

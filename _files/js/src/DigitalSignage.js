@@ -157,7 +157,7 @@
 			data = {};
 
 			function pantherAlert(items) {
-				if (items.length) {
+				if (items && items.length) {
 					var item = items[0];
 
 					data.emergency = item.title;

@@ -83,6 +83,17 @@
 				selectSlide: function(event) {
 					self.data.index = parseInt(event.keypath.split('.')[1]);;
 					DigitalSignage.initDrawing(self);
+				},
+				showMap: function(event) {
+					
+				},
+				showDirectory: function(event) {
+					for (var i = 0; i < self.data.collection.length; ++i) {
+						if (self.data.collection[i].template.match(/.*directory(Dark|Light)\.mustache$/)) {
+							self.data.index = i;
+							clearTimeout(self.data.timeout);
+						}
+					}
 				}
 			});
 
@@ -130,7 +141,7 @@
 				onLoad: function (xhr) {
 					// get server data
 					var serverData = JSON.parse(xhr.responseText);
-
+					
 					// if server data contains time, set offset
 
 					serverData.serverTime = new Date(xhr.getResponseHeader('Date')).getTime();
@@ -143,7 +154,7 @@
 						serverData.serverTime = Date.now();
 						serverData.timestampOffset = 0;
 					}
-
+					
 					self.data = Object.extend(self.data, serverData);
 
 					// resolve promise

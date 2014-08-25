@@ -78,6 +78,12 @@
 				partials: self.templates
 			});
 
+			self.ractive.on({
+				selectSlide: function(event) {
+					console.log(event)
+				}
+			});
+
 			self.ractive.observe({
 				index: function () {
 					DigitalSignage.updateMenuDisplay(self);

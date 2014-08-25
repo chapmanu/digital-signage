@@ -12,7 +12,7 @@
 
 			<ul class="ui-menu-list">
 				{{#collection:i}}
-				<li class="ui-menu-item ui-menu-item--{{ index === i ? 'active' : 'inactive' }}">{{menuName}}</li>
+				<li on-tap="selectSlide" class="ui-menu-item ui-menu-item--{{ index === i ? 'active' : 'inactive' }}">{{menuName}}</li>
 				{{/collection}}
 			</ul>
 		</nav>

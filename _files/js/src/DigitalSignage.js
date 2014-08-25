@@ -16,7 +16,8 @@
 		self.data = {
 			index: 0,
 			isResizing: true,
-			style: {}
+			style: {},
+			timeout: null
 		};
 		self.templates = {};
 		self.src = src;
@@ -80,7 +81,8 @@
 
 			self.ractive.on({
 				selectSlide: function(event) {
-					console.log(event)
+					self.data.index = parseInt(event.keypath.split('.')[1]);;
+					DigitalSignage.initDrawing(self);
 				}
 			});
 
@@ -238,39 +240,22 @@
 	DigitalSignage.initDrawing = function (self) {
 		return new Promise(function (resolve) {
 			var data = self.data, ractive = self.ractive, last = 0;
+			
+			clearTimeout(data.timeout);
 
-			function ondraw() {
-				var
-				thisIndex = data.index || 0,
-				durations = data.collection.map(function (slide) {
-					return slide.duration * 1000;
-				}),
-				duration = durations.reduce(function(a, b) {
-					return a + b;
-				}),
-				length = data.collection.length,
-				nextIndex = 0,
-				now = Date.now() - data.timestampOffset,
-				mod = now % duration;
-
-				while (mod > 0) {
-					mod -= durations[nextIndex];
-
-					nextIndex = (nextIndex + 1) % length;
-				}
-
-				if (thisIndex !== nextIndex) ractive.set('index', nextIndex);
-
-				if (now - 1000 >= last) {
-					ractive.set('timestamp', new Date(now));
-
-					last = now;
-				}
-
-				requestAnimationFrame(ondraw);
+			ractive.set('index', data.index);
+			ractive.set('timestamp', new Date());
+			
+			function nextSlide() {
+				data.index   = (data.index+1) % data.collection.length;
+				var duration = data.collection[data.index].duration * 1000;
+				ractive.set('index', data.index);
+				ractive.set('timestamp', new Date());
+				data.timeout = setTimeout(nextSlide, duration);
 			}
 
-			requestAnimationFrame(ondraw);
+			var duration = data.collection[data.index || 0].duration * 1000;
+			data.timeout = setTimeout(nextSlide, duration);
 
 			resolve(self);
 		});
@@ -385,7 +370,7 @@
 		lastOffset  = data.style.lastMenuOffset || 0,
 		menu        = document.querySelector('.ui-menu-list'),
 		parentRect  = menu.parentNode.getBoundingClientRect(),
-		nextRect    = menu.querySelectorAll('.ui-menu-item')[nextIndex].getBoundingClientRect(),
+		nextRect    = menu.querySelectorAll('.ui-menu-item')[nextIndex].getBoundingClientRect(), 
 		menuOffset  = Math.max(Math.floor(parentRect.left - nextRect.left + lastOffset), 0),
 		caretOffset = -Math.min(Math.floor(parentRect.left - nextRect.left + lastOffset), 0),
 		caretWidth  = Math.floor(nextRect.width);

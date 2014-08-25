@@ -155,6 +155,64 @@ subhead {
 	margin-top: 4px;
 }
 
+/* ui-buttons
+   =============================================================================
+*/
+
+.ui-buttons {
+	display: block;
+	min-width: 260px;
+}
+
+.ui-buttons button {
+	outline:none;
+	background:none;
+	padding:16px 0;
+}
+
+.ui-buttons button:active, 
+.ui-buttons button:hover {
+	outline:none;
+}
+
+.ui-buttons button span {
+	display: inline-block;
+	font: 16px/1 "Rooney Sans", sans-serif;
+	height: 32px;
+	text-align: center;
+	overflow: hidden;
+	padding: 10px 32px 10px 42px;
+	position: relative;
+	border-radius: 4px;
+	transition: background-color 400ms 0ms, color 400ms 0ms, text-shadow 500ms;
+} 
+
+.ui-buttons button:active span,
+.ui-buttons button:focus span {
+	color: #A82439;
+	background-color: #FFFFFF;
+}
+
+.ui-button-map span {
+	background: url(../img/button-directions.svg) 12px center / 100% 100% no-repeat;
+	background-size: 20px;
+}
+
+.ui-button-map:active span,
+.ui-button-map:focus span {
+	background-image: url(../img/button-directions-red.svg);
+}
+
+.ui-button-directory span {
+	background: url(../img/button-address-book.svg) 12px center / 100% 100% no-repeat;
+	background-size: 18px;
+}
+
+.ui-button-directory:active span,
+.ui-button-directory:focus span {
+	background-image: url(../img/button-address-book-red.svg);
+}
+
 /* ui-nav
    =============================================================================
 */

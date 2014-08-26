@@ -19,20 +19,86 @@
 			style: {},
 			timeout: null
 		};
+
 		self.templates = {};
 		self.src = src;
+		self.notOnMenu = [];
+		
+		self.getNextSlideIndex = function() {
+			var next = (self.data.index+1) % self.data.collection.length;
+			console.log("INDEX?", self.notOnMenu.indexOf(next));
+			while (self.notOnMenu.indexOf(next) >= 0) {
+				next = (next+1) % self.data.collection.length;
+			}
+			return next;
+		};
 
-		DigitalSignage.initData(self)
-		         .then(DigitalSignage.initTemplates)
-		         .then(DigitalSignage.initRactive)
-		         .then(DigitalSignage.initPantherAlert)
-		         .then(DigitalSignage.initPolling)
-		         .then(DigitalSignage.initDrawing)
-		         .then(DigitalSignage.initResizing)
-		         .then(DigitalSignage.initVideo)
-		         .then(DigitalSignage.initMousing)
-		         .then(DigitalSignage.initDirectories);
+		self.getPreviousSlideIndex = function() {
+			var prev = (self.data.index-1);
+			prev = (prev < 0) ? self.data.collection.length-1 : prev;
+			
+			while (self.notOnMenu.indexOf(prev) >= 0) {
+				prev--;
+				prev = (prev < 0) ? self.data.collection.length-1 : prev;
+			}
+			return prev;
+		};
+
+		DigitalSignage
+			.initData(self)
+			.then(DigitalSignage.initTemplates)
+			.then(DigitalSignage.initRactive)
+			.then(DigitalSignage.initPantherAlert)
+			.then(DigitalSignage.initPolling)
+			.then(DigitalSignage.initDrawing)
+			.then(DigitalSignage.initResizing)
+			.then(DigitalSignage.initVideo)
+			.then(DigitalSignage.initMousing)
+			.then(DigitalSignage.initDirectories);
 	}
+
+	// initializes data
+	DigitalSignage.initData = function (self) {
+		// return new promise
+		return new Promise(function (resolve, reject) {
+			window.request({
+				src: self.src,
+				onLoad: function (xhr) {
+					// get server data
+					var serverData = JSON.parse(xhr.responseText);
+					
+					// if server data contains time, set offset
+
+					serverData.serverTime = new Date(xhr.getResponseHeader('Date')).getTime();
+
+					if (serverData.serverTime) {
+						serverData.timestampOffset = Date.now() - serverData.serverTime;
+					}
+					// otherwise use current time, set no offset
+					else {
+						serverData.serverTime = Date.now();
+						serverData.timestampOffset = 0;
+					}
+					
+					self.data = Object.extend(self.data, serverData);
+
+					// Add flags to the directory slides
+					self.data.collection.forEach(function(slide, index) {
+						if (/directory/i.test(slide.template)) {
+							slide.onMenu = false;
+							self.notOnMenu.push(index);
+						} else {
+							slide.onMenu = true;
+						}
+					});
+
+					// resolve promise
+					resolve(self);
+				},
+				onError: reject
+			});
+		});
+	};
 
 	// initializes all template functionality
 	DigitalSignage.initTemplates = function (self) {
@@ -84,16 +150,8 @@
 					self.data.index = parseInt(event.keypath.split('.')[1]);;
 					DigitalSignage.initDrawing(self);
 				},
-				showMap: function(event) {
-					
-				},
 				showDirectory: function(event) {
-					for (var i = 0; i < self.data.collection.length; ++i) {
-						if (self.data.collection[i].template.match(/.*directory(Dark|Light)\.mustache$/)) {
-							self.data.index = i;
-							clearTimeout(self.data.timeout);
-						}
-					}
+					
 				}
 			});
 
@@ -115,53 +173,15 @@
 					var
 					index = keypath.replace(/^[^\.]+\.|\.[^\.]+$/g, ''),
 					item  = self.data.collection[index];
-
+					// Stop playing a video if the background changes.
 					if (item.canvas) {
 						cancelAnimationFrame(item.backgroundFrame);
-
 						delete item.backgroundMedia;
 					}
-
-					// setTimeout(function () {
-					// 	DigitalSignage.initVideo(self, item, index);
-					// }, 0);
 				}
 			});
 
 			resolve(self);
-		});
-	};
-
-	// initializes data
-	DigitalSignage.initData = function (self) {
-		// return new promise
-		return new Promise(function (resolve, reject) {
-			window.request({
-				src: self.src,
-				onLoad: function (xhr) {
-					// get server data
-					var serverData = JSON.parse(xhr.responseText);
-					
-					// if server data contains time, set offset
-
-					serverData.serverTime = new Date(xhr.getResponseHeader('Date')).getTime();
-
-					if (serverData.serverTime) {
-						serverData.timestampOffset = Date.now() - serverData.serverTime;
-					}
-					// otherwise use current time, set no offset
-					else {
-						serverData.serverTime = Date.now();
-						serverData.timestampOffset = 0;
-					}
-					
-					self.data = Object.extend(self.data, serverData);
-
-					// resolve promise
-					resolve(self);
-				},
-				onError: reject
-			});
 		});
 	};
 
@@ -187,6 +207,7 @@
 				}
 			}
 
+			// Ping blogs panther alert link every 1 second.
 			function loadScript() {
 				var
 				script = document.head.appendChild(document.createElement('script')),
@@ -235,6 +256,16 @@
 
 					Object.extend(data, serverData, pantherAlert.data);
 
+					// Add flags to the directory slides
+					self.data.collection.forEach(function(slide, index) {
+						if (/directory/i.test(slide.template)) {
+							slide.onMenu = false;
+							self.notOnMenu.push(index);
+						} else {
+							slide.onMenu = true;
+						}
+					});
+
 					DigitalSignage.initTemplates(self).then(function () {
 						self.ractive.update();
 
@@ -258,10 +289,9 @@
 			ractive.set('timestamp', new Date());
 			
 			function nextSlide() {
-				data.index   = (data.index+1) % data.collection.length;
+				data.index   = self.getPreviousSlideIndex();
+				console.log("The next slide index is....", data.index);
 				var duration = data.collection[data.index].duration * 1000;
-				ractive.set('index', data.index);
-				ractive.set('timestamp', new Date());
 				data.timeout = setTimeout(nextSlide, duration);
 			}
 
@@ -382,7 +412,7 @@
 		menu             = document.querySelector('.ui-menu-list'),
 		menuArea         = menu.getBoundingClientRect(),
 		containerArea    = menu.parentNode.getBoundingClientRect(),
-		activeItemArea   = menu.querySelectorAll('.ui-menu-item')[data.index].getBoundingClientRect(),
+		activeItemArea   = menu.querySelectorAll('.ui-menu-item--active')[0].getBoundingClientRect(),
 		activeLeftEdge   = activeItemArea.left - menuArea.left,
 		minMenuOffset    = 0,
 		maxMenuOffset    = menuArea.width - containerArea.width,

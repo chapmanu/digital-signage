@@ -17,7 +17,9 @@
 
 			<ul class="ui-menu-list">
 				{{#collection:i}}
-				<li on-tap="selectSlide" class="ui-menu-item ui-menu-item--{{ index === i ? 'active' : 'inactive' }}"><span>{{menuName}}</span></li>
+					{{#onMenu}}
+						<li on-tap="selectSlide" class="ui-menu-item ui-menu-item--{{ index === i ? 'active' : 'inactive' }}"><span>{{menuName}}</span></li>
+					{{/onMenu}}
 				{{/collection}}
 			</ul>
 		</nav>

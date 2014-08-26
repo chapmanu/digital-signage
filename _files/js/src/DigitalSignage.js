@@ -153,19 +153,23 @@
 				showDirectory: function(event) {
 					
 				},
-				left: function(e){
+				swipeLeft: function(e){
 					self.data.index = self.getNextSlideIndex();
+
+					self.ractive.set('isBack', false);
+
 					DigitalSignage.initDrawing(self);
 				},
-				right: function(e){
+				swipeRight: function(e){
 					self.data.index = self.getPreviousSlideIndex();
+
+					self.ractive.set('isBack', true);
+
+					setTimeout(function () {
+						self.ractive.set('isBack', false);
+					}, 500);
+
 					DigitalSignage.initDrawing(self);
-				},
-				down: function(e){
-
-				},
-				up: function(e){
-
 				}
 			});
 

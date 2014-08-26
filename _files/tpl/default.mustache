@@ -8,7 +8,7 @@
 		</subhead>
 
 		<div class="ui-buttons">
-			<button on-tap="showDirectory" class="ui-button-directory"><span>Big Building Directory</span></button>
+			<button on-tap="showDirectory" class="ui-button-directory"><span>Boring Building Directory</span></button>
 			<button on-tap="showDirectory" class="ui-button-directory"><span>Tall Hall Directory</span></button>
 		</div>
 
@@ -17,7 +17,7 @@
 
 			<ul class="ui-menu-list">
 				{{#collection:i}}
-				<li on-tap="selectSlide" class="ui-menu-item ui-menu-item--{{ index === i ? 'active' : 'inactive' }}">{{menuName}}</li>
+				<li on-tap="selectSlide" class="ui-menu-item ui-menu-item--{{ index === i ? 'active' : 'inactive' }}"><span>{{menuName}}</span></li>
 				{{/collection}}
 			</ul>
 		</nav>

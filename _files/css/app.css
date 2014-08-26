@@ -102,7 +102,7 @@ subhead {
 	bottom: 54px;
 	height: 124px;
 	line-height: 1;
-	padding: 30px 54px;
+	padding: 0 54px;
 	position: absolute;
 	width: 100%;
 	z-index: 10;
@@ -126,8 +126,9 @@ subhead {
 	background: url(../img/logo-chapman.svg) 0 0 / 100% 100%;
 	display: inline-block;
 	height: 64px;
-	margin-right: 14px;
+	/*margin-right: 14px;*/
 	width: 280px;
+	margin:30px 14px 30px 0;
 }
 
 /* ui-locality
@@ -231,10 +232,10 @@ subhead {
 
 .ui-menu-list {
 	font-size: 0;
-	margin-top: -12px;
 	position: absolute;
 	right: 0;
-	top: 50%;
+	top: 0;
+	height: 100%;
 	transition: -moz-transform 750ms;
 	transition: -ms-transform 750ms;
 	transition: -webkit-transform 750ms;
@@ -249,26 +250,44 @@ subhead {
 	transition: transform 0ms;
 }
 
-.ui-menu-item, .ui-menu-caret {
+.ui-menu-caret {
 	display: inline-block;
+	position: relative;
+	padding: 38px 32px;
+	overflow: hidden;
 	font: 16px/1 "Rooney Sans", sans-serif;
 	height: 32px;
 	text-align: center;
 	overflow: hidden;
-	padding: 8px 32px;
-	position: relative;
 	transition: color 400ms 100ms, text-shadow 500ms;
 }
 
-.ui-resizing .ui-menu-item, .ui-resizing .ui-menu-caret {
+.ui-menu-item {
+	display: inline-block;
+	position: relative;
+	padding: 58px 0;
+	height: 100%;
+}
+
+.ui-menu-item span {
+	font: 16px/1 "Rooney Sans", sans-serif;
+	height: 32px;
+	text-align: center;
+	overflow: hidden;
+	padding: 4px 32px;
+	
+	transition: color 400ms 100ms, text-shadow 500ms;
+}
+
+.ui-resizing .ui-menu-item span, .ui-resizing .ui-menu-caret {
 	transition: color 0ms;
 }
 
-.ui-menu-item {
+.ui-menu-item span {
 	box-shadow: 0 -2px 0 0 #FFF;
 }
 
-.ui-menu-item--active {
+.ui-menu-item--active span {
 	color: rgba(168, 36, 57, 1);
 	text-shadow: 0 0 1px rgba(255,255,255,1), 0 0 1px rgba(255,255,255,1);
 }

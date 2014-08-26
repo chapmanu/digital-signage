@@ -374,28 +374,48 @@
 	};
 
 	DigitalSignage.updateMenuDisplay = function (self) {
+		
+		/* SET UP VARIABLES */
 		var
-		data        = self.data,
-		ractive     = self.ractive,
-		nextIndex   = data.index,
-		lastOffset  = data.style.lastMenuOffset || 0,
-		menu        = document.querySelector('.ui-menu-list'),
-		parentRect  = menu.parentNode.getBoundingClientRect(),
-		nextRect    = menu.querySelectorAll('.ui-menu-item')[nextIndex].getBoundingClientRect(), 
-		menuOffset  = Math.max(Math.floor(parentRect.left - nextRect.left + lastOffset), 0),
-		caretOffset = -Math.min(Math.floor(parentRect.left - nextRect.left + lastOffset), 0),
-		caretWidth  = Math.floor(nextRect.width);
+		data             = self.data,
+		ractive          = self.ractive,
+		menu             = document.querySelector('.ui-menu-list'),
+		menuArea         = menu.getBoundingClientRect(),
+		containerArea    = menu.parentNode.getBoundingClientRect(),
+		activeItemArea   = menu.querySelectorAll('.ui-menu-item')[data.index].getBoundingClientRect(),
+		activeLeftEdge   = activeItemArea.left - menuArea.left,
+		minMenuOffset    = 0,
+		maxMenuOffset    = menuArea.width - containerArea.width,
+		astheticOffset   = 100,
+		scale            = self.data.scale || 1;
 
-		// Temporary scaling fix; getBoundingClientRect() does not account for a scaled parent element
-		var scale = self.data.scale || 1;
-		caretOffset = caretOffset * (1/scale);
-		caretWidth = caretWidth * (1/scale);
+		/* MAIN STYLE VARIABLES */
+		var 
+ 		// The width of the carrot (cursor/highlighter)
+		caretWidth       = Math.floor(activeItemArea.width),
+		
+		// Distance from the right edge of the container to the right edge of the menu
+		menuOffset       = menuArea.width - containerArea.width - activeLeftEdge + astheticOffset,
+		
+		// Distance from the left edge of the container (viewbox) to the left edge of the carrot 
+		caretOffset      = astheticOffset;
 
-		// set style properties
-		ractive.set('style.menuOffset', menuOffset);
-		ractive.set('style.caretOffset', caretOffset);
-		ractive.set('style.caretWidth', caretWidth);
-		ractive.set('style.lastMenuOffset', menuOffset);
+		// Adjust based on min and max limits
+		if (menuOffset < minMenuOffset) { 
+			// Menu is beyond the end
+			caretOffset += (minMenuOffset - menuOffset);
+			menuOffset   = minMenuOffset;
+		
+		} else if (menuOffset > maxMenuOffset) { 
+			// Menu is beyond the beginning
+			caretOffset -= (menuOffset - maxMenuOffset);
+			menuOffset   = maxMenuOffset;
+		}
+
+		// Set style properties & correct for scaling
+		ractive.set('style.menuOffset',  menuOffset  * (1/scale));
+		ractive.set('style.caretOffset', caretOffset * (1/scale));
+		ractive.set('style.caretWidth',  caretWidth  * (1/scale));
 	};
 
 	DigitalSignage.updateTimestampDisplay = function (self) {

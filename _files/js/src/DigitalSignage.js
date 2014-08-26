@@ -152,6 +152,20 @@
 				},
 				showDirectory: function(event) {
 					
+				},
+				left: function(e){
+					self.data.index = self.getNextSlideIndex();
+					DigitalSignage.initDrawing(self);
+				},
+				right: function(e){
+					self.data.index = self.getPreviousSlideIndex();
+					DigitalSignage.initDrawing(self);
+				},
+				down: function(e){
+
+				},
+				up: function(e){
+
 				}
 			});
 
@@ -289,7 +303,7 @@
 			ractive.set('timestamp', new Date());
 			
 			function nextSlide() {
-				data.index   = self.getPreviousSlideIndex();
+				data.index   = self.getNextSlideIndex();
 				console.log("The next slide index is....", data.index);
 				var duration = data.collection[data.index].duration * 1000;
 				data.timeout = setTimeout(nextSlide, duration);

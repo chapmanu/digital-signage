@@ -187,8 +187,7 @@ subhead {
 	padding: 42px 0 6px 0;
 }
 
-.ui-buttons button:active, 
-.ui-buttons button:hover {
+.ui-buttons button.ui-button--active {
 	outline: none;
 }
 
@@ -204,8 +203,7 @@ subhead {
 	transition: background-color 400ms 0ms, color 400ms 0ms, text-shadow 500ms;
 } 
 
-.ui-buttons button:active span,
-.ui-buttons button:focus span {
+.ui-buttons button.ui-button--active span {
 	color: #A82439;
 	background-color: #FFFFFF;
 }
@@ -215,8 +213,7 @@ subhead {
 	background-size: 18px;
 }
 
-.ui-button-directory:active span,
-.ui-button-directory:focus span {
+.ui-button-directory.ui-button--active span {
 	background-image: url(../img/button-address-book-red.svg);
 }
 

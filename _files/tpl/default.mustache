@@ -9,7 +9,7 @@
 
 		<div class="ui-buttons">
 			{{#notOnMenu:i}}
-				<button on-tap="selectSlide:{{.}}" class="ui-button-directory ui-button-directory--{{ index === . ? 'active' : 'inactive' }}"><span>{{collection[.].menuName}}</span></button>
+				<button on-tap="selectSlide:{{.}}" class="ui-button-directory ui-button--{{ index === . ? 'active' : 'inactive' }}"><span>{{collection[.].menuName}}</span></button>
 			{{/notOnMenu}}
 		</div>
 

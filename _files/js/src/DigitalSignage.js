@@ -17,17 +17,17 @@
 			index: 0,
 			isResizing: true,
 			style: {},
-			timeout: null
+			timeout: null,
+			notOnMenu: []
 		};
 
 		self.templates = {};
 		self.src = src;
-		self.notOnMenu = [];
 		
 		self.getNextSlideIndex = function() {
 			var next = (self.data.index+1) % self.data.collection.length;
-			console.log("INDEX?", self.notOnMenu.indexOf(next));
-			while (self.notOnMenu.indexOf(next) >= 0) {
+			console.log("INDEX?", self.data.notOnMenu.indexOf(next));
+			while (self.data.notOnMenu.indexOf(next) >= 0) {
 				next = (next+1) % self.data.collection.length;
 			}
 			return next;
@@ -37,7 +37,7 @@
 			var prev = (self.data.index-1);
 			prev = (prev < 0) ? self.data.collection.length-1 : prev;
 			
-			while (self.notOnMenu.indexOf(prev) >= 0) {
+			while (self.data.notOnMenu.indexOf(prev) >= 0) {
 				prev--;
 				prev = (prev < 0) ? self.data.collection.length-1 : prev;
 			}
@@ -83,14 +83,16 @@
 					self.data = Object.extend(self.data, serverData);
 
 					// Add flags to the directory slides
+					var hiddenSlideIds = []
 					self.data.collection.forEach(function(slide, index) {
 						if (/directory/i.test(slide.template)) {
 							slide.onMenu = false;
-							self.notOnMenu.push(index);
+							hiddenSlideIds.push(index);
 						} else {
 							slide.onMenu = true;
 						}
 					});
+					self.data.notOnMenu = hiddenSlideIds;
 
 					// resolve promise
 					resolve(self);
@@ -146,21 +148,18 @@
 			});
 
 			self.ractive.on({
-				selectSlide: function(event) {
-					self.data.index = parseInt(event.keypath.split('.')[1]);;
+				selectSlide: function(event, index) {
+					self.data.index = index;
 					DigitalSignage.initDrawing(self);
 				},
-				showDirectory: function(event) {
-					
-				},
-				swipeLeft: function(e){
+				swipeLeft: function (e) {
 					self.data.index = self.getNextSlideIndex();
 
 					self.ractive.set('isBack', false);
 
 					DigitalSignage.initDrawing(self);
 				},
-				swipeRight: function(e){
+				swipeRight: function (e) {
 					self.data.index = self.getPreviousSlideIndex();
 
 					self.ractive.set('isBack', true);
@@ -275,14 +274,16 @@
 					Object.extend(data, serverData, pantherAlert.data);
 
 					// Add flags to the directory slides
+					var hiddenSlideIds = [];
 					self.data.collection.forEach(function(slide, index) {
 						if (/directory/i.test(slide.template)) {
 							slide.onMenu = false;
-							self.notOnMenu.push(index);
+							hiddenSlideIds.push(index);
 						} else {
 							slide.onMenu = true;
 						}
 					});
+					self.data.notOnMenu = hiddenSlideIds;
 
 					DigitalSignage.initTemplates(self).then(function () {
 						self.ractive.update();
@@ -422,6 +423,13 @@
 	};
 
 	DigitalSignage.updateMenuDisplay = function (self) {
+
+		if (document.querySelectorAll('.ui-menu-item--active').length <= 0) {
+			self.ractive.set('style.caretOpacity',  0);
+			return;
+		} else {
+			self.ractive.set('style.caretOpacity', 1);
+		}
 		
 		/* SET UP VARIABLES */
 		var
@@ -430,7 +438,7 @@
 		menu             = document.querySelector('.ui-menu-list'),
 		menuArea         = menu.getBoundingClientRect(),
 		containerArea    = menu.parentNode.getBoundingClientRect(),
-		activeItemArea   = menu.querySelectorAll('.ui-menu-item--active')[0].getBoundingClientRect(),
+		activeItemArea   = menu.querySelector('.ui-menu-item--active').getBoundingClientRect(),
 		activeLeftEdge   = activeItemArea.left - menuArea.left,
 		minMenuOffset    = 0,
 		maxMenuOffset    = menuArea.width - containerArea.width,

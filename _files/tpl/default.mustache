@@ -8,8 +8,9 @@
 		</subhead>
 
 		<div class="ui-buttons">
-			<button on-tap="showDirectory" class="ui-button-directory"><span>Boring Building Directory</span></button>
-			<button on-tap="showDirectory" class="ui-button-directory"><span>Tall Hall Directory</span></button>
+			{{#notOnMenu:i}}
+				<button on-tap="selectSlide:{{.}}" class="ui-button-directory"><span>{{collection[.].menuName}}</span></button>
+			{{/notOnMenu}}
 		</div>
 
 		<nav class="ui-menu" role="navigation">
@@ -18,7 +19,7 @@
 			<ul class="ui-menu-list">
 				{{#collection:i}}
 					{{#onMenu}}
-						<li on-tap="selectSlide" class="ui-menu-item ui-menu-item--{{ index === i ? 'active' : 'inactive' }}"><span>{{menuName}}</span></li>
+						<li on-tap="selectSlide:{{i}}" class="ui-menu-item ui-menu-item--{{ index === i ? 'active' : 'inactive' }}"><span>{{menuName}}</span></li>
 					{{/onMenu}}
 				{{/collection}}
 			</ul>
@@ -85,6 +86,7 @@
 		-webkit-transform: translate3d({{style.caretOffset}}px, 0, 0);
 		transform: translate3d({{style.caretOffset}}px, 0, 0);
 		width: {{style.caretWidth}}px;
+		opacity: {{style.caretOpacity}};
 	}
 
 	.ui-menu-list {

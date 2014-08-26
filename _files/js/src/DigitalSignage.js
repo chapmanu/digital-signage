@@ -418,6 +418,13 @@
 	};
 
 	DigitalSignage.updateMenuDisplay = function (self) {
+
+		if (document.querySelectorAll('.ui-menu-item--active').length <= 0) {
+			self.ractive.set('style.caretOpacity',  0);
+			return;
+		} else {
+			self.ractive.set('style.caretOpacity', 1);
+		}
 		
 		/* SET UP VARIABLES */
 		var
@@ -426,7 +433,7 @@
 		menu             = document.querySelector('.ui-menu-list'),
 		menuArea         = menu.getBoundingClientRect(),
 		containerArea    = menu.parentNode.getBoundingClientRect(),
-		activeItemArea   = menu.querySelectorAll('.ui-menu-item--active')[0].getBoundingClientRect(),
+		activeItemArea   = menu.querySelector('.ui-menu-item--active').getBoundingClientRect(),
 		activeLeftEdge   = activeItemArea.left - menuArea.left,
 		minMenuOffset    = 0,
 		maxMenuOffset    = menuArea.width - containerArea.width,

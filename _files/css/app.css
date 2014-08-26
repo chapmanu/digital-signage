@@ -296,10 +296,10 @@ subhead {
 	background-color: rgba(255,255,255,1);
 	border-radius: 0 0 4px 4px;
 	padding: 0;
-	transition: background-color 750ms, width 750ms, -moz-transform 750ms;
-	transition: background-color 750ms, width 750ms, -ms-transform 750ms;
-	transition: background-color 750ms, width 750ms, -webkit-transform 750ms;
-	transition: background-color 750ms, width 750ms, transform 750ms;
+	transition: opacity 750ms, background-color 750ms, width 750ms, -moz-transform 750ms;
+	transition: opacity 750ms, background-color 750ms, width 750ms, -ms-transform 750ms;
+	transition: opacity 750ms, background-color 750ms, width 750ms, -webkit-transform 750ms;
+	transition: opacity 750ms, background-color 750ms, width 750ms, transform 750ms;
 	top: 4px;
 	width: 0;
 }

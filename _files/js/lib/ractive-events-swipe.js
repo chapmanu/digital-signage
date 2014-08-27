@@ -29,12 +29,6 @@
 					event.touches = [event];
 				}
 
-				if (event.touches.length !== 1) { // no.of.fingers != 1
-					cancel();
-
-					return;
-				}
-
 				var touch = event.touches && event.touches[0] || event;
 
 				sx = touch.pageX;
@@ -45,10 +39,6 @@
 
 					if (!event.touches) {
 						event.touches = [event];
-					}
-
-					if (event.touches.length !== 1) {
-						cancel();
 					}
 
 					var touch = event.touches[0];

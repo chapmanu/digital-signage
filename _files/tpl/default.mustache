@@ -7,20 +7,22 @@
 			<p class="ui-location-time">{{datetime}}</p>
 		</subhead>
 
+		{{#notOnMenu.length}}
 		<div class="ui-buttons">
 			{{#notOnMenu:i}}
 				<button on-tap="selectSlide:{{.}}" class="ui-button-directory ui-button--{{ index === . ? 'active' : 'inactive' }}"><span>{{collection[.].menuName}}</span></button>
 			{{/notOnMenu}}
 		</div>
+		{{/notOnMenu}}
 
 		<nav class="ui-menu" role="navigation">
 			<div class="ui-menu-caret"></div>
 
 			<ul class="ui-menu-list">
 				{{#collection:i}}
-					{{#onMenu}}
+					{{#!doNotShow}}
 						<li on-tap="selectSlide:{{i}}" class="ui-menu-item ui-menu-item--{{ index === i ? 'active' : 'inactive' }}"><span>{{menuName}}</span></li>
-					{{/onMenu}}
+					{{/doNotShow}}
 				{{/collection}}
 			</ul>
 		</nav>

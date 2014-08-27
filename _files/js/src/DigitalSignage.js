@@ -10,7 +10,7 @@
 	// assign conditional transform property
 	TRANSFORM = MATCH ? MATCH[1] + 'Transform' : 'transform';
 
-	function DigitalSignage(src) {
+	function DigitalSignage(src, touchSupport) {
 		var self = this;
 
 		self.data = {
@@ -21,6 +21,8 @@
 			timeout: null,
 			notOnMenu: []
 		};
+
+		self.touchSupport = touchSupport;
 
 		self.templates = {};
 		self.src = src;
@@ -82,16 +84,18 @@
 					self.data = Object.extend(self.data, serverData);
 
 					// Add flags to the directory slides
-					var hiddenSlideIds = []
-					self.data.collection.forEach(function(slide, index) {
-						if (/directory/i.test(slide.template)) {
-							slide.onMenu = false;
-							hiddenSlideIds.push(index);
-						} else {
-							slide.onMenu = true;
-						}
-					});
-					self.data.notOnMenu = hiddenSlideIds;
+					if (self.touchSupport) {
+						var hiddenSlideIds = [];
+						self.data.collection.forEach(function(slide, index) {
+							if (/directory/i.test(slide.template)) {
+								slide.doNotShow = true;
+								hiddenSlideIds.push(index);
+							} else {
+								slide.doNotShow = false;
+							}
+						});
+						self.data.notOnMenu = hiddenSlideIds;
+					}
 
 					// resolve promise
 					resolve(self);
@@ -148,6 +152,8 @@
 
 			self.ractive.on({
 				selectSlide: function(event, index) {
+					if (!self.touchSupport) return;
+					
 					self.data.direction = '';
 
 					self.ractive.set({
@@ -158,6 +164,8 @@
 					DigitalSignage.initDrawing(self);
 				},
 				swipeLeft: function (e) {
+					if (!self.touchSupport) return;
+
 					self.data.direction = 'forward';
 
 					self.ractive.set({
@@ -168,6 +176,8 @@
 					DigitalSignage.initDrawing(self);
 				},
 				swipeRight: function (e) {
+					if (!self.touchSupport) return;
+
 					self.data.direction = 'backward';
 
 					self.ractive.set({
@@ -278,16 +288,18 @@
 					Object.extend(data, serverData, pantherAlert.data);
 
 					// Add flags to the directory slides
-					var hiddenSlideIds = [];
-					self.data.collection.forEach(function(slide, index) {
-						if (/directory/i.test(slide.template)) {
-							slide.onMenu = false;
-							hiddenSlideIds.push(index);
-						} else {
-							slide.onMenu = true;
-						}
-					});
-					self.data.notOnMenu = hiddenSlideIds;
+					if (self.touchSupport) {
+						var hiddenSlideIds = [];
+						self.data.collection.forEach(function(slide, index) {
+							if (/directory/i.test(slide.template)) {
+								slide.doNotShow = true;
+								hiddenSlideIds.push(index);
+							} else {
+								slide.doNotShow = false;
+							}
+						});
+						self.data.notOnMenu = hiddenSlideIds;
+					}
 
 					DigitalSignage.initTemplates(self).then(function () {
 						self.ractive.update();

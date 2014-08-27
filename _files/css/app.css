@@ -773,3 +773,7 @@ html {
 .ui-slide--notification .ui-slide-content, .ui-slide--emergency .ui-slide-content {
 	font-size: 200%;
 }
+
+::-webkit-scrollbar { 
+	width: 0 !important 
+}

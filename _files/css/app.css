@@ -39,7 +39,7 @@ subhead {
    =============================================================================
 */
 
-.ui-feed { 
+.ui-feed {
 	height: 1080px;
 	width:1920px;
 }
@@ -56,6 +56,11 @@ subhead {
 	-moz-transform-origin: 0 0;
 	-webkit-transform-origin: 0 0;
 	transform-origin: 0 0;
+
+	-webkit-user-select: none;  /* Chrome / Safari */
+	-moz-user-select: none;     /* Firefox */
+	-ms-user-select: none;      /* IE 10+ */
+	user-select: none;
 }
 
 .ui-feed.preview-notice .ui-slide:before {

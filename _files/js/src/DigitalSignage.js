@@ -194,8 +194,10 @@
 					
 					clearTimeout(delayTimeout);
 					clearInterval(self.autoScroll);
-					
 
+					if (self.autoScrollInterval) {
+						self.autoScrollInterval.stop();
+					}
 
 					delayTimeout = setTimeout(function(){
 						e.node.scrollTop = 0;
@@ -544,18 +546,29 @@
 		if (!item) return;
 
 		var
-		outsetHeight = item.offsetHeight,
-		columnHeight = /schedule/.test(slide.template) ? 155 : 125,
+		outsetHeight = item.clientHeight + 80,
+		columnHeight = /schedule/.test(slide.template) ? 175 : 125,
 		columnInterval = 2,
 		columnDelay = 5,
-		offset = 0;
+		offset = 0,
+		scrollTop = 0;
+	
+		self.autoScrollInterval = new Interval(function () {}, 2000, 1000 / 60);
 
 		function oninterval() {
-			item.scrollTop = offset;
+			scrollTop = item.scrollTop;
 
 			offset += columnHeight * columnInterval;
 
 			if (offset > (outsetHeight - (columnHeight * columnInterval))) offset = 0;
+
+			self.autoScrollInterval.listener = function () {
+				item.scrollTop = scrollTop + (Interval.easing.easeInOut(this.percentage, 2) * (offset - scrollTop));
+
+				if (this.percentage === 1) this.stop();
+			};
+
+			self.autoScrollInterval.play();
 		}
 
 		oninterval();

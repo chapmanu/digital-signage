@@ -1,10 +1,10 @@
 (function () {
-	function Interval(listener, duration, speed) {
+	function Interval(listener, duration, rate) {
 		var self = this;
 
 		self.duration = duration;
 		self.listener = listener;
-		self.speed = speed;
+		self.rate = rate;
 
 		self.stop();
 	}
@@ -22,8 +22,8 @@
 				intervalTime = timeStampB - timeStampA,
 				duration = self.duration,
 				currentTime = Math.min(self.currentTime + intervalTime, duration),
-				expectedTime = Math.min(intervalTime ? self.expectedTime + self.speed : self.expectedTime, duration) || 0,
-				speed = Math.max(self.speed + (expectedTime - currentTime), 0);
+				expectedTime = Math.min(intervalTime ? self.expectedTime + self.rate : self.expectedTime, duration) || 0,
+				rate = Math.max(self.rate + (expectedTime - currentTime), 0);
 
 				timeStampA = timeStampB;
 
@@ -33,7 +33,7 @@
 				self.percentage = currentTime / duration || 0;
 
 				if (currentTime < duration) {
-					self.timeout = setTimeout(interval, speed);
+					self.timeout = setTimeout(interval, rate);
 				}
 
 				self.listener.call(self);

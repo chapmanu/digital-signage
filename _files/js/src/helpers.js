@@ -21,34 +21,14 @@
 		object = objects.shift();
 
 		// for each object in collection
-		objects.forEach(function (nextObject) {
+		for (var index = 0, key; index in objects; ++index) {
 			// set or extend its keys to first object
-			Object.keys(nextObject).forEach(function (key) {
-				object[key] = Object.isObject(object[key]) && Object.isObject(nextObject[key]) ? Object.extend(object[key], nextObject[key]) : nextObject[key];
-			});
-		}, Object);
+			for (key in objects[index]) {
+				object[key] = Object.isObject(object[key]) && Object.isObject(objects[index][key]) ? Object.extend(object[key], objects[index][key]) : objects[index][key];
+			}
+		}
 
 		// return first object
-		return object;
-	};
-
-	// return new object extended by any number of additional objects
-	Object.concat = Object.concat || function () {
-		var
-		// move all objects into collection
-		objects = [].slice.call(arguments),
-		// set new object
-		object = {};
-
-		// for each object in collection
-		objects.forEach(function (nextObject) {
-			// set or concat its keys to new object
-			Object.keys(nextObject).forEach(function (key) {
-				object[key] = Object.isObject(nextObject[key]) ? Object.concat(Object.isObject(object[key]) ? object[key] : {}, nextObject[key]) : Array.isArray(nextObject[key]) ? [].concat(nextObject[key]) : nextObject[key];
-			});
-		}, Object);
-
-		// return new object
 		return object;
 	};
 
@@ -98,17 +78,23 @@
 				// check if request finished
 				if (xhr.readyState === 4 && xhr.status) {
 					// if status returns error, goto error
-					if (/^[45]/.test(xhr.status)) xhr.onerror();
+					if (/^[45]/.test(xhr.status)) {
+						xhr.onerror();
+					}
 					// otherwise
 					else {
 						// reduce countdown
 						--countdown;
 
 						// conditionally run request load event
-						if (xhrOnLoad) xhrOnLoad(xhr);
+						if (xhrOnLoad) {
+							xhrOnLoad(xhr);
+						}
 
 						// if countdown is empty, conditionally run global load event with request collection
-						if (!countdown && allOpts.onLoad) allOpts.onLoad(isSingle ? xhr : xhrs);
+						if (!countdown && allOpts.onLoad) {
+							allOpts.onLoad(isSingle ? xhr : xhrs);
+						}
 					}
 				}
 			};
@@ -116,10 +102,14 @@
 			// on request error
 			xhr.onerror = function () {
 				// conditionally run request error event with request
-				if (xhrOnError) xhrOnError(xhr);
+				if (xhrOnError) {
+					xhrOnError(xhr);
+				}
 
 				// conditionally run global error event with request
-				if (allOpts.onError) allOpts.onError(xhr);
+				if (allOpts.onError) {
+					allOpts.onError(xhr);
+				}
 			};
 
 			// add request to request collection
@@ -177,7 +167,9 @@
 				wait();
 			}
 
-			if (!timeout && method !== 'post') exec();
+			if (!timeout && method !== 'post') {
+				exec();
+			}
 
 			clearTimeout(timeout);
 

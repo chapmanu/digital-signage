@@ -39,14 +39,16 @@ subhead {
    =============================================================================
 */
 
+html {
+	overflow: hidden;
+}
+
 .ui-feed {
 	height: 1080px;
 	width:1920px;
 }
 
 .ui-feed {
-	overflow: hidden;
-
 	-ms-transform: scale(1);
 	-moz-transform: scale(1);
 	-webkit-transform: scale(1);

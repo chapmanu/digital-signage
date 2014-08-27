@@ -23,7 +23,7 @@
 			var chinna = function (event) {
 				var sx, sy, ex, ey;
 
-				event.preventDefault();
+				// event.preventDefault();
 
 				if (!event.touches) {
 					event.touches = [event];
@@ -35,8 +35,6 @@
 				sy = touch.pageY;
 
 				function move(event) {
-					event.preventDefault();
-
 					if (!event.touches) {
 						event.touches = [event];
 					}
@@ -45,10 +43,22 @@
 
 					ex = touch.pageX;
 					ey = touch.pageY;
+
+					var dx = ex - sx;
+					var dy = ey - sy;
+					var ax = Math.abs(dx);
+					var ay = Math.abs(dy);
+
+					var swipeDirection = ax > ay ? (dx < 0 ? 'swipeleft' : 'swiperight') : (dy < 0 ? 'swipeup' : 'swipedown');
+
+					if (/swipe(left|right)/.test(swipeDirection)) {
+						event.preventDefault();
+					}
+					
 				}
 
 				function end(event) {
-					event.preventDefault();
+					
 
 					var dx = ex - sx;
 					var dy = ey - sy;
@@ -57,6 +67,10 @@
 
 					if (Math.max(ax, ay) > 20) {
 						var swipeDirection = ax > ay ? (dx < 0 ? 'swipeleft' : 'swiperight') : (dy < 0 ? 'swipeup' : 'swipedown');
+
+						if (/swipe(left|right)/.test(swipeDirection)) {
+							event.preventDefault();
+						}
 
 						if (swipeDirection === direction) {
 							fire({

@@ -26,6 +26,7 @@
 
 		self.templates = {};
 		self.src = src;
+		self.autoScroll = null;
 
 		self.getDiffSlideIndex = function (pendingIndex) {
 			var
@@ -186,6 +187,20 @@
 					});
 
 					DigitalSignage.initDrawing(self);
+				},
+				delayAutoScroll: function(e) {
+					var delayTimeout;
+					var delay = 3000;
+					
+					clearTimeout(delayTimeout);
+					clearInterval(self.autoScroll);
+					
+
+
+					delayTimeout = setTimeout(function(){
+						e.node.scrollTop = 0;
+						DigitalSignage.initDirectories(self);
+					}, delay);
 				}
 			});
 
@@ -524,19 +539,19 @@
 	// Scrolls the directory listing
 	DigitalSignage.updateSliding = function(self, index, slide) {
 		var
-		inset = self.ractive.find('.ui-slide:nth-child(' + (index + 1) + ') .ui-slide-collection-inset');
+		item = self.ractive.find('.ui-slide:nth-child(' + (index + 1) + ') .ui-slide-collection');
 
-		if (!inset) return;
+		if (!item) return;
 
 		var
-		outsetHeight = inset.offsetHeight,
+		outsetHeight = item.offsetHeight,
 		columnHeight = /schedule/.test(slide.template) ? 155 : 125,
 		columnInterval = 2,
 		columnDelay = 5,
 		offset = 0;
 
 		function oninterval() {
-			inset.style[TRANSFORM] = 'translateY(-' + offset + 'px)';
+			item.scrollTop = offset;
 
 			offset += columnHeight * columnInterval;
 
@@ -545,7 +560,7 @@
 
 		oninterval();
 
-		setInterval(oninterval, columnDelay * 1000);
+		self.autoScroll = setInterval(oninterval, columnDelay * 1000);
 	};
 
 	window.DigitalSignage = DigitalSignage;

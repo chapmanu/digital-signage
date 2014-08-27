@@ -24,24 +24,25 @@
 
 		self.templates = {};
 		self.src = src;
-		
-		self.getNextSlideIndex = function() {
-			var next = (self.data.index+1) % self.data.collection.length;
-			while (self.data.notOnMenu.indexOf(next) >= 0) {
-				next = (next+1) % self.data.collection.length;
-			}
-			return next;
+
+		self.getDiffSlideIndex = function (pendingIndex) {
+			var
+			collection = self.data.collection,
+			length = collection.length,
+			index = ((pendingIndex % length) + length) % length,
+			isForward = self.data.index < index;
+
+			self.data.direction = isForward ? 'forward' : 'backward';
+
+			return /directory/i.test(collection[index].template) ? self.getDiffSlideIndex(isForward ? index + 1 : index - 1) : index;
 		};
 
-		self.getPreviousSlideIndex = function() {
-			var prev = (self.data.index-1);
-			prev = (prev < 0) ? self.data.collection.length-1 : prev;
-			
-			while (self.data.notOnMenu.indexOf(prev) >= 0) {
-				prev--;
-				prev = (prev < 0) ? self.data.collection.length-1 : prev;
-			}
-			return prev;
+		self.getNextSlideIndex = function () {
+			return self.getDiffSlideIndex(self.data.index + 1);
+		};
+
+		self.getPreviousSlideIndex = function () {
+			return self.getDiffSlideIndex(self.data.index - 1);
 		};
 
 		DigitalSignage
@@ -149,27 +150,26 @@
 
 			self.ractive.on({
 				selectSlide: function(event, index) {
-					self.data.lastIndex = self.data.index;
-					self.data.index = index;
+					self.ractive.set({
+						lastIndex: self.data.index,
+						index: index
+					});
+
 					DigitalSignage.initDrawing(self);
 				},
 				swipeLeft: function (e) {
-					self.data.lastIndex = self.data.index;
-					self.data.index = self.getNextSlideIndex();
-
-					self.ractive.set('isBack', false);
+					self.ractive.set({
+						lastIndex: self.data.index,
+						index: self.getNextSlideIndex()
+					});
 
 					DigitalSignage.initDrawing(self);
 				},
 				swipeRight: function (e) {
-					self.data.lastIndex = self.data.index;
-					self.data.index = self.getPreviousSlideIndex();
-
-					self.ractive.set('isBack', true);
-
-					setTimeout(function () {
-						self.ractive.set('isBack', false);
-					}, 500);
+					self.ractive.set({
+						lastIndex: self.data.index,
+						index: self.getPreviousSlideIndex()
+					});
 
 					DigitalSignage.initDrawing(self);
 				}
@@ -304,14 +304,18 @@
 			
 			clearTimeout(data.timeout);
 
-			ractive.set('lastIndex', data.index);
-			ractive.set('index', data.index);
+			// ractive.set('lastIndex', data.index);
+			// ractive.set('index', data.index);
 			ractive.set('timestamp', new Date());
 			
 			function nextSlide() {
-				data.lastIndex = data.index;
-				data.index   = self.getNextSlideIndex();
+				ractive.set({
+					lastIndex: self.data.index,
+					index: self.getNextSlideIndex()
+				});
+
 				var duration = data.collection[data.index].duration * 1000;
+
 				data.timeout = setTimeout(nextSlide, duration);
 			}
 

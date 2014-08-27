@@ -402,14 +402,24 @@ subhead {
 	z-index: 2;
 }
 
-.ui-slide--transition {
-	-webkit-animation: slide-out-left 5000ms;
-	animation: slide-out-left 5000ms;
+.ui-slide--transition.forward {
+	-webkit-animation: slide-out-left 1000ms;
+	animation: slide-out-left 1000ms;
 }
 
-.ui-slide--active {
-	-webkit-animation: slide-in-right 5000ms;
-	animation: slide-in-right 5000ms;
+.ui-slide--transition.backward {
+	-webkit-animation: slide-out-right 1000ms;
+	animation: slide-out-right 1000ms;
+}
+
+.ui-slide--active.forward {
+	-webkit-animation: slide-in-right 1000ms;
+	animation: slide-in-right 1000ms;
+}
+
+.ui-slide--active.backward {
+	-webkit-animation: slide-in-left 1000ms;
+	animation: slide-in-left 1000ms;
 }
 
 .ui-slide-heading, .ui-slide-subheading {

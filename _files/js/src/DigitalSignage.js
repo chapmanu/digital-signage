@@ -26,7 +26,6 @@
 		
 		self.getNextSlideIndex = function() {
 			var next = (self.data.index+1) % self.data.collection.length;
-			console.log("INDEX?", self.data.notOnMenu.indexOf(next));
 			while (self.data.notOnMenu.indexOf(next) >= 0) {
 				next = (next+1) % self.data.collection.length;
 			}
@@ -173,7 +172,9 @@
 			});
 
 			self.ractive.observe({
-				index: function () {
+				index: function (index, lastIndex) {
+					self.data.lastIndex = lastIndex;
+
 					DigitalSignage.updateMenuDisplay(self);
 				},
 				isResizing: function () {
@@ -309,7 +310,6 @@
 			
 			function nextSlide() {
 				data.index   = self.getNextSlideIndex();
-				console.log("The next slide index is....", data.index);
 				var duration = data.collection[data.index].duration * 1000;
 				data.timeout = setTimeout(nextSlide, duration);
 			}

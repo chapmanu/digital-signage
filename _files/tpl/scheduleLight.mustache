@@ -1,4 +1,4 @@
-<article class="ui-slide ui-slide--schedule ui-slide--light ui-slide--{{ index === i ? 'active' : 'inactive' }}">
+<article class="ui-slide ui-slide--schedule ui-slide--light ui-slide--{{ index === i ? 'active' : lastIndex === i ? 'transition' : 'inactive' }}">
 	<h1 class="ui-slide-heading">{{heading}}</h1>
 	<subhead class="ui-slide-subheading">{{subheading}}</subhead>
 

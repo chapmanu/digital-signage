@@ -1,4 +1,4 @@
-<article class="ui-slide ui-slide--standard ui-slide--dark ui-slide--right ui-slide--{{ index === i ? 'active' : 'inactive' }}{{#background}} ui-slide--has-background{{/background}}">
+<article class="ui-slide ui-slide--standard ui-slide--dark ui-slide--right  ui-slide--{{ index === i ? 'active' : lastIndex === i ? 'transition' : 'inactive' }}{{#background}} ui-slide--has-background{{/background}}">
 	<div class="ui-slide-body">
 		<h1 class="ui-slide-heading">{{heading}}</h1>
 		<subhead class="ui-slide-subheading">{{subheading}}</subhead>

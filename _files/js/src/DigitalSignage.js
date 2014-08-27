@@ -14,6 +14,7 @@
 		var self = this;
 
 		self.data = {
+			lastIndex: null,
 			index: 0,
 			isResizing: true,
 			style: {},
@@ -148,10 +149,12 @@
 
 			self.ractive.on({
 				selectSlide: function(event, index) {
+					self.data.lastIndex = self.data.index;
 					self.data.index = index;
 					DigitalSignage.initDrawing(self);
 				},
 				swipeLeft: function (e) {
+					self.data.lastIndex = self.data.index;
 					self.data.index = self.getNextSlideIndex();
 
 					self.ractive.set('isBack', false);
@@ -159,6 +162,7 @@
 					DigitalSignage.initDrawing(self);
 				},
 				swipeRight: function (e) {
+					self.data.lastIndex = self.data.index;
 					self.data.index = self.getPreviousSlideIndex();
 
 					self.ractive.set('isBack', true);
@@ -172,11 +176,6 @@
 			});
 
 			self.ractive.observe({
-				index: function (index, lastIndex) {
-					self.data.lastIndex = lastIndex;
-
-					DigitalSignage.updateMenuDisplay(self);
-				},
 				isResizing: function () {
 					DigitalSignage.updateMenuDisplay(self);
 				},
@@ -305,10 +304,12 @@
 			
 			clearTimeout(data.timeout);
 
+			ractive.set('lastIndex', data.index);
 			ractive.set('index', data.index);
 			ractive.set('timestamp', new Date());
 			
 			function nextSlide() {
+				data.lastIndex = data.index;
 				data.index   = self.getNextSlideIndex();
 				var duration = data.collection[data.index].duration * 1000;
 				data.timeout = setTimeout(nextSlide, duration);

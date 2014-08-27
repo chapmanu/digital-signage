@@ -614,7 +614,7 @@ subhead {
 .ui-event {
 	display: flex;
 	font-family: "Rooney Sans", sans-serif;
-	height: 145px;
+	min-height: 145px;
 	margin: 0 0 10px;
 	padding: 20px;
 }

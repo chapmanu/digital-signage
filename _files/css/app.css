@@ -383,6 +383,7 @@ subhead {
 	font-size: 20px;
 	height: 100%;
 	left: 0;
+	opacity: 0;
 	overflow: hidden;
 	position: absolute;
 	right: 0;
@@ -392,21 +393,23 @@ subhead {
 }
 
 .ui-slide--transition {
+	opacity: 1;
 	z-index: 1;
 }
 
 .ui-slide--active {
+	opacity: 1;
 	z-index: 2;
 }
 
 .ui-slide--transition {
-	-webkit-animation: slide-out-left 2000ms;
-	animation: slide-out-left 2000ms;
+	-webkit-animation: slide-out-left 5000ms;
+	animation: slide-out-left 5000ms;
 }
 
 .ui-slide--active {
-	-webkit-animation: slide-in-right 2000ms;
-	animation: slide-in-right 2000ms;
+	-webkit-animation: slide-in-right 5000ms;
+	animation: slide-in-right 5000ms;
 }
 
 .ui-slide-heading, .ui-slide-subheading {

@@ -1,3 +1,4 @@
-window.oncontextmenu = function() { 
-	return false; 
-}; 
+// disable default right-click behavior
+window.addEventListener('contextmenu', function (event) {
+	event.preventDefault();
+});

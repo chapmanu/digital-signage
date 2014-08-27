@@ -215,7 +215,7 @@
 		"id": "s1",
 		"template": "/digital-signage/_files/tpl/scheduleDark.mustache",
 		"menuName": "Schedule Dark",
-		"duration": 10,
+		"duration": 30,
 		"heading": "Folino Theatre",
 		"subheading": "Upcoming performance schedule",
 		"organizer": "Dodge College of Film & Media Arts",

@@ -681,7 +681,7 @@ subhead {
 
 .ui-slide-collection {
 	max-height: 620px;
-	overflow: hidden;
+	overflow: scroll;
 }
 
 .ui-slide-collection-inset {

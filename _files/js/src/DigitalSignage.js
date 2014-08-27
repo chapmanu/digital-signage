@@ -188,19 +188,17 @@
 
 					DigitalSignage.initDrawing(self);
 				},
-				delayAutoScroll: function(e) {
-					var delayTimeout;
+				delayAutoScroll: function (event) {
 					var delay = 3000;
 					
-					clearTimeout(delayTimeout);
+					clearTimeout(self.delayTimeout);
 					clearInterval(self.autoScroll);
 
 					if (self.autoScrollInterval) {
 						self.autoScrollInterval.stop();
 					}
 
-					delayTimeout = setTimeout(function(){
-						e.node.scrollTop = 0;
+					self.delayTimeout = setTimeout(function () {
 						DigitalSignage.initDirectories(self);
 					}, delay);
 				}
@@ -555,6 +553,12 @@
 	
 		self.autoScrollInterval = new Interval(function () {}, 2000, 1000 / 60);
 
+		self.autoScrollInterval.listener = function () {
+			item.scrollTop = scrollTop + (Interval.easing.easeInOut(this.percentage, 2) * (offset - scrollTop));
+
+			if (this.percentage === 1) this.stop();
+		};
+
 		function oninterval() {
 			scrollTop = item.scrollTop;
 
@@ -562,16 +566,10 @@
 
 			if (offset > (outsetHeight - (columnHeight * columnInterval))) offset = 0;
 
-			self.autoScrollInterval.listener = function () {
-				item.scrollTop = scrollTop + (Interval.easing.easeInOut(this.percentage, 2) * (offset - scrollTop));
-
-				if (this.percentage === 1) this.stop();
-			};
-
 			self.autoScrollInterval.play();
 		}
 
-		oninterval();
+		clearInterval(self.autoScroll);
 
 		self.autoScroll = setInterval(oninterval, columnDelay * 1000);
 	};

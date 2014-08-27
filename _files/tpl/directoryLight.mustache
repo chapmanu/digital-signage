@@ -2,7 +2,7 @@
 	<h1 class="ui-slide-heading">{{heading}}</h1>
 	<subhead class="ui-slide-subheading">{{subheading}}</subhead>
 
-	<div class="ui-slide-collection">
+	<div class="ui-slide-collection" on-pointerdown="delayAutoScroll" on-mousewheel="delayAutoScroll">
 		<div class="ui-slide-collection-inset">
 			{{#collection}}
 			<article class="ui-member">

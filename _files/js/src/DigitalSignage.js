@@ -27,6 +27,7 @@
 		self.templates = {};
 		self.src = src;
 		self.autoScroll = null;
+		self.intervals = {};
 
 		self.getDiffSlideIndex = function (pendingIndex) {
 			var
@@ -194,8 +195,8 @@
 					clearTimeout(self.delayTimeout);
 					clearInterval(self.autoScroll);
 
-					if (self.autoScrollInterval) {
-						self.autoScrollInterval.stop();
+					if (self.intervals[self.data.index]) {
+						self.intervals[self.data.index].stop();
 					}
 
 					self.delayTimeout = setTimeout(function () {
@@ -551,9 +552,10 @@
 		offset = 0,
 		scrollTop = 0;
 	
-		self.autoScrollInterval = new Interval(function () {}, 2000, 1000 / 60);
+		var autoScrollInterval = new Interval(function () {}, 2000, 1000 / 60);
+		self.intervals[index] = autoScrollInterval;
 
-		self.autoScrollInterval.listener = function () {
+		autoScrollInterval.listener = function () {
 			item.scrollTop = scrollTop + (Interval.easing.easeInOut(this.percentage, 2) * (offset - scrollTop));
 
 			if (this.percentage === 1) this.stop();
@@ -566,7 +568,7 @@
 
 			if (offset > (outsetHeight - (columnHeight * columnInterval))) offset = 0;
 
-			self.autoScrollInterval.play();
+			autoScrollInterval.play();
 		}
 
 		clearInterval(self.autoScroll);

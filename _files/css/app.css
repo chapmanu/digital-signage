@@ -395,11 +395,17 @@ subhead {
 .ui-slide--transition {
 	opacity: 1;
 	z-index: 1;
+
+	-webkit-animation: fade-out 500ms;
+	animation: fade-out 500ms;
 }
 
 .ui-slide--active {
 	opacity: 1;
 	z-index: 2;
+
+	-webkit-animation: fade-in 500ms;
+	animation: fade-in 500ms;
 }
 
 .ui-slide--transition.forward {

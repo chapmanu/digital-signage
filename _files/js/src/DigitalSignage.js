@@ -32,8 +32,6 @@
 			index = ((pendingIndex % length) + length) % length,
 			isForward = self.data.index < index;
 
-			self.data.direction = isForward ? 'forward' : 'backward';
-
 			return /directory/i.test(collection[index].template) ? self.getDiffSlideIndex(isForward ? index + 1 : index - 1) : index;
 		};
 
@@ -150,6 +148,8 @@
 
 			self.ractive.on({
 				selectSlide: function(event, index) {
+					self.data.direction = '';
+
 					self.ractive.set({
 						lastIndex: self.data.index,
 						index: index
@@ -158,6 +158,8 @@
 					DigitalSignage.initDrawing(self);
 				},
 				swipeLeft: function (e) {
+					self.data.direction = 'forward';
+
 					self.ractive.set({
 						lastIndex: self.data.index,
 						index: self.getNextSlideIndex()
@@ -166,6 +168,8 @@
 					DigitalSignage.initDrawing(self);
 				},
 				swipeRight: function (e) {
+					self.data.direction = 'backward';
+
 					self.ractive.set({
 						lastIndex: self.data.index,
 						index: self.getPreviousSlideIndex()
@@ -309,6 +313,8 @@
 			ractive.set('timestamp', new Date());
 			
 			function nextSlide() {
+				self.data.direction = '';
+				
 				ractive.set({
 					lastIndex: self.data.index,
 					index: self.getNextSlideIndex()

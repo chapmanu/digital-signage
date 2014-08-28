@@ -15,7 +15,7 @@
 
 		self.data = {
 			lastIndex: null,
-			index: 0,
+			index: null,
 			isResizing: true,
 			style: {},
 			notOnMenu: []
@@ -40,10 +40,12 @@
 		};
 
 		self.getNextSlideIndex = function () {
+			if (self.data.collection && self.data.collection.length === 1) return 0;
 			return self.getDiffSlideIndex(self.data.index + 1);
 		};
 
 		self.getPreviousSlideIndex = function () {
+			if (self.data.collection && self.data.collection.length === 1) return 0;
 			return self.getDiffSlideIndex(self.data.index - 1);
 		};
 
@@ -227,9 +229,14 @@
 						cancelAnimationFrame(item.backgroundFrame);
 						delete item.backgroundMedia;
 					}
+				},
+				'collection.length': function () {
+					// Reset the menu everytime we get a new number of slides.
+					setTimeout(function(){
+						self.ractive.set('index', 0);
+					}, 1000);
 				}
 			});
-
 			resolve(self);
 		});
 	};
@@ -555,7 +562,7 @@
 		outsetHeight = item.clientHeight + 80,
 		columnHeight = /schedule/.test(slide.template) ? 175 : 125,
 		columnInterval = 2,
-		columnDelay = 5,
+		columnDelay = 10,
 		offset = 0,
 		scrollTop = 0;
 	

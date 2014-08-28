@@ -12,7 +12,7 @@
 	function DigitalSignageSlidePreview(data) {
 		var self = this;
 
-		self.data = Object.extend({
+		self.data = Object.deepAssign({
 			isResizing: true,
 			style: {}
 		}, data);

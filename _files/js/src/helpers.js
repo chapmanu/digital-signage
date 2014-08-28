@@ -1,41 +1,76 @@
-// ~900 bytes gzipped
-(function () {
-	'use strict';
+(function (global, splice, hasOwnProperty) {
+	// Call a function before the next browser repaint
+	// https://developer.mozilla.org/en-US/docs/Web/API/window.requestAnimationFrame
+	function requestAnimationFrame(callback) {
+		return setTimeout(callback, 1000 / 60);
+	}
 
-	// return class name of any value
-	Object.getClass = Object.getClass || function (value) {
-		return value === undefined ? 'Undefined' : value === null ? 'Null' : Object.prototype.toString.call(value).slice(8, -1);
-	};
+	// Clear an animation set by requestAnimationFrame
+	// https://developer.mozilla.org/en-US/docs/Web/API/window.cancelAnimationFrame
+	function cancelAnimationFrame(requestID) {
+		return clearTimeout(requestID);
+	}
 
-	// return whether value is object
-	Object.isObject = Object.isObject || function (value) {
-		return Object.getClass(value) === 'Object';
-	};
+	// Copy shallow enumerable values from source objects to a target object
+	// http://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.assign
+	function assign(target, source) {
+		for (var index = 1, key; index in arguments; ++index) {
+			source = arguments[index];
 
-	// return first object extended by any number of additional objects
-	Object.extend = Object.extend || function () {
-		var
-		// move all objects into collection
-		objects = [].slice.call(arguments),
-		// separate first object
-		object = objects.shift();
-
-		// for each object in collection
-		for (var index = 0, key; index in objects; ++index) {
-			// set or extend its keys to first object
-			for (key in objects[index]) {
-				object[key] = Object.isObject(object[key]) && Object.isObject(objects[index][key]) ? Object.extend(object[key], objects[index][key]) : objects[index][key];
+			for (key in source) {
+				if (hasOwnProperty.call(source, key)) {
+					target[key] = source[key];
+				}
 			}
 		}
 
-		// return first object
-		return object;
-	};
+		return target;
+	}
+
+	// Copy deep enumerable values from source objects to a target object
+	function deepAssign(target, source) {
+		for (var index = 1, key; index in arguments; ++index) {
+			source = arguments[index];
+
+			for (key in source) {
+				if (hasOwnProperty.call(source, key)) {
+					if (target[key] && Array.isArray(target[key]) && Array.isArray(source[key])) {
+						target[key].length = source[key].length;
+
+						deepAssign(target[key], source[key]);
+					}
+					else if (target[key] && Object(target[key]) === target[key] && Object(source[key]) === source[key]) {
+						deepAssign(target[key], source[key]);
+					} else {
+						target[key] = source[key];
+					}
+				}
+			}
+		}
+
+		return target;
+	}
+
+	if (!global.requestAnimationFrame) {
+		global.requestAnimationFrame = global.mozRequestAnimationFrame || global.webkitRequestAnimationFrame || requestAnimationFrame;
+	}
+
+	if (!global.cancelAnimationFrame) {
+		global.cancelAnimationFrame = global.mozCancelAnimationFrame || global.webkitCancelAnimationFrame || cancelAnimationFrame;
+	}
+
+	if (!Object.assign) {
+		Object.assign = assign;
+	}
+
+	if (!Object.deepAssign) {
+		Object.deepAssign = deepAssign;
+	}
 
 	// request one or more files
 	window.request = function (opts) {
 		var
-		allOpts = Object.extend({
+		allOpts = Object.deepAssign({
 			async: true,
 			data: null,
 			header: {},
@@ -51,13 +86,13 @@
 
 		requests.forEach(function (request) {
 			var
-			xhr = Object.extend(
+			xhr = Object.deepAssign(
 				// new request
 				new XMLHttpRequest(),
 				// append default options
 				allOpts,
 				// append request options 
-				Object.isObject(request) ? request : { src: request },
+				Object(request) === request ? request : { src: request },
 				// remove events from request
 				{ onLoad: null, onError: null }
 			),
@@ -116,13 +151,13 @@
 			xhrs.push(xhr);
 
 			// send request
-			xhr.send(Object.isObject(xhr.data) ? JSON.stringify(xhr.data) : xhr.data);
+			xhr.send(Object(xhr.data) === xhr.data ? JSON.stringify(xhr.data) : xhr.data);
 		});
 	};
 
 	// longpoll a file
 	window.longpoll = function (opts) {
-		opts = Object.extend({
+		opts = Object.deepAssign({
 			header: {},
 			maxInterval: 1000,
 			method: 'POST'
@@ -151,7 +186,6 @@
 	// return a configurable debounced function
 	window.debounce = function (listener, interval, method) {
 		function debounced() {
-			/* jshint validthis: true */
 			var
 			self = this,
 			args = arguments,
@@ -187,4 +221,4 @@
 
 		return debounced;
 	};
-})();
+})(this, Array.prototype.splice, Object.prototype.hasOwnProperty);

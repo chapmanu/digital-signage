@@ -34,7 +34,7 @@
 			collection = self.data.collection,
 			length = collection.length,
 			index = ((pendingIndex % length) + length) % length,
-			isForward = self.data.index < index;
+			isForward = index !== 0 && self.data.index < index;
 
 			return /directory/i.test(collection[index].template) ? self.getDiffSlideIndex(isForward ? index + 1 : index - 1) : index;
 		};

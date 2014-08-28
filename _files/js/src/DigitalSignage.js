@@ -348,9 +348,9 @@
 			ractive.set('timestamp', new Date());
 			
 			function nextSlide() {
-				self.data.direction = '';
 				
 				ractive.set({
+					direction: '',
 					lastIndex: self.data.index,
 					index: self.getNextSlideIndex()
 				});

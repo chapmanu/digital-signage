@@ -83,7 +83,7 @@
 						serverData.timestampOffset = 0;
 					}
 					
-					self.data = Object.extend(self.data, serverData);
+					Object.deepAssign(self.data, serverData);
 
 					// Add flags to the directory slides
 					if (self.touchSupport) {
@@ -303,7 +303,7 @@
 						serverData.timestampOffset = 0;
 					}
 
-					Object.extend(data, serverData, pantherAlert.data);
+					Object.deepAssign(data, serverData, pantherAlert.data);
 
 					// Add flags to the directory slides
 					if (self.touchSupport) {

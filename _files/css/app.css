@@ -387,6 +387,7 @@ html {
 
 .ui-slide {
 	bottom: 0;
+	display: none;
 	font-size: 20px;
 	height: 100%;
 	left: 0;
@@ -400,6 +401,7 @@ html {
 }
 
 .ui-slide--transition {
+	display: block;
 	opacity: 1;
 	z-index: 1;
 
@@ -408,6 +410,7 @@ html {
 }
 
 .ui-slide--active {
+	display: block;
 	opacity: 1;
 	z-index: 2;
 
@@ -416,23 +419,23 @@ html {
 }
 
 .ui-slide--transition.forward {
-	-webkit-animation: slide-out-left 1000ms;
-	animation: slide-out-left 1000ms;
+	-webkit-animation: slide-out-left 500ms;
+	animation: slide-out-left 500ms;
 }
 
 .ui-slide--transition.backward {
-	-webkit-animation: slide-out-right 1000ms;
-	animation: slide-out-right 1000ms;
+	-webkit-animation: slide-out-right 500ms;
+	animation: slide-out-right 500ms;
 }
 
 .ui-slide--active.forward {
-	-webkit-animation: slide-in-right 1000ms;
-	animation: slide-in-right 1000ms;
+	-webkit-animation: slide-in-right 500ms;
+	animation: slide-in-right 500ms;
 }
 
 .ui-slide--active.backward {
-	-webkit-animation: slide-in-left 1000ms;
-	animation: slide-in-left 1000ms;
+	-webkit-animation: slide-in-left 500ms;
+	animation: slide-in-left 500ms;
 }
 
 .ui-slide-heading, .ui-slide-subheading {

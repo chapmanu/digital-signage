@@ -156,9 +156,8 @@
 				selectSlide: function(event, index) {
 					if (!self.touchSupport) return;
 					
-					self.data.direction = '';
-
 					self.ractive.set({
+						direction: '',
 						lastIndex: self.data.index,
 						index: index
 					});
@@ -168,9 +167,8 @@
 				swipeLeft: function (e) {
 					if (!self.touchSupport) return;
 
-					self.data.direction = 'forward';
-
 					self.ractive.set({
+						direction: 'forward',
 						lastIndex: self.data.index,
 						index: self.getNextSlideIndex()
 					});
@@ -180,9 +178,8 @@
 				swipeRight: function (e) {
 					if (!self.touchSupport) return;
 
-					self.data.direction = 'backward';
-
 					self.ractive.set({
+						direction: 'backward',
 						lastIndex: self.data.index,
 						index: self.getPreviousSlideIndex()
 					});
@@ -217,6 +214,8 @@
 				},
 				timestamp: function () {
 					DigitalSignage.updateTimestampDisplay(self);
+				},
+				index: function() {
 					DigitalSignage.updateMenuDisplay(self);
 				},
 				'collection.*.background': function (newValue, oldValue, keypath) {
@@ -289,7 +288,7 @@
 		return new Promise(function (resolve, reject) {
 			window.longpoll({
 				src: self.src,
-				maxInterval: 200,
+				maxInterval: 5000,
 				onLoad: function (xhr) {
 					// get server data
 					var serverData = JSON.parse(xhr.responseText);
@@ -327,7 +326,12 @@
 						resolve(self);
 					});
 				},
-				onError: reject
+				onError: function () {
+					// Restart polling in 5 minutes
+					setTimeout(function() {
+						DigitalSignage.initPolling(self);
+					},300000);
+				}
 			});
 		});
 	};
@@ -466,7 +470,7 @@
 
 	DigitalSignage.updateMenuDisplay = function (self) {
 
-		if (document.querySelectorAll('.ui-menu-item--active').length <= 0) {
+		if (document.querySelectorAll('.ui-menu-item-'+self.data.index).length <= 0) {
 			self.ractive.set('style.caretOpacity',  0);
 			return;
 		} else {
@@ -480,7 +484,7 @@
 		menu             = document.querySelector('.ui-menu-list'),
 		menuArea         = menu.getBoundingClientRect(),
 		containerArea    = menu.parentNode.getBoundingClientRect(),
-		activeItemArea   = menu.querySelector('.ui-menu-item--active').getBoundingClientRect(),
+		activeItemArea   = menu.querySelector('.ui-menu-item-'+data.index).getBoundingClientRect(),
 		activeLeftEdge   = activeItemArea.left - menuArea.left,
 		minMenuOffset    = 0,
 		maxMenuOffset    = menuArea.width - containerArea.width,

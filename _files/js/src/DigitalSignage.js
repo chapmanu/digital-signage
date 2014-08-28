@@ -122,6 +122,13 @@
 				return !self.templates[key];
 			});
 
+			var timestamp = (new Date()).getTime();
+
+			// Prevent caching
+			templates = templates.map(function(item) {
+				return item + '?ver=' + timestamp;
+			});
+
 			if (!templates.length) resolve(self);
 			else window.request({
 				src: templates,

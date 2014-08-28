@@ -18,7 +18,6 @@
 			index: 0,
 			isResizing: true,
 			style: {},
-			timeout: null,
 			notOnMenu: []
 		};
 
@@ -26,7 +25,8 @@
 
 		self.templates = {};
 		self.src = src;
-		self.autoScroll = null;
+		self.autoScrollIntervals = [];
+		self.rotationTimeout = null;
 		self.intervals = {};
 
 		self.getDiffSlideIndex = function (pendingIndex) {
@@ -190,10 +190,12 @@
 					DigitalSignage.initDrawing(self);
 				},
 				delayAutoScroll: function (event) {
-					var delay = 3000;
+					var delay = 15000;
 					
 					clearTimeout(self.delayTimeout);
-					clearInterval(self.autoScroll);
+					clearTimeout(self.rotationTimeout);
+					self.autoScrollIntervals.forEach(function(id) {clearInterval(id);});
+					self.autoScrollIntervals = [];
 
 					if (self.intervals[self.data.index]) {
 						self.intervals[self.data.index].stop();
@@ -201,6 +203,7 @@
 
 					self.delayTimeout = setTimeout(function () {
 						DigitalSignage.initDirectories(self);
+						DigitalSignage.initDrawing(self);
 					}, delay);
 				}
 			});
@@ -334,7 +337,7 @@
 		return new Promise(function (resolve) {
 			var data = self.data, ractive = self.ractive, last = 0;
 			
-			clearTimeout(data.timeout);
+			clearTimeout(self.rotationTimeout);
 
 			// ractive.set('lastIndex', data.index);
 			// ractive.set('index', data.index);
@@ -350,11 +353,11 @@
 
 				var duration = data.collection[data.index].duration * 1000;
 
-				data.timeout = setTimeout(nextSlide, duration);
+				self.rotationTimeout = setTimeout(nextSlide, duration);
 			}
 
 			var duration = data.collection[data.index || 0].duration * 1000;
-			data.timeout = setTimeout(nextSlide, duration);
+			self.rotationTimeout = setTimeout(nextSlide, duration);
 
 			resolve(self);
 		});
@@ -571,9 +574,7 @@
 			autoScrollInterval.play();
 		}
 
-		clearInterval(self.autoScroll);
-
-		self.autoScroll = setInterval(oninterval, columnDelay * 1000);
+		self.autoScrollIntervals.push(setInterval(oninterval, columnDelay * 1000));
 	};
 
 	window.DigitalSignage = DigitalSignage;

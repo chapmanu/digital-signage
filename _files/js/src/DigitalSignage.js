@@ -36,7 +36,7 @@
 			index = ((pendingIndex % length) + length) % length,
 			isForward = self.data.index < index;
 
-			return /directory/i.test(collection[index].template) ? self.getDiffSlideIndex(isForward ? index + 1 : index - 1) : index;
+			return (self.touchSupport && /directory/i.test(collection[index].template)) ? self.getDiffSlideIndex(isForward ? index + 1 : index - 1) : index;
 		};
 
 		self.getNextSlideIndex = function () {
@@ -71,7 +71,7 @@
 				onLoad: function (xhr) {
 					// get server data
 					var serverData = JSON.parse(xhr.responseText);
-					
+
 					// if server data contains time, set offset
 
 					serverData.serverTime = new Date(xhr.getResponseHeader('Date')).getTime();
@@ -84,14 +84,13 @@
 						serverData.serverTime = Date.now();
 						serverData.timestampOffset = 0;
 					}
-					
+
 					Object.deepAssign(self.data, serverData);
 
 					// Add flags to the directory slides
-					if (self.touchSupport) {
 						var hiddenSlideIds = [];
 						self.data.collection.forEach(function(slide, index) {
-							if (/directory/i.test(slide.template)) {
+							if (self.touchSupport && /directory/i.test(slide.template)) {
 								slide.doNotShow = true;
 								hiddenSlideIds.push(index);
 							} else {
@@ -99,7 +98,6 @@
 							}
 						});
 						self.data.notOnMenu = hiddenSlideIds;
-					}
 
 					// resolve promise
 					resolve(self);
@@ -164,7 +162,7 @@
 			self.ractive.on({
 				selectSlide: function(event, index) {
 					if (!self.touchSupport) return;
-					
+
 					self.ractive.set({
 						direction: '',
 						lastIndex: self.data.index,
@@ -197,7 +195,7 @@
 				},
 				delayAutoScroll: function (event) {
 					var delay = 15000;
-					
+
 					clearTimeout(self.delayTimeout);
 					clearTimeout(self.rotationTimeout);
 					self.autoScrollIntervals.forEach(function(id) {clearInterval(id);});
@@ -354,16 +352,14 @@
 	DigitalSignage.initDrawing = function (self) {
 		return new Promise(function (resolve) {
 			var data = self.data, ractive = self.ractive, last = 0;
-			
-			clearTimeout(self.rotationTimeout);
 
-			// ractive.set('lastIndex', data.index);
-			// ractive.set('index', data.index);
+			clearTimeout(self.rotationTimeout);
 			ractive.set('timestamp', new Date());
-			
+
 			function nextSlide() {
-				
+
 				ractive.set({
+					timestamp: new Date(),
 					direction: '',
 					lastIndex: self.data.index,
 					index: self.getNextSlideIndex()
@@ -490,7 +486,7 @@
 		} else {
 			self.ractive.set('style.caretOpacity', 1);
 		}
-		
+
 		/* SET UP VARIABLES */
 		var
 		data             = self.data,
@@ -506,23 +502,23 @@
 		scale            = self.data.scale || 1;
 
 		/* MAIN STYLE VARIABLES */
-		var 
+		var
  		// The width of the carrot (cursor/highlighter)
 		caretWidth       = Math.floor(activeItemArea.width),
-		
+
 		// Distance from the right edge of the container to the right edge of the menu
 		menuOffset       = menuArea.width - containerArea.width - activeLeftEdge + astheticOffset,
-		
-		// Distance from the left edge of the container (viewbox) to the left edge of the carrot 
+
+		// Distance from the left edge of the container (viewbox) to the left edge of the carrot
 		caretOffset      = astheticOffset;
 
 		// Adjust based on min and max limits
-		if (menuOffset < minMenuOffset) { 
+		if (menuOffset < minMenuOffset) {
 			// Menu is beyond the end
 			caretOffset += (minMenuOffset - menuOffset);
 			menuOffset   = minMenuOffset;
-		
-		} else if (menuOffset > maxMenuOffset) { 
+
+		} else if (menuOffset > maxMenuOffset) {
 			// Menu is beyond the beginning
 			caretOffset -= (menuOffset - maxMenuOffset);
 			menuOffset   = maxMenuOffset;
@@ -572,25 +568,22 @@
 		columnDelay = 10,
 		offset = 0,
 		scrollTop = 0;
-	
+
 		var autoScrollInterval = new Interval(function () {}, 2000, 1000 / 60);
-		self.intervals[index] = autoScrollInterval;
 
 		autoScrollInterval.listener = function () {
 			item.scrollTop = scrollTop + (Interval.easing.easeInOut(this.percentage, 2) * (offset - scrollTop));
-
 			if (this.percentage === 1) this.stop();
 		};
 
+		self.intervals[index] = autoScrollInterval;
+
 		function oninterval() {
 			scrollTop = item.scrollTop;
-
 			offset += columnHeight * columnInterval;
-
-			if (offset > (outsetHeight - (columnHeight * columnInterval))) offset = 0;
-
+			if (offset > ((item.clientHeight + 80) - (columnHeight * columnInterval))) offset = 0;
 			autoScrollInterval.play();
-		}
+		};
 
 		self.autoScrollIntervals.push(setInterval(oninterval, columnDelay * 1000));
 	};

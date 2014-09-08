@@ -10,7 +10,7 @@
 	// assign conditional transform property
 	TRANSFORM = MATCH ? MATCH[1] + 'Transform' : 'transform';
 
-	function DigitalSignage(src, touchSupport) {
+	function DigitalSignage(src, touchSupport, googleAnalyticsID) {
 		var self = this;
 
 		self.data = {
@@ -34,7 +34,7 @@
 			collection = self.data.collection,
 			length = collection.length,
 			index = ((pendingIndex % length) + length) % length,
-			isForward = self.data.index < index;
+			isForward = index !== 0 && self.data.index < index;
 
 			return (self.touchSupport && /directory/i.test(collection[index].template)) ? self.getDiffSlideIndex(isForward ? index + 1 : index - 1) : index;
 		};
@@ -60,6 +60,23 @@
 			.then(DigitalSignage.initVideo)
 			.then(DigitalSignage.initMousing)
 			.then(DigitalSignage.initDirectories);
+
+		// Google Analytics
+		if (googleAnalyticsID) {
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', googleAnalyticsID, 'auto');
+
+			setTimeout(function() {
+				ga('send', 'pageview', {
+					'title': 'Digital Signage Initialized: ' + self.data.location
+				});
+			}, 1000);
+		}
+
 	}
 
 	// initializes data
@@ -163,6 +180,8 @@
 				selectSlide: function(event, index) {
 					if (!self.touchSupport) return;
 
+					if (self.data.index == index) return;
+
 					self.ractive.set({
 						direction: '',
 						lastIndex: self.data.index,
@@ -170,6 +189,10 @@
 					});
 
 					DigitalSignage.initDrawing(self);
+
+					var slideTitle = self.data.collection[index].menuName;
+
+					if (typeof(ga) !== 'undefined') ga('send', 'event', 'Touch Interaction', 'Menu Tap', slideTitle);
 				},
 				swipeLeft: function (e) {
 					if (!self.touchSupport) return;
@@ -181,6 +204,8 @@
 					});
 
 					DigitalSignage.initDrawing(self);
+
+					if (typeof(ga) !== 'undefined') ga('send', 'event', 'Touch Interaction', 'Swipe Left');
 				},
 				swipeRight: function (e) {
 					if (!self.touchSupport) return;
@@ -192,6 +217,8 @@
 					});
 
 					DigitalSignage.initDrawing(self);
+
+					if (typeof(ga) !== 'undefined') ga('send', 'event', 'Touch Interaction', 'Swipe Right');
 				},
 				delayAutoScroll: function (event) {
 					var delay = 15000;
@@ -222,8 +249,22 @@
 				timestamp: function () {
 					DigitalSignage.updateTimestampDisplay(self);
 				},
-				index: function() {
+				index: function(newIndex) {
 					DigitalSignage.updateMenuDisplay(self);
+
+					if (newIndex) {
+						var
+						slideTitle = self.data.collection[newIndex].menuName,
+						slug       = slideTitle.replace(/ /g,'-').replace(/[^\w-]+/g,''),
+						location   = window.location.pathname + '?slide=' + slug;
+
+						// Track pageview on each slide display
+						if (typeof(ga) !== 'undefined') ga('send', 'pageview', {
+							'page': location,
+							'title': slideTitle + ' | ' + self.data.collection[newIndex].heading
+						});
+					}
+
 				},
 				'collection.*.background': function (newValue, oldValue, keypath) {
 					var

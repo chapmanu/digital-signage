@@ -34,7 +34,6 @@
 					var key = path.replace(/^.+\/(.+?)\.[^\.]+$/, '$1');
 
 					self.templates[key] = xhr.responseText;
-
 					return resolve(self);
 				},
 				onError: reject
@@ -48,29 +47,13 @@
 			path = self.data.template,
 				key = path.replace(/^.+\/(.+?)\.[^\.]+$/, '$1');
 
+
 			self.ractive = new Ractive({
 				el: document.querySelector('.ui-feed'),
 				template: self.templates[key],
 				data: self.data
 			});
 
-			self.ractive.observe({
-				index: function() {
-					DigitalSignageSlidePreview.updateMenuDisplay(self);
-				},
-				isResizing: function() {
-					DigitalSignageSlidePreview.updateMenuDisplay(self);
-				},
-				location: function() {
-					DigitalSignageSlidePreview.updateMenuDisplay(self);
-				},
-				timestamp: function() {
-					DigitalSignageSlidePreview.updateTimestampDisplay(self);
-					DigitalSignageSlidePreview.updateMenuDisplay(self);
-				}
-			});
-
-			// TODO: Don’t do it this way
 			if (/schedule|directory/i.test(self.data.template)) DigitalSignageSlidePreview.updateSliding(self);
 
 			resolve(self);
@@ -126,28 +109,32 @@
 		var
 		duration = self.data.duration,
 		inset = self.ractive.find('.ui-slide-collection-inset');
-
 		if (!inset) return;
 
 		var
 		outset = inset.parentNode,
 		outsetHeight = inset.offsetHeight,
-		columnHeight = /schedule/.test(self.data.template) ? 155 : 125,
+		columnHeight = /schedule/.test(self.data.template) ? 175 : 125,
 		columnMax = 4,
 		columnInterval = 2,
 		columnDelay = 5,
 		columns = Math.floor(inset.offsetHeight / (columnHeight * columnMax)),
-		offset = 0;
+		offset = 0,
+		scrollTop = 0;
+
+		var autoScrollInterval = new Interval(function () {}, 2000, 1000 / 60);
+
+		autoScrollInterval.listener = function() {
+			outset.scrollTop = scrollTop + (Interval.easing.easeInOut(this.percentage, 2) * (offset - scrollTop));
+			if (this.percentage === 1) this.stop();
+		};
 
 		function oninterval() {
-			inset.style[TRANSFORM] = 'translateY(-' + offset + 'px)';
-
+			scrollTop = outset.scrollTop;
 			offset += columnHeight * columnInterval;
-
-			if (offset > (outsetHeight - (columnHeight * columnInterval))) offset = 0;
+			if (offset > ((outsetHeight + 80) - (columnHeight * columnInterval))) offset = 0;
+			autoScrollInterval.play();
 		}
-
-		oninterval();
 
 		setInterval(oninterval, columnDelay * 1000);
 	};

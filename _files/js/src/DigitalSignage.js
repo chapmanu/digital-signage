@@ -252,6 +252,24 @@
 				index: function(newIndex) {
 					DigitalSignage.updateMenuDisplay(self);
 
+					// Pause all the videos, play only the one on this slide
+					setTimeout(function() {
+						var allVideos = document.getElementsByTagName('video');
+						var thisVideo = self.ractive.find('.ui-slide--active video');
+
+						for (var i = 0; i < allVideos.length; ++i) {
+							if (allVideos[i].isSameNode(thisVideo)) continue;
+							allVideos[i].pause();
+							allVideos[i].currentTime = 0;
+							allVideos[i].load();
+						}
+
+						if (thisVideo) {
+							thisVideo.play();
+						}
+					}, 500);  // Run this after the slide has transitioned
+
+
 					if (newIndex) {
 						var
 						slideTitle = self.data.collection[newIndex].menuName,

@@ -84,7 +84,7 @@
 				// Center video
 				video.style.marginLeft = Math.round((new_video_width - container_width) / 2 * -1) + 'px';
 				video.style.marginTop = Math.round((new_video_height - container_height) / 2 * -1) + 'px';
-
+				video.play();
 			});
 		});
 	};

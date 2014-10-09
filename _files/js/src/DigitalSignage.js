@@ -615,44 +615,49 @@
 
 	// Scrolls the directory listing
 	DigitalSignage.updateSliding = function(self, index, slide) {
+		// The viewbox is the container, the slider is the thing that needs to scroll
 		var
 		viewbox = self.ractive.find('.ui-slide:nth-child(' + (index + 1) + ') .ui-slide-collection'),
-		directory = viewbox.children[0];
+		slider = viewbox.children[0];
 
-		if (!(viewbox && directory)) return;
+		if (!(viewbox && slider)) return;  // Check yo'self
 
-		var
+		var // Configuration settings
 		rowHeight        = /schedule/.test(slide.template) ? 175 : 125,
 		currentScrollTop = 0,
 		nextScrollTop    = 0,
 		difference       = 0,
 		scrollDelay      = 8000;
 
+		// Create an Interval object for the easing scroll effect
 		var autoScrollInterval = new Interval(function () {}, 2000, 1000 / 60);
-		self.intervals[index] = autoScrollInterval;
-
 		autoScrollInterval.listener = function () {
+		 	// Performs the easing
 		 	viewbox.scrollTop = currentScrollTop + (Interval.easing.easeInOut(this.percentage, 2) * difference);
 		 	if (this.percentage === 1) this.stop();
 		};
 
+		// Run this function every x seconds (configured using the scrollDelay above)
 		function oninterval() {
-			var threshold = (directory.clientHeight - viewbox.clientHeight);
+			var threshold = (slider.clientHeight - viewbox.clientHeight);
 			currentScrollTop = viewbox.scrollTop;
 
 			if ( currentScrollTop < threshold) {
-				nextScrollTop = currentScrollTop + (rowHeight * 2);
-				if (nextScrollTop > threshold) nextScrollTop = threshold;
+				nextScrollTop = currentScrollTop + (rowHeight * 2);  // We scroll two rows at a time
+				if (nextScrollTop > threshold) nextScrollTop = threshold;  // Make sure we don't off the edge
 			}
 			else {
+				// Take us back to the top
 				nextScrollTop = 0;
 			}
-
+			// Calculate the difference for the easing function
 			difference = nextScrollTop - currentScrollTop;
-			console.log(currentScrollTop, "+ (x *", difference, ")");
 			autoScrollInterval.play();
 		};
 
+		// Save the interval so that you can stop the autoscroll later
+		self.intervals[index] = autoScrollInterval;
+		// Initiate the autoscroll
 		self.autoScrollIntervals.push(setInterval(oninterval, scrollDelay));
 	};
 

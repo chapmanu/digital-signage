@@ -1,0 +1,28 @@
+<!doctype html>
+
+<title>Digital Signage</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<script src="/digital-signage/_files/js/lib/dom-promise.js"></script>
+<script src="/digital-signage/_files/js/lib/Interval.js"></script>
+<script src="/digital-signage/_files/js/src/helpers.js"></script>
+<script src="/digital-signage/_files/js/src/Ractive.js"></script>
+<script src="/digital-signage/_files/js/src/DigitalSignageSlidePreview.js"></script>
+
+<link href="/digital-signage/_files/css/app.css" rel="stylesheet">
+
+<body>
+	<div id="ui-feed" class="ui-feed preview">
+	<script>window.s=new DigitalSignageSlidePreview({
+		"id": "s1",
+		"template": "/digital-signage/_files/tpl/default.mustache",
+		"location": "Preview Screen",
+		"notification": "asdf",
+		"notificationDetail": "Notifications are less abruptive.",
+		"emergency": "This is a test alert.",
+		"emergencyDetail": "This is a test. This is a preview of the Digital Signage Emergency Notification System. Messages can be deployed to all screens using this feature. This is only a test."
+	})</script>
+	</div>
+</body>

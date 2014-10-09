@@ -1,0 +1,27 @@
+<article class="ui-slide ui-slide--standard ui-slide--light ui-slide--left ui-slide--{{ index === i ? 'active' : lastIndex === i ? 'transition' : 'inactive' }}{{#background}} ui-slide--has-background{{/background}} {{direction}}">
+	<div class="ui-slide-body">
+		<h1 class="ui-slide-heading">{{heading}}</h1>
+		<subhead class="ui-slide-subheading">{{subheading}}</subhead>
+
+		<p class="ui-slide-datetime">{{datetime}}</p>
+		<p class="ui-slide-location">{{location}}</p>
+
+		<div class="ui-slide-content">{{{content}}}</div>
+	</div>
+
+	{{#backgroundType === 'video'}}
+	<video src="{{background}}" class="ui-slide-background" loop></video>
+	{{/}}
+	{{#backgroundType === 'image'}}
+	<div class="ui-slide-background" style="width: 100%; height: 100%; background:url('{{background}}') no-repeat center; background-size: {{backgroundSizing}};"></div>
+	{{/}}
+
+	{{#foregroundType === 'video'}}
+	<video src="{{foreground}}" class="ui-slide-foreground" loop style="width: 100%; height: 100%;"></video>
+	{{/}}
+	{{#foregroundType === 'image'}}
+	<div class="ui-slide-foreground" style="width: 100%; height: 100%; background:url('{{foreground}}') no-repeat center; background-size: {{foregroundSizing}};"></div>
+	{{/}}
+
+	<footer class="ui-slide-organizer"><img class="ui-slide-organizer-icon" src="/digital-signage/_files/img/icon-{{organizerId}}.svg"/> {{organizer}}</footer>
+</article>

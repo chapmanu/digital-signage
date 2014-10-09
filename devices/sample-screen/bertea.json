@@ -1,0 +1,635 @@
+{
+  "id": "Bertea Hall - Entrance",
+  "template": "../../_files/tpl/default.mustache",
+  "location": "Bertea Hall",
+  "collection": [
+    {
+      "id": "digital-signage/slides/copa/big-band-bubbly-brunch",
+      "template": "../../_files/tpl/standardLightRight.mustache",
+      "menuName": "Big Band Brunch",
+      "organizer": "Hall-Musco Conservatory of Music",
+      "organizerId": "copa",
+      "duration": 15,
+      "heading": "Big Band Bubbly Brunch",
+      "subheading": "",
+      "datetime": "October 12 at 11:00am",
+      "location": "Attallah Piazza",
+      "content": "<p><strong><em>Co-Sponsored by the Alumni Association and the College of Performing Arts</em></strong></p><p><strong>Albert Alva, Director</strong></p><p>This festive champagne brunch features Chapman&#8217;s newest and brightest stars: our very own Big Band, under the direction of Albert Alva. A cross between Frank Sinatra and Harry Connick Jr., this ensemble will leave you wanting more. Cheverton Award winners and past Alumni Association leaders will be recognized.</p><p>For tickets, call (714) 997-6558 or visit <a href=\"http://www.chapman.edu/homecoming\">www.chapman.edu/homecoming</a>.</p>",
+      "background": "",
+      "backgroundType": "",
+      "backgroundSizing": "",
+      "foreground": "/digital-signage/slides/copa/_files/Oct14-BigBandBrunch.jpg",
+      "foregroundType": "image",
+      "foregroundSizing": "cover"
+    },
+    {
+      "id": "digital-signage/slides/copa/fall14-opera-chapman",
+      "template": "../../_files/tpl/standardDarkLeft.mustache",
+      "menuName": "Opera Chapman",
+      "organizer": "Hall-Musco Conservatory of Music",
+      "organizerId": "copa",
+      "duration": 15,
+      "heading": "The Glory of French Grand Opera",
+      "subheading": "",
+      "datetime": "October 17-19 / October 24-26",
+      "location": "Salmon Recital Hall",
+      "content": "<p><strong><em>Peter Atherton, Artistic Director</em></strong><br/><strong><em>Carol Neblett &amp; </em><em>Christian Nova, Stage Direction<br/>Janet Kao &amp; Paul Floyd, Musical Direction</em></strong></p><p>Program to include works by Bizet, Gounod, Massenet, Offenbach and Delibes, and features the students from Chapman University&#8217;s acclaimed Opera training program.&#160; Fridays &amp; Saturdays at 7:30pm, Sunday at 3pm. $15 general admission; $10 senior citizens, alumni and non-Chapman students</p><p>Advance tickets&#160;may be purchased at <a href=\"http://www.chapman.edu/tickets\">www.chapman.edu/tickets</a> or by calling the Chapman University Ticket Office at 714-997-6812.</p>",
+      "background": "",
+      "backgroundType": "",
+      "backgroundSizing": "",
+      "foreground": "/digital-signage/slides/copa/_files/Oct14-OperaChapman.jpg",
+      "foregroundType": "image",
+      "foregroundSizing": "cover"
+    },
+    {
+      "id": "digital-signage/slides/copa/oct14-hooten",
+      "template": "../../_files/tpl/standardLightRight.mustache",
+      "menuName": "Thomas Hooten",
+      "organizer": "Hall-Musco Conservatory of Music",
+      "organizerId": "copa",
+      "duration": 10,
+      "heading": "Guest Artist in Recital",
+      "subheading": "Thomas Hooten, trumpet",
+      "datetime": "October 21 at 8:00pm",
+      "location": "Salmon Recital Hall",
+      "content": "<p>The Principal Trumpet of Los Angeles Philharmonic, Thomas Hooten will give a solo recital collaborating with Dr. Janice Park, Chapman Piano Faculty.&#160; Program to include Sonata by Halsey Stevens, Trumpet Concerto by F. J. Haydn, Legend by Georges Enesco along with works by Carl Hohne, Bruce Broughton, and Geoffrey Robbins.</p><p>Advance tickets may be purchased at www.chapman.edu/tickets or by calling the Chapman University Ticket Office at 714-997-6812 (Mon-Fri, 9 a.m.-4 p.m.).</p>",
+      "background": "",
+      "backgroundType": "",
+      "backgroundSizing": "",
+      "foreground": "/digital-signage/slides/copa/_files/Oct14-Hooten_912x1180.jpg",
+      "foregroundType": "image",
+      "foregroundSizing": "cover"
+    },
+    {
+      "id": "digital-signage/slides/copa/nov-student-recitals",
+      "template": "../../_files/tpl/scheduleDark.mustache",
+      "menuName": "NOV Student Recitals",
+      "organizer": "Hall-Musco Conservatory of Music",
+      "organizerId": "copa",
+      "duration": 15,
+      "heading": "Student Recitals",
+      "subheading": "November 2014",
+      "collection": [
+        {
+          "name": "Senior Recital - Chris Horney, Guitar",
+          "image": "/digital-signage/slides/copa/_files/recital-images/Guitar.gif",
+          "content": "BM Instrumental Performance",
+          "date": "Sunday, November 2",
+          "time": "2:00pm",
+          "admission": "Free",
+          "audience": "Public"
+        },
+        {
+          "name": "Junior Recital - Mason Hock, composition",
+          "image": "/digital-signage/slides/copa/_files/recital-images/Composition.gif",
+          "content": "BM Composition",
+          "date": "Sunday, November 2",
+          "time": "5:00pm",
+          "admission": "Free",
+          "audience": "Public"
+        },
+        {
+          "name": "Senior Recital - Chris Horney, Guitar",
+          "image": "/digital-signage/slides/copa/_files/recital-images/Guitar.gif",
+          "content": "BM Instrumental Performance",
+          "date": "Sunday, November 2",
+          "time": "2:00pm",
+          "admission": "Free",
+          "audience": "Public"
+        },
+        {
+          "name": "Junior Recital - Mason Hock, composition",
+          "image": "/digital-signage/slides/copa/_files/recital-images/Composition.gif",
+          "content": "BM Composition",
+          "date": "Sunday, November 2",
+          "time": "5:00pm",
+          "admission": "Free",
+          "audience": "Public"
+        },
+        {
+          "name": "Senior Recital - Chris Horney, Guitar",
+          "image": "/digital-signage/slides/copa/_files/recital-images/Guitar.gif",
+          "content": "BM Instrumental Performance",
+          "date": "Sunday, November 2",
+          "time": "2:00pm",
+          "admission": "Free",
+          "audience": "Public"
+        },
+        {
+          "name": "Junior Recital - Mason Hock, composition",
+          "image": "/digital-signage/slides/copa/_files/recital-images/Composition.gif",
+          "content": "BM Composition",
+          "date": "Sunday, November 2",
+          "time": "5:00pm",
+          "admission": "Free",
+          "audience": "Public"
+        },
+        {
+          "name": "Senior Recital - Chris Horney, Guitar",
+          "image": "/digital-signage/slides/copa/_files/recital-images/Guitar.gif",
+          "content": "BM Instrumental Performance",
+          "date": "Sunday, November 2",
+          "time": "2:00pm",
+          "admission": "Free",
+          "audience": "Public"
+        },
+        {
+          "name": "Junior Recital - Mason Hock, composition",
+          "image": "/digital-signage/slides/copa/_files/recital-images/Composition.gif",
+          "content": "BM Composition",
+          "date": "Sunday, November 2",
+          "time": "5:00pm",
+          "admission": "Free",
+          "audience": "Public"
+        },
+        {
+          "name": "Senior Recital - Connor Bogenreif, cello",
+          "image": "/digital-signage/slides/copa/_files/recital-images/Cello.gif",
+          "content": "BM Instrumental Performance",
+          "date": "Saturday, November 15",
+          "time": "2:00pm",
+          "admission": "Free",
+          "audience": "Public"
+        }
+      ]
+    },
+    {
+      "id": "digital-signage/slides/copa/faculty-directory-bertea",
+      "template": "../../_files/tpl/directoryDark.mustache",
+      "menuName": "BH Faculty",
+      "organizer": "Hall-Musco Conservatory of Music",
+      "organizerId": "copa",
+      "duration": 30,
+      "heading": "Bertea Hall",
+      "subheading": "Faculty Directory",
+      "collection": [
+        {
+          "name": "Dr. Ron J. Anderson",
+          "location": "Office 122",
+          "email": "anderson@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Anderson_R.jpg"
+        },
+        {
+          "name": "Dr. Peter L. Atherton",
+          "location": "Office 220",
+          "email": "atherton@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Atherton_P.jpg"
+        },
+        {
+          "name": "Robert L. Becker",
+          "location": "Office 219",
+          "email": "becker@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Becker_R.jpg"
+        },
+        {
+          "name": "David R. Black",
+          "location": "Office 225",
+          "email": "dblack@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Black_D.jpg"
+        },
+        {
+          "name": "Pamela Blanc",
+          "location": "Office 207",
+          "email": "blanc@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Blanc_P.jpg"
+        },
+        {
+          "name": "Jacob S. Braun",
+          "location": "Office 221",
+          "email": "braun@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Braun_J.jpg"
+        },
+        {
+          "name": "Dr. Christopher Brennan",
+          "location": "Office 226",
+          "email": "cbrennan@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Brennan_C.jpg"
+        },
+        {
+          "name": "Dr. David A. Cahueque",
+          "location": "Office 221",
+          "email": "cahueque@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Cahueque_D.jpg"
+        },
+        {
+          "name": "Dr. Ruby Cheng",
+          "location": "Office 225",
+          "email": "rcheng@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/ChengGoya_R.jpg"
+        },
+        {
+          "name": "Dr. Stephen Coker",
+          "location": "Office 106",
+          "email": "coker@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Coker_S.jpg"
+        },
+        {
+          "name": "Robert Fernandez",
+          "location": "Office 123",
+          "email": "rfernand@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Fernandez_R.jpg"
+        },
+        {
+          "name": "Dr. Paul G. Floyd",
+          "location": "Offices 225, 222",
+          "email": "pfloyd@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Floyd_P.jpg"
+        },
+        {
+          "name": "Dr. Grace Fong",
+          "location": "Office 121",
+          "email": "fong@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Fong_G.jpg"
+        },
+        {
+          "name": "Patty Gee",
+          "location": "Office 222",
+          "email": "gee@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Gee_P.jpg"
+        },
+        {
+          "name": "Dr. Jeffrey Holmes",
+          "location": "Office 207B",
+          "email": "jholmes@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Holmes_J.jpg"
+        },
+        {
+          "name": "Janet H. Kao",
+          "location": "Offices 122, 225",
+          "email": "kao@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Kao_J.jpg"
+        },
+        {
+          "name": "Dr. Hye-Young Kim",
+          "location": "Office 123",
+          "email": "hkim@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Kim_Hye.jpg"
+        },
+        {
+          "name": "Jenny Kim",
+          "location": "Office 217",
+          "email": "kim@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Kim_J.jpg"
+        },
+        {
+          "name": "Karen Knecht",
+          "location": "Office 226",
+          "email": "knecht@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Knecht_K.jpg"
+        },
+        {
+          "name": "Jonathan A. Mack",
+          "location": "Office 222",
+          "email": "jomack@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Mack_J.jpg"
+        },
+        {
+          "name": "Bruce McClurg",
+          "location": "Office 217",
+          "email": "mcclurg@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/McClurg_B.jpg"
+        },
+        {
+          "name": "Laszlo Mezo",
+          "location": "Office 221",
+          "email": "mezo@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Mezo_L.jpg"
+        },
+        {
+          "name": "Dr. Alexander Miller",
+          "location": "Office 207",
+          "email": "amiller@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Miller_A.jpg"
+        },
+        {
+          "name": "Dr. Christopher J. Nicholas",
+          "location": "Office 206",
+          "email": "nicholas@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Nicholas_C.jpg"
+        },
+        {
+          "name": "Dr. Christian Nova",
+          "location": "Office 217",
+          "email": "cnova@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Nova_C.jpg"
+        },
+        {
+          "name": "Dr. Janice C. Park",
+          "location": "Office 126",
+          "email": "jpark@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Park_J.jpg"
+        },
+        {
+          "name": "Jessica E. Pearlman",
+          "location": "",
+          "email": "jpearlma@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Pearlman_J.jpg"
+        },
+        {
+          "name": "Dr. Benjamin J. Phelps",
+          "location": "Office 207",
+          "email": "bphelps@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Phelps_B.jpg"
+        },
+        {
+          "name": "Dr. Holley D. Replogle",
+          "location": "Office 122",
+          "email": "replogle@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Replogle_H.jpg"
+        },
+        {
+          "name": "Dr. Rebecca S. Rivera",
+          "location": "",
+          "email": "rrivera@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Rivera_R.jpg"
+        },
+        {
+          "name": "Dr. Isaac Schankler",
+          "location": "Office 122",
+          "email": "schankle@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Schankler_I.jpg"
+        },
+        {
+          "name": "Dr. Rebecca S. Sherburn",
+          "location": "Office 230",
+          "email": "sherburn@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Sherburn_R.jpg"
+        },
+        {
+          "name": "Dr. Lea Steffens",
+          "location": "Office 221",
+          "email": "steffens@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Steffens_L.jpg"
+        },
+        {
+          "name": "Dr. Jessica Sternfeld",
+          "location": "Office 213",
+          "email": "sternfel@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Sternfeld_J.jpg"
+        },
+        {
+          "name": "David B. Stetson",
+          "location": "Office 217",
+          "email": "stetson@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Stetson_D.jpg"
+        },
+        {
+          "name": "Dr. Angel M. Vazquez-Ramos",
+          "location": "Office 207A",
+          "email": "vazquezr@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Vazquez-Ramos_A.jpg"
+        },
+        {
+          "name": "Daniel Alfred Wachs",
+          "location": "Office 128",
+          "email": "wachs@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Wachs_D.jpg"
+        }
+      ]
+    },
+    {
+      "id": "digital-signage/slides/copa/faculty-directory-oliphant",
+      "template": "../../_files/tpl/directoryDark.mustache",
+      "menuName": "OH Faculty",
+      "organizer": "Hall-Musco Conservatory of Music",
+      "organizerId": "copa",
+      "duration": 30,
+      "heading": "Oliphant Hall",
+      "subheading": "Faculty Directory",
+      "collection": [
+        {
+          "name": "Albert Alva",
+          "location": "Office B03",
+          "email": "alva@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Alva_A.jpg"
+        },
+        {
+          "name": "Jacob S. Braun",
+          "location": "Office B02",
+          "email": "braun@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Braun_J.jpg"
+        },
+        {
+          "name": "Joshua M. Brown",
+          "location": "Office 209",
+          "email": "josbrown@chapman.edu",
+          "image": "//www.chapman.edu/_files/level/img/unisex-silhouette.jpg"
+        },
+        {
+          "name": "Francisco Javier Calvo",
+          "location": "Office 309",
+          "email": "calvo@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Calvo_F.jpg"
+        },
+        {
+          "name": "Clara Cheng",
+          "location": "Office 209",
+          "email": "ccheng@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Cheng_C.jpg"
+        },
+        {
+          "name": "Dr. Tony Cho",
+          "location": "Office 206",
+          "email": "cho@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Cho_T.jpg"
+        },
+        {
+          "name": "Jeff Cogan",
+          "location": "Office 208",
+          "email": "cogan@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Cogan_J.jpg"
+        },
+        {
+          "name": "Christina Dahlin",
+          "location": "Office 308",
+          "email": "dahlin@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Dahlin_C.jpg"
+        },
+        {
+          "name": "Dr. Justin DeHart",
+          "location": "Office B13",
+          "email": "dehart@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/DeHart_J.jpg"
+        },
+        {
+          "name": "Margaret J. Dehning",
+          "location": "Office 307",
+          "email": "dehning@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Dehning_M.jpg"
+        },
+        {
+          "name": "Dr. Kristina Driskill",
+          "location": "Office B02",
+          "email": "driskill@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Driskill_K.jpg"
+        },
+        {
+          "name": "William Fitzpatrick",
+          "location": "Office 303",
+          "email": "fitz@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Fitzpatrick_W.jpg"
+        },
+        {
+          "name": "Dr. Robert S. Frelly",
+          "location": "Office 110",
+          "email": "frelly@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Frelly_R.jpg"
+        },
+        {
+          "name": "Patrick Goeser",
+          "location": "Office 307",
+          "email": "goeser@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Goeser_P.jpg"
+        },
+        {
+          "name": "Dr. Amy B. Graziano",
+          "location": "Office 302",
+          "email": "graziano@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Graziano_A.jpg"
+        },
+        {
+          "name": "Timothy Hall",
+          "location": "Offices 303, 209",
+          "email": "tihall@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Hall_T.jpg"
+        },
+        {
+          "name": "Dr. William D. Hall",
+          "location": "Office 101C",
+          "email": "whall@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Hall_W.jpg"
+        },
+        {
+          "name": "Dr. Marcus E. Harmon",
+          "location": "Office B03",
+          "email": "harmon@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Harmon_M.jpg"
+        },
+        {
+          "name": "Dr. Sean Heim",
+          "location": "Office 306",
+          "email": "heim@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Heim_S.jpg"
+        },
+        {
+          "name": "Dr. Vera Ivanova",
+          "location": "Office 203",
+          "email": "ivanova@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Ivanova_V.jpg"
+        },
+        {
+          "name": "Dr. Aron Kallay",
+          "location": "Office B01",
+          "email": "kallay@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Kallay_A.jpg"
+        },
+        {
+          "name": "Milen T. Kirov",
+          "location": "Office 305",
+          "email": "kirov@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Kirov_M.jpg"
+        },
+        {
+          "name": "Milena Kitic",
+          "location": "Office 206",
+          "email": "kitic@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Kitic_M.jpg"
+        },
+        {
+          "name": "Hedy Lee",
+          "location": "Office 309",
+          "email": "helee@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Lee_H.jpg"
+        },
+        {
+          "name": "Gary Matsuura",
+          "location": "Office B03",
+          "email": "matsuura@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Matsuura_G.jpg"
+        },
+        {
+          "name": "Bruce McClurg",
+          "location": "Office 309",
+          "email": "mcclurg@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/McClurg_B.jpg"
+        },
+        {
+          "name": "Susan Montgomery Kinsey",
+          "location": "Office 308",
+          "email": "smontgom@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Montgomery_S.jpg"
+        },
+        {
+          "name": "Dr. Yumiko Morita",
+          "location": "Office 306",
+          "email": "ymorita@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Morita_Y.jpg"
+        },
+        {
+          "name": "Carol Neblett",
+          "location": "Office 310",
+          "email": "neblett@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Neblett_C.jpg"
+        },
+        {
+          "name": "Hunter Hartmut Ochs",
+          "location": "Office B01",
+          "email": "hochs@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Ochs_H.jpg"
+        },
+        {
+          "name": "Mary Palchak",
+          "location": "Office 209",
+          "email": "palchak@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Palchak_M.jpg"
+        },
+        {
+          "name": "Jeralyn T. Refeld",
+          "location": "Offices 309, B02",
+          "email": "refeld@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Refeld_J.jpg"
+        },
+        {
+          "name": "Dr. Dominique Schafer",
+          "location": "Office 305",
+          "email": "dschafer@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Schafer_D.jpg"
+        },
+        {
+          "name": "Thomas R. Sharp",
+          "location": "Office B01",
+          "email": "tsharp@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Sharp_T.jpg"
+        },
+        {
+          "name": "Dr. Nicholas Terry",
+          "location": "Office B09",
+          "email": "terry@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Terry_N.jpg"
+        },
+        {
+          "name": "Dr. Louise M. Thomas",
+          "location": "Office 111",
+          "email": "thomas@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/faculty/Thomas_L.jpg"
+        },
+        {
+          "name": "Jacob Vogel",
+          "location": "Office B03",
+          "email": "jvogel@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Vogel_J.jpg"
+        },
+        {
+          "name": "David Washburn",
+          "location": "Office 209",
+          "email": "washburn@chapman.edu",
+          "image": "//www.chapman.edu/our-faculty/files/small-photos/adjunct-faculty/Washburn_D.jpg"
+        }
+      ]
+    }
+  ],
+  "notification": "",
+  "notificationDetail": "",
+  "emergency": "",
+  "emergencyDetail": ""
+}

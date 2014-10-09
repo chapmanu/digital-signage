@@ -616,35 +616,44 @@
 	// Scrolls the directory listing
 	DigitalSignage.updateSliding = function(self, index, slide) {
 		var
-		item = self.ractive.find('.ui-slide:nth-child(' + (index + 1) + ') .ui-slide-collection');
+		viewbox = self.ractive.find('.ui-slide:nth-child(' + (index + 1) + ') .ui-slide-collection'),
+		directory = viewbox.children[0];
 
-		if (!item) return;
+		if (!(viewbox && directory)) return;
 
 		var
-		outsetHeight = item.clientHeight + 80,
-		columnHeight = /schedule/.test(slide.template) ? 175 : 125,
-		columnInterval = 2,
-		columnDelay = 10,
-		offset = 0,
-		scrollTop = 0;
+		rowHeight        = /schedule/.test(slide.template) ? 175 : 125,
+		currentScrollTop = 0,
+		nextScrollTop    = 0,
+		difference       = 0,
+		scrollDelay      = 8000;
 
 		var autoScrollInterval = new Interval(function () {}, 2000, 1000 / 60);
-
-		autoScrollInterval.listener = function () {
-			item.scrollTop = scrollTop + (Interval.easing.easeInOut(this.percentage, 2) * (offset - scrollTop));
-			if (this.percentage === 1) this.stop();
-		};
-
 		self.intervals[index] = autoScrollInterval;
 
+		autoScrollInterval.listener = function () {
+		 	viewbox.scrollTop = currentScrollTop + (Interval.easing.easeInOut(this.percentage, 2) * difference);
+		 	if (this.percentage === 1) this.stop();
+		};
+
 		function oninterval() {
-			scrollTop = item.scrollTop;
-			offset += columnHeight * columnInterval;
-			if (offset > ((item.clientHeight + 80) - (columnHeight * columnInterval))) offset = 0;
+			var threshold = (directory.clientHeight - viewbox.clientHeight);
+			currentScrollTop = viewbox.scrollTop;
+
+			if ( currentScrollTop < threshold) {
+				nextScrollTop = currentScrollTop + (rowHeight * 2);
+				if (nextScrollTop > threshold) nextScrollTop = threshold;
+			}
+			else {
+				nextScrollTop = 0;
+			}
+
+			difference = nextScrollTop - currentScrollTop;
+			console.log(currentScrollTop, "+ (x *", difference, ")");
 			autoScrollInterval.play();
 		};
 
-		self.autoScrollIntervals.push(setInterval(oninterval, columnDelay * 1000));
+		self.autoScrollIntervals.push(setInterval(oninterval, scrollDelay));
 	};
 
 	window.DigitalSignage = DigitalSignage;

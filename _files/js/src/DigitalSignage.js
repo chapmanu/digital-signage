@@ -627,7 +627,7 @@
 		currentScrollTop = 0,
 		nextScrollTop    = 0,
 		difference       = 0,
-		scrollDelay      = 8000;
+		scrollDelay      = 6000;
 
 		// Create an Interval object for the easing scroll effect
 		var autoScrollInterval = new Interval(function () {}, 2000, 1000 / 60);

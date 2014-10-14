@@ -117,7 +117,7 @@
 		columnHeight = /schedule/.test(self.data.template) ? 175 : 125,
 		columnMax = 4,
 		columnInterval = 2,
-		columnDelay = 5,
+		columnDelay = 6,
 		columns = Math.floor(inset.offsetHeight / (columnHeight * columnMax)),
 		offset = 0,
 		scrollTop = 0;

@@ -85,7 +85,7 @@ html {
    =============================================================================
 */
 
-.ui-feed { 
+.ui-feed {
 	bottom: 0;
 	font: 100%/1 sans-serif;
 	left: 0;
@@ -189,7 +189,7 @@ html {
 	display: block;
 	content: "";
 	width: 100%;
-	
+
 }
 
 .ui-buttons button {
@@ -216,7 +216,7 @@ html {
 	background-color: rgba(37, 182, 165, 0.75);
 	border-radius: 3px 0 0 3px;
 	transition: background-color 400ms 0ms, color 400ms 0ms, text-shadow 500ms;
-} 
+}
 
 .ui-buttons button.ui-button--active span {
 	color: #A82439;
@@ -287,7 +287,7 @@ html {
 	text-align: center;
 	overflow: hidden;
 	padding: 4px 32px;
-	
+
 	transition: color 400ms 100ms, text-shadow 500ms;
 }
 
@@ -663,16 +663,27 @@ html {
 	line-height: 1.25;
 }
 
-.ui-event-time {
+.ui-event-date-time-location {
+	width: 30%;
 	order: 1;
+}
+
+.ui-event-time {
 	padding-right: 20px;
-	width: 10%;
+	padding-top: 5px;
+	/*width: 10%;*/
 }
 
 .ui-event-date {
-	order: 2;
 	padding-right: 20px;
-	width: 15%;
+	/*width: 15%;*/
+}
+
+.ui-event-location {
+	/*width: 15%;*/
+	padding-right: 20px;
+	padding-top: 20px;
+	color: #62605a;
 }
 
 .ui-event-body {
@@ -695,14 +706,14 @@ html {
 }
 
 .ui-event-admission {
-	order: 4;
+	order: 5;
 	padding-right: 20px;
 	font-style: italic;
 	width: 10%;
 }
 
 .ui-event-audience {
-	order: 5;
+	order: 6;
 	font-style: italic;
 	width: 10%;
 }
@@ -806,6 +817,6 @@ html {
 	font-size: 200%;
 }
 
-::-webkit-scrollbar { 
-	width: 0 !important 
+::-webkit-scrollbar {
+	width: 0 !important
 }

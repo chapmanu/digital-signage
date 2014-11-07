@@ -1,0 +1,239 @@
+{
+    "id": "Argyros Forum - Pankey Lounge",
+    "template": "../_files/tpl/default.mustache",
+    "location": "Argyros Forum",
+    "collection": [
+
+
+
+
+
+
+
+
+
+        {
+            "id": "digital-signage/slides/admission/homecoming-saturday",
+
+            "template": "../_files/tpl/scheduleLight.mustache",
+            "menuName": "Saturday Highlights",
+            "organizer": "Chapman University",
+            "organizerId": "chapman",
+            "duration": 10000,
+            "heading": "Saturday Homecoming Highlights",
+            "subheading": "",
+            "collection": [{
+                    "name": "Chapman University Toyota of Orange 5K Run/Walk",
+                    "image": "",
+                    "content": "Race starts at Schmid Gate and ends in Attallah Piazza.",
+                    "date": "Saturday, October 11",
+                    "time": "7:30–9:30 a.m.",
+                    "admission": "Free, Registration Required",
+                    "audience": "Campus and Community",
+                    "location": "Schmid Gate"
+                }, {
+                    "name": "Chancellor’s Coffee and Parents Ambassador Council Welcome",
+                    "image": "",
+                    "content": "<p>Parents, join Chancellor Daniele Struppa for a cup of joe and mingle with fellow Panther parents.<\/p>",
+                    "date": "Saturday, October 11",
+                    "time": "10–11:30 a.m.",
+                    "admission": "",
+                    "audience": "",
+                    "location": "Bush Conference Center, Beckman Hall, Room 404"
+                }, {
+                    "name": "Chapman Family Lunch and Lawn Games",
+                    "image": "",
+                    "content": "<p>Enjoy a freshly cooked BBQ lunch and challenge friends to a game of life-size chess, lawn bowling and more. Join in the fun at reserved tables for alumni groups including BSU, Dodge College film and communications alumni, 50 Year Club and more.<\/p>",
+                    "date": "Saturday, October 11",
+                    "time": "11:30 a.m.-1 p.m.",
+                    "admission": "Free, Registration Required",
+                    "audience": "",
+                    "location": "Bert C. Williams Mall"
+                }, {
+                    "name": "President’s Welcome and University Update",
+                    "image": "",
+                    "content": "<p>Join President Doti where he will welcome the Chapman Family to campus and share updates about the latest and greatest Chapman news and happenings.<\/p>",
+                    "date": "Saturday, October 11",
+                    "time": "2:30–3:45 p.m.",
+                    "admission": "",
+                    "audience": "Campus and Community",
+                    "location": "Chapman Auditorium, Memorial Hall"
+                }, {
+                    "name": "5th Annual Chili Cook-Off and Tailgate",
+                    "image": "",
+                    "content": "<p>Something spicy is in the air for Chapman&#8217;s 5th annual Chili Cook-Off. Enjoy sampling unique chilis and hanging out in the beer and wine garden.<\/p>",
+                    "date": "Saturday, October 11",
+                    "time": "4–6:30 p.m.",
+                    "admission": "",
+                    "audience": "",
+                    "location": "Attallah Piazza"
+                }, {
+                    "name": "UPB Presents: Student End Zone Party",
+                    "image": "",
+                    "content": "<p>Students are invited to the Student End Zone Party with games, food and beverages, and plenty of fun as we get ready for the big game kick-off!<\/p>",
+                    "date": "Saturday, October 11",
+                    "time": "4:30 p.m.",
+                    "admission": "",
+                    "audience": "",
+                    "location": "Schmid Gate"
+                }, {
+                    "name": "Homecoming Game Viewing Party in the Piazza",
+                    "image": "",
+                    "content": "<p>All members of the Chapman Family are invited to stay in Attallah Piazza after the Chili Cook-Off and Tailgate and watch the big game on live streaming TVs. The beer and wine garden will remain open and food will be available for purchase.<\/p>",
+                    "date": "Saturday, October 11",
+                    "time": "6:30–10 p.m.",
+                    "admission": "",
+                    "audience": "",
+                    "location": "Attallah Piazza"
+                }, {
+                    "name": "Homecoming Football Game vs. Pomona-Pitzer",
+                    "image": "",
+                    "content": "<p>This year they&#8217;ll take on SCIAC foe Pomona-Pitzer in a game that is expected to have playoff implications for the mighty Cardinal &amp; Gray. Tickets must be purchased separately at ChapmanAthletics.com<\/p>",
+                    "date": "Saturday, October 11",
+                    "time": "7 p.m.",
+                    "admission": "Tickets Required",
+                    "audience": "",
+                    "location": "Wilson Field, Chapman Stadium, Lastinger Athletics Complex"
+                }
+
+            ]
+        }
+
+
+
+
+
+
+
+
+
+        , {
+            "id": "digital-signage/slides/admission/homecoming-friday",
+
+            "template": "../_files/tpl/scheduleLight.mustache",
+            "menuName": "Friday Highlights",
+            "organizer": "Chapman University",
+            "organizerId": "chapman",
+            "duration": 10,
+            "heading": "Friday Homecoming Highlights",
+            "subheading": "",
+            "collection": [{
+                    "name": "Chapman Day of Service Check-In",
+                    "image": "",
+                    "content": "<p>Chapman alumni, faculty, staff, families and students are invited to engage in service together on campus and at a variety of public service agencies in the Orange County community.<\/p><p><em>Student Ballroom, Argyros Forum, Room 119<\/em><\/p>",
+                    "date": "Friday, October 10",
+                    "time": "9 – 11:30 a.m.",
+                    "admission": "",
+                    "audience": "",
+                    "location": ""
+                }, {
+                    "name": "State of the Academy Address",
+                    "image": "",
+                    "content": "<p>Join Chancellor Daniele Struppa as he showcases Chapman's exciting academic successes and challenges over the last year and discusses its future path. Dr. Struppa will explain our progress and explore the future of Chapman University.<\/p><p><em>Chapman Auditorium, Memorial Hall<\/em><\/p>",
+                    "date": "Friday, October 10",
+                    "time": "11 a.m. - noon",
+                    "admission": "",
+                    "audience": "",
+                    "location": ""
+                }, {
+                    "name": "Faculty Master Classes",
+                    "image": "",
+                    "content": "Check your schedule for times and locations.",
+                    "date": "Friday, October 10",
+                    "time": "1 - 4 p.m.",
+                    "admission": "",
+                    "audience": "",
+                    "location": ""
+                }, {
+                    "name": "Schmid College Reception",
+                    "image": "",
+                    "content": "<p>Mix and mingle with students, parents, alumni and faculty of Schmid College.<\/p><p><em>Irvine Lecture Hall, Hashinger Science Center<\/em><\/p>",
+                    "date": "Friday, October 10",
+                    "time": "4 – 5 p.m.",
+                    "admission": "",
+                    "audience": "",
+                    "location": ""
+                }, {
+                    "name": "Dialogue with the Deans",
+                    "image": "",
+                    "content": "Check your schedule for times and locations.",
+                    "date": "Friday, October 10",
+                    "time": "5 – 6 p.m.",
+                    "admission": "",
+                    "audience": "",
+                    "location": ""
+                }, {
+                    "name": "“A Golden State of Mind” Documentary Screening",
+                    "image": "",
+                    "content": "<p>Check out a screening of <em>A Golden State of Mind: The Storytelling Genius of Huell Howser<\/em> and celebrate his incredible legacy.<\/p><p><em>Chapman Auditorium, Memorial Hall<\/em><\/p>",
+                    "date": "Friday, October 10",
+                    "time": "7:30 p.m.",
+                    "admission": "",
+                    "audience": "",
+                    "location": ""
+                }, {
+                    "name": "The College of Performing Arts Presents: Hot Mikado",
+                    "image": "",
+                    "content": "<p>Set in a 1940s jazz club setting, Hot Mikado weaves a tale of hilarious proportions. Despite the life or death stakes, characters still find time to tap their toes and do their fair share of scatting.<\/p><p><em>&#65279;Waltmar Theatre<\/em><\/p><p>Chapman Family tickets: $5<\/p>",
+                    "date": "Friday, October 10",
+                    "time": "7:30 p.m.",
+                    "admission": "Tickets Required",
+                    "audience": "",
+                    "location": ""
+                }, {
+                    "name": "First Cut Screening",
+                    "image": "",
+                    "content": "<p>Come view the work of the storytellers of tomorrow at this screening of student films from Dodge College of Film and Media Arts.<\/p><p><em>Folino Theater, Marion Knott Studios<\/em><\/p>",
+                    "date": "Friday, October 10",
+                    "time": "8 –  9:30 p.m.",
+                    "admission": "",
+                    "audience": "",
+                    "location": ""
+                }
+
+            ]
+        }
+
+
+
+
+
+
+
+
+
+        , {
+            "id": "digital-signage/slides/admission/homecoming-athletics",
+
+            "template": "../_files/tpl/standardLightLeft.mustache",
+            "menuName": "Homecoming Athletics",
+            "organizer": "Chapman University",
+            "organizerId": "chapman",
+            "duration": 10,
+            "heading": "Homecoming Athletics Events",
+            "subheading": "",
+            "datetime": "",
+            "location": "",
+            "content": "<strong>Men's Water Polo vs. Golden West College, 9 a.m.<\/strong><br\/> <em>Allred Pool, Allred Aquatics Center, Lastinger Athletics Complex<\/em><br\/> <br\/><p><strong>Women's Soccer vs. University of Redlands, 11 a.m.<\/strong><br\/> <em>Wilson Field, Chapman Stadium, Lastinger Athletics Complex<\/em><br\/><\/p><p><strong>Men&#8217;s Water Polo vs. Concordia University, 4 p.m.<\/strong><br\/> <em>Allred Pool, Allred Aquatics Center, Lastinger Athletics Complex<\/em><br\/><\/p><p><strong>Homecoming Football Game vs. Pomona-Pitzer Colleges, 7 p.m.<\/strong><br\/> <em>Wilson Field, Chapman Stadium, Lastinger Athletics Complex<\/em><\/p>",
+            "background": "",
+            "backgroundType": "",
+            "backgroundSizing": "",
+            "foreground": "/digital-signage/slides/smc/_files/homecoming-football.jpg",
+            "foregroundType": "image",
+            "foregroundSizing": "cover"
+        }
+
+
+
+
+
+
+
+
+
+    ],
+    "notification": "",
+    "notificationDetail": "",
+    "emergency": "",
+    "emergencyDetail": ""
+}

@@ -19,8 +19,8 @@
 					<p class="ui-event-time">{{time}}</p>
 					<p class="ui-event-location">{{location}}</p>
 				</div>
-				<p class="ui-event-admission">{{admission}}</p>
-				<p class="ui-event-audience">{{audience}}</p>
+				<p class="ui-event-admission">{{#admission}}<img class="ui-event-admission-icon" src="/digital-signage/_files/img/icon-ticket.svg"/>{{admission}}{{/admission}}</p>
+				<p class="ui-event-audience">{{#audience}}<img class="ui-event-audience-icon" src="/digital-signage/_files/img/icon-audience.svg"/>{{audience}}{{/audience}}</p>
 			</article>
 			{{/collection}}
 		</div>

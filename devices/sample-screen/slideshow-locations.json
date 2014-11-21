@@ -1,6 +1,6 @@
 {
     "id": "Argyros Forum - Pankey Lounge",
-    "template": "../_files/tpl/default.mustache",
+    "template": "../../_files/tpl/default.mustache",
     "location": "Argyros Forum",
     "collection": [
 
@@ -15,7 +15,7 @@
         {
             "id": "digital-signage/slides/admission/homecoming-saturday",
 
-            "template": "../_files/tpl/scheduleLight.mustache",
+            "template": "../../_files/tpl/scheduleLight.mustache",
             "menuName": "Saturday Highlights",
             "organizer": "Chapman University",
             "organizerId": "chapman",
@@ -110,7 +110,7 @@
         , {
             "id": "digital-signage/slides/admission/homecoming-friday",
 
-            "template": "../_files/tpl/scheduleLight.mustache",
+            "template": "../../_files/tpl/scheduleLight.mustache",
             "menuName": "Friday Highlights",
             "organizer": "Chapman University",
             "organizerId": "chapman",
@@ -205,7 +205,7 @@
         , {
             "id": "digital-signage/slides/admission/homecoming-athletics",
 
-            "template": "../_files/tpl/standardLightLeft.mustache",
+            "template": "../../_files/tpl/standardLightLeft.mustache",
             "menuName": "Homecoming Athletics",
             "organizer": "Chapman University",
             "organizerId": "chapman",

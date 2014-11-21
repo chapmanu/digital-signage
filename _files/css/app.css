@@ -459,6 +459,14 @@ html {
 	font: 20px/1.5 "Rooney Sans";
 }
 
+.ui-event-admission-icon,
+.ui-event-audience-icon {
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	left: -18px;
+}
+
 .ui-slide-organizer {
 	bottom: 170px;
 	font: 16px/1 "Futura Bold", sans-serif;
@@ -658,6 +666,8 @@ html {
 	padding: 20px;
 }
 
+
+
 .ui-event-content {
 	font-size: 95%;
 	line-height: 1.25;
@@ -710,12 +720,16 @@ html {
 	padding-right: 20px;
 	font-style: italic;
 	width: 10%;
+	position: relative;
+	color: #62605a;
 }
 
 .ui-event-audience {
 	order: 6;
 	font-style: italic;
 	width: 10%;
+	position: relative;
+	color: #62605a;
 }
 
 .ui-event-icon {
@@ -723,6 +737,14 @@ html {
 	height: 1em;
 	margin-top: 0.125em;
 	width: 1em;
+}
+
+.ui-event-admission-icon,
+.ui-event-audience-icon {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	left: -30px;
 }
 
 /* slide: directory

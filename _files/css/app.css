@@ -459,6 +459,10 @@ html {
 	font: 20px/1.5 "Rooney Sans";
 }
 
+.ui-slide-content ul li {
+	list-style: disc;
+}
+
 .ui-event-admission-icon,
 .ui-event-audience-icon {
 	width: 16px;

@@ -461,6 +461,7 @@ html {
 
 .ui-slide-content ul li {
 	list-style: disc;
+	margin-left: 2em;
 }
 
 .ui-event-admission-icon,

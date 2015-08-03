@@ -240,6 +240,11 @@
 			});
 
 			self.ractive.observe({
+				isDodgeSlide: function() {
+					setTimeout(function() {
+						DigitalSignage.updateMenuDisplay(self);
+					},1);
+				},
 				isResizing: function () {
 					DigitalSignage.updateMenuDisplay(self);
 				},
@@ -270,11 +275,15 @@
 					}, 500);  // Run this after the slide has transitioned
 
 
-					if (newIndex) {
+					if (newIndex != undefined) {
 						var
+						slide_id   = self.data.collection[newIndex].id,
 						slideTitle = self.data.collection[newIndex].menuName,
 						slug       = slideTitle.replace(/ /g,'-').replace(/[^\w-]+/g,''),
 						location   = window.location.pathname + '?slide=' + slug;
+
+						self.ractive.set('isDodgeSlide', (/dodge\-college/).test(slide_id));
+
 
 						// Track pageview on each slide display
 						if (typeof(ga) !== 'undefined') ga('send', 'pageview', {

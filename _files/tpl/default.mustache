@@ -1,11 +1,18 @@
 <div id="ui-feed" class="ui-feed{{#isResizing}} ui-resizing{{/isResizing}} {{#previewNotice}} preview-notice{{/previewNotice}} {{#isMousing}} ui-feed--show-mouse{{/isMousing}}" on-swipeleft="swipeLeft" on-swiperight="swipeRight">
-	<header class="ui-head" role="banner">
-		<h1 class="ui-logo"></h1>
+	<header class="ui-head {{#isDodgeSlide}}dodge{{/isDodgeSlide}}" role="banner">
 
-		<subhead class="ui-location">
-			<p class="ui-location-name">{{location}}</p>
-			<p class="ui-location-time">{{datetime}}</p>
-		</subhead>
+		{{#isDodgeSlide}}
+			<h1 class="ui-logo ui-logo-dodge"></h1>
+			<subhead></subhead>
+		{{/isDodgeSlide}}
+
+		{{^isDodgeSlide}}
+			<h1 class="ui-logo"></h1>
+			<subhead class="ui-location">
+				<p class="ui-location-name">{{location}}</p>
+				<p class="ui-location-time">{{datetime}}</p>
+			</subhead>
+		{{/isDodgeSlide}}
 
 		{{#notOnMenu.length}}
 		<div class="ui-buttons">

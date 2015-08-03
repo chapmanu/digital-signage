@@ -4,7 +4,7 @@
 	"location": "SMC Office",
 	"collection": [
 	{
-		"id": "s1",
+		"id": "dodge-college",
 		"template": "/digital-signage/_files/tpl/standardLightLeft.mustache",
 		"menuName": "Standard Light Left",
 		"organizer": "Schmid College of Science and Technology",
@@ -22,7 +22,7 @@
 		"foregroundSizing": "",
 		"foregroundType": ""
 	}, {
-		"id": "s1",
+		"id": "dodge-colldfdfege",
 		"template": "/digital-signage/_files/tpl/directoryDark.mustache",
 		"menuName": "Directory Dark",
 		"duration": 14,
@@ -267,7 +267,7 @@
 			"audience": "Public"
 		}]
 	}, {
-		"id": "s2",
+		"id": "dodge-college",
 		"template": "/digital-signage/_files/tpl/standardDarkRight.mustache",
 		"menuName": "Standard Dark Right",
 		"organizer": "College of Educational Studies",
@@ -285,7 +285,7 @@
 		"foregroundSizing": "",
 		"foregroundType": ""
 	}, {
-		"id": "s3",
+		"id": "dodge-college",
 		"template": "/digital-signage/_files/tpl/standardDarkLeft.mustache",
 		"menuName": "Standard Dark Left",
 		"organizer": "Schmid College of Science and Technology",
@@ -303,6 +303,7 @@
 		"foregroundSizing": "absolute",
 		"foregroundType": "image"
 	}, {
+		"id": "/st/dodge-college",
 		"template": "/digital-signage/_files/tpl/standardDarkRight.mustache",
 		"menuName": "Standard Dark Left",
 		"organizer": "Schmid College of Science and Technology",
@@ -320,6 +321,7 @@
 		"foregroundSizing": "",
 		"foregroundType": ""
 	}, {
+		"id": "thing/dodge-college.aspx",
 		"template": "/digital-signage/_files/tpl/standardDarkLeft.mustache",
 		"menuName": "Standard Dark Right",
 		"organizer": "Schmid College of Science and Technology",

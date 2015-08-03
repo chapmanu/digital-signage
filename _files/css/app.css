@@ -126,6 +126,10 @@ html {
 	box-shadow: 0 2px 1px 0 rgba(0,0,0,0.3);
 }
 
+.ui-head.dodge{
+	background-color: rgba(0,0,0,0.85);
+}
+
 .ui-head > * {
 	display: table-cell;
 	vertical-align: middle;
@@ -142,6 +146,12 @@ html {
 	/*margin-right: 14px;*/
 	width: 280px;
 	margin:30px 14px 30px 0;
+}
+
+.ui-logo-dodge {
+	background: url(../img/logo-dodge.svg) 0 0 / 100% 100%;
+	width: 556px;
+	height: 55px;
 }
 
 /* ui-locality
@@ -296,7 +306,7 @@ html {
 }
 
 .ui-menu-item span {
-	box-shadow: 0 -2px 0 0 #FFF;
+	border-top: 2px solid white;
 }
 
 .ui-menu-item--active span {
